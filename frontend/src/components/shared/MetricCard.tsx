@@ -1,0 +1,1 @@
+export function MetricCard() {`n  return <div className="text-slate-300">MetricCard</div>;`n}`n

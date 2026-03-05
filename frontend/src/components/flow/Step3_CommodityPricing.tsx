@@ -1,0 +1,1 @@
+export function Step3_CommodityPricing() { return <div className="space-y-2"><h2 className="text-xl">Step 3: Commodity Pricing</h2><p className="text-slate-300">Select base, bull, bear, crash, or volatile scenarios.</p></div>; }

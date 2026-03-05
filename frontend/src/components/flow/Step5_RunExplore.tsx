@@ -1,0 +1,1 @@
+export function Step5_RunExplore() { return <div className="space-y-2"><h2 className="text-xl">Step 5: Run & Explore</h2><p className="text-slate-300">Run Monte Carlo and inspect map/frontier/sensitivity outputs.</p></div>; }

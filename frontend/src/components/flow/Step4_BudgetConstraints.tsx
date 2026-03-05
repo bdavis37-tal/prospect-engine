@@ -1,0 +1,1 @@
+export function Step4_BudgetConstraints() { return <div className="space-y-2"><h2 className="text-xl">Step 4: Budget & Constraints</h2><p className="text-slate-300">Set capital budget and optimization constraints.</p></div>; }

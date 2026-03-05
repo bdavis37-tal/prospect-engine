@@ -1,0 +1,1 @@
+export function WaterfallChart() {`n  return <div className="text-slate-300">WaterfallChart</div>;`n}`n

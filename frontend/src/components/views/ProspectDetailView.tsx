@@ -1,0 +1,1 @@
+export function ProspectDetailView() {`n  return <div className="text-slate-300">ProspectDetailView</div>;`n}`n

@@ -1,0 +1,1 @@
+export function DistributionHistogram() {`n  return <div className="text-slate-300">DistributionHistogram</div>;`n}`n

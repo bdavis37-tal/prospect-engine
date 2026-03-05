@@ -1,0 +1,1 @@
+export function Step2_ProspectDefinition() { return <div className="space-y-2"><h2 className="text-xl">Step 2: Prospect Definition</h2><p className="text-slate-300">Capture P10/P50/P90 resource, WI, and cost assumptions.</p></div>; }

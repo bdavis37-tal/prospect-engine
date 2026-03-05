@@ -1,0 +1,1 @@
+export function TornadoChart() {`n  return <div className="text-slate-300">TornadoChart</div>;`n}`n

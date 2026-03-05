@@ -1,0 +1,1 @@
+export function Step1_PortfolioSetup() { return <div className="space-y-2"><h2 className="text-xl">Step 1: Portfolio Setup</h2><p className="text-slate-300">Choose single prospect, build portfolio, or CSV import.</p></div>; }

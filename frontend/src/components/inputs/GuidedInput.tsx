@@ -1,0 +1,1 @@
+export function GuidedInput() {`n  return <div className="text-slate-300">GuidedInput</div>;`n}`n

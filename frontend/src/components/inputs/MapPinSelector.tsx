@@ -1,0 +1,1 @@
+export function MapPinSelector() {`n  return <div className="text-slate-300">MapPinSelector</div>;`n}`n

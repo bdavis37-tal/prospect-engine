@@ -1,0 +1,1 @@
+export function EfficientFrontier() {`n  return <div className="text-slate-300">EfficientFrontier</div>;`n}`n

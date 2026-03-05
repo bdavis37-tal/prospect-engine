@@ -1,0 +1,1 @@
+export function Tooltip() {`n  return <div className="text-slate-300">Tooltip</div>;`n}`n

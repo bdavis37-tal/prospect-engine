@@ -1,0 +1,39 @@
+{
+  "permian_delaware": {
+    "description": "Delaware sub-basin horizontal oil play with strong IP and moderate service costs.",
+    "well_cost_musd": [7, 9],
+    "ip_boe_day": [1000, 2000],
+    "eur_mboe": [800, 1500],
+    "decline_rate": [0.65, 0.75],
+    "b_factor": [1.0, 1.3],
+    "opex_per_boe": [8, 12],
+    "royalty": [0.20, 0.25],
+    "water_depth_ft": null,
+    "infrastructure_proximity_miles": [1, 10],
+    "regulatory_notes": "Texas and New Mexico permitting and takeaway constraints may vary by county."
+  },
+  "permian_midland": {
+    "description": "Midland sub-basin with robust infrastructure and mature service ecosystem.",
+    "well_cost_musd": [6, 8],
+    "ip_boe_day": [800, 1500],
+    "eur_mboe": [600, 1200],
+    "decline_rate": [0.60, 0.70],
+    "b_factor": [1.0, 1.2],
+    "opex_per_boe": [8, 12],
+    "water_depth_ft": null,
+    "infrastructure_proximity_miles": [1, 8],
+    "regulatory_notes": "Conventional state-level onshore regulation; local constraints apply."
+  },
+  "eagle_ford_oil": {"well_cost_musd": [5, 7], "ip_boe_day": [500, 1200], "eur_mboe": [400, 800], "decline_rate": [0.70, 0.80], "b_factor": [0.8, 1.2], "opex_per_boe": [10, 14], "description": "South Texas oil window.", "water_depth_ft": null, "infrastructure_proximity_miles": [1, 12], "regulatory_notes": "Texas onshore operating framework."},
+  "eagle_ford_gas": {"well_cost_musd": [5, 7], "ip_mmcf_day": [5, 15], "eur_bcf": [5, 12], "decline_rate": [0.70, 0.80], "b_factor": [0.8, 1.0], "opex_per_mcf": [1.0, 1.5], "description": "South Texas gas window.", "water_depth_ft": null, "infrastructure_proximity_miles": [1, 12], "regulatory_notes": "Texas onshore operating framework."},
+  "bakken": {"well_cost_musd": [6, 8], "ip_boe_day": [500, 1500], "eur_mboe": [500, 1000], "decline_rate": [0.65, 0.75], "b_factor": [0.8, 1.2], "opex_per_boe": [10, 15], "description": "Williston Basin tight oil.", "water_depth_ft": null, "infrastructure_proximity_miles": [3, 20], "regulatory_notes": "Winter weather and flaring restrictions can impact operations."},
+  "dj_niobrara": {"well_cost_musd": [4, 6], "ip_boe_day": [400, 1000], "eur_mboe": [300, 700], "decline_rate": [0.60, 0.70], "opex_per_boe": [8, 12], "description": "Colorado/Niobrara liquids-rich play.", "water_depth_ft": null, "infrastructure_proximity_miles": [2, 15], "regulatory_notes": "Colorado setback and permitting rules can lengthen cycle times."},
+  "gom_shelf": {"well_cost_musd": [15, 30], "ip_boe_day": [2000, 10000], "eur_mmboe": [2, 10], "decline_rate": [0.20, 0.40], "opex_per_boe": [12, 18], "description": "Shallow-water offshore Gulf of Mexico.", "water_depth_ft": [200, 1000], "infrastructure_proximity_miles": [5, 30], "regulatory_notes": "Federal offshore permitting and HSE requirements apply."},
+  "gom_deepwater": {"well_cost_musd": [80, 200], "facility_cost_musd": [200, 2000], "ip_boe_day": [10000, 50000], "eur_mmboe": [20, 200], "decline_rate": [0.15, 0.25], "opex_per_boe": [15, 25], "description": "Deepwater Gulf of Mexico developments.", "water_depth_ft": [3000, 8000], "infrastructure_proximity_miles": [10, 80], "regulatory_notes": "High capex and long lead-time project governance."},
+  "marcellus_utica": {"well_cost_musd": [5, 8], "ip_mmcf_day": [10, 30], "eur_bcf": [10, 25], "decline_rate": [0.70, 0.80], "opex_per_mcf": [0.75, 1.25], "description": "Northeast gas shale.", "water_depth_ft": null, "infrastructure_proximity_miles": [1, 8], "regulatory_notes": "Pipeline takeaway and regional basis differentials are key."},
+  "haynesville": {"well_cost_musd": [7, 10], "ip_mmcf_day": [15, 30], "eur_bcf": [10, 20], "decline_rate": [0.75, 0.85], "opex_per_mcf": [0.8, 1.3], "description": "High deliverability gas shale.", "water_depth_ft": null, "infrastructure_proximity_miles": [1, 10], "regulatory_notes": "Service intensity and LNG-linked gas outlook sensitivity."},
+  "scoop_stack": {"well_cost_musd": [5, 8], "ip_boe_day": [500, 1500], "eur_mboe": [400, 900], "decline_rate": [0.65, 0.75], "opex_per_boe": [9, 13], "description": "Oklahoma mixed hydrocarbon play.", "water_depth_ft": null, "infrastructure_proximity_miles": [2, 12], "regulatory_notes": "County-level constraints and spacing vary."},
+  "powder_river": {"well_cost_musd": [4, 6], "ip_boe_day": [300, 800], "eur_mboe": [200, 600], "decline_rate": [0.60, 0.70], "opex_per_boe": [10, 15], "description": "Emerging Wyoming basin positions.", "water_depth_ft": null, "infrastructure_proximity_miles": [5, 20], "regulatory_notes": "Infrastructure can be sparse outside core fairways."},
+  "montney": {"well_cost_mcad": [5, 8], "ip_boe_day": [500, 2000], "eur_mboe": [500, 1500], "decline_rate": [0.55, 0.65], "opex_per_boe_cad": [8, 12], "description": "Western Canada Montney liquids-rich and gas fairways.", "water_depth_ft": null, "infrastructure_proximity_miles": [3, 15], "regulatory_notes": "Provincial regulatory and royalty regimes apply."},
+  "generic_onshore_us": {"description": "Fallback US onshore default.", "well_cost_musd": [5, 8], "ip_boe_day": [500, 1200], "eur_mboe": [400, 900], "decline_rate": [0.60, 0.75], "opex_per_boe": [9, 13], "water_depth_ft": null, "infrastructure_proximity_miles": [2, 15], "regulatory_notes": "Generic benchmark only; update with basin-specific values when available."}
+}

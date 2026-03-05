@@ -1,0 +1,1249 @@
+{
+    "scenarios":  [
+                      {
+                          "price_correlation_oil_gas":  0.5,
+                          "gas_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  3.25,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.3,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.35,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.4,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.45,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.5,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.55,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.61,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.66,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.72,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.77,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.83,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.89,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.94,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.06,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.12,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.19,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.25,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.31,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.38,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.44,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.51,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.58,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.65,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.72,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.79,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.86,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.93,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "oil_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  75,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  76.12,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  77.27,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  78.43,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  79.6,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  80.8,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  82.01,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  83.24,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  84.49,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  85.75,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  87.04,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  88.35,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  89.67,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  91.02,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  92.38,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  93.77,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  95.17,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  96.6,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  98.05,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  99.52,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  101.01,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  102.53,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  104.07,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  105.63,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  107.21,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  108.82,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  110.45,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  112.11,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  113.79,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  115.5,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "price_volatility":  0.2,
+                          "scenario_name":  "Base Case"
+                      },
+                      {
+                          "price_correlation_oil_gas":  0.55,
+                          "gas_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  4.25,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.33,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.4,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.48,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.56,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.65,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.73,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.82,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.9,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.99,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.08,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.17,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.26,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.36,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.46,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.55,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.65,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.76,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.86,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  5.96,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  6.07,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  6.18,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  6.29,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  6.41,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  6.52,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  6.64,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  6.76,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  6.88,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  7,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  7.13,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "oil_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  95,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  96.71,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  98.45,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  100.22,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  102.03,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  103.86,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  105.73,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  107.64,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  109.57,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  111.55,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  113.55,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  115.6,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  117.68,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  119.8,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  121.95,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  124.15,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  126.38,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  128.66,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  130.97,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  133.33,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  135.73,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  138.17,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  140.66,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  143.19,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  145.77,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  148.39,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  151.07,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  153.78,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  156.55,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  159.37,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "price_volatility":  0.25,
+                          "scenario_name":  "Bull Case"
+                      },
+                      {
+                          "price_correlation_oil_gas":  0.45,
+                          "gas_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  2.25,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.26,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.27,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.28,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.3,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.31,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.32,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.33,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.34,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.35,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.37,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.38,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.39,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.4,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.41,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.42,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.44,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.45,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.46,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.47,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.49,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.5,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.51,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.52,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.54,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.55,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.56,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.57,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.59,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.6,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "oil_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  50,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  50.25,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  50.5,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  50.75,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  51.01,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  51.26,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  51.52,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  51.78,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  52.04,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  52.3,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  52.56,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  52.82,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  53.08,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  53.35,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  53.62,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  53.88,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  54.15,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  54.42,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  54.7,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  54.97,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  55.24,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  55.52,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  55.8,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  56.08,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  56.36,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  56.64,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  56.92,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  57.21,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  57.49,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  57.78,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "price_volatility":  0.18,
+                          "scenario_name":  "Bear Case"
+                      },
+                      {
+                          "price_correlation_oil_gas":  0.4,
+                          "gas_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  1.75,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  1.75,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  1.75,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.25,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.5,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.52,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.55,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.58,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.6,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.63,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.65,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.68,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.71,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.73,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.76,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.79,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.82,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.85,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.87,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.9,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.93,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.96,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.99,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.02,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.05,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.08,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.11,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.14,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.17,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.21,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "oil_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  35,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  35,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  35,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  52.5,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  60,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  60.6,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  61.21,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  61.82,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  62.44,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  63.06,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  63.69,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  64.33,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  64.97,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  65.62,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  66.28,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  66.94,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  67.61,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  68.29,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  68.97,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  69.66,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  70.35,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  71.06,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  71.77,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  72.49,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  73.21,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  73.94,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  74.68,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  75.43,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  76.18,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  76.95,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "price_volatility":  0.35,
+                          "scenario_name":  "Crash Case"
+                      },
+                      {
+                          "price_correlation_oil_gas":  0.6,
+                          "gas_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  3.73,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.15,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.37,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.36,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.12,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.68,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.15,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.63,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.22,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.02,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.05,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.32,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.76,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.3,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.81,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.2,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.39,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.34,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.05,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.59,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.06,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.55,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.17,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.08,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.38,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  2.85,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.39,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  3.89,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  4.25,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "oil_price_deck":  [
+                                                 {
+                                                     "price_per_unit":  84.74,
+                                                     "year":  1
+                                                 },
+                                                 {
+                                                     "price_per_unit":  92.93,
+                                                     "year":  2
+                                                 },
+                                                 {
+                                                     "price_per_unit":  98.3,
+                                                     "year":  3
+                                                 },
+                                                 {
+                                                     "price_per_unit":  99.99,
+                                                     "year":  4
+                                                 },
+                                                 {
+                                                     "price_per_unit":  97.73,
+                                                     "year":  5
+                                                 },
+                                                 {
+                                                     "price_per_unit":  91.89,
+                                                     "year":  6
+                                                 },
+                                                 {
+                                                     "price_per_unit":  83.37,
+                                                     "year":  7
+                                                 },
+                                                 {
+                                                     "price_per_unit":  73.54,
+                                                     "year":  8
+                                                 },
+                                                 {
+                                                     "price_per_unit":  63.94,
+                                                     "year":  9
+                                                 },
+                                                 {
+                                                     "price_per_unit":  56.08,
+                                                     "year":  10
+                                                 },
+                                                 {
+                                                     "price_per_unit":  51.21,
+                                                     "year":  11
+                                                 },
+                                                 {
+                                                     "price_per_unit":  50.1,
+                                                     "year":  12
+                                                 },
+                                                 {
+                                                     "price_per_unit":  52.91,
+                                                     "year":  13
+                                                 },
+                                                 {
+                                                     "price_per_unit":  59.22,
+                                                     "year":  14
+                                                 },
+                                                 {
+                                                     "price_per_unit":  68.01,
+                                                     "year":  15
+                                                 },
+                                                 {
+                                                     "price_per_unit":  77.91,
+                                                     "year":  16
+                                                 },
+                                                 {
+                                                     "price_per_unit":  87.35,
+                                                     "year":  17
+                                                 },
+                                                 {
+                                                     "price_per_unit":  94.84,
+                                                     "year":  18
+                                                 },
+                                                 {
+                                                     "price_per_unit":  99.2,
+                                                     "year":  19
+                                                 },
+                                                 {
+                                                     "price_per_unit":  99.73,
+                                                     "year":  20
+                                                 },
+                                                 {
+                                                     "price_per_unit":  96.36,
+                                                     "year":  21
+                                                 },
+                                                 {
+                                                     "price_per_unit":  89.62,
+                                                     "year":  22
+                                                 },
+                                                 {
+                                                     "price_per_unit":  80.57,
+                                                     "year":  23
+                                                 },
+                                                 {
+                                                     "price_per_unit":  70.64,
+                                                     "year":  24
+                                                 },
+                                                 {
+                                                     "price_per_unit":  61.4,
+                                                     "year":  25
+                                                 },
+                                                 {
+                                                     "price_per_unit":  54.3,
+                                                     "year":  26
+                                                 },
+                                                 {
+                                                     "price_per_unit":  50.48,
+                                                     "year":  27
+                                                 },
+                                                 {
+                                                     "price_per_unit":  50.52,
+                                                     "year":  28
+                                                 },
+                                                 {
+                                                     "price_per_unit":  54.43,
+                                                     "year":  29
+                                                 },
+                                                 {
+                                                     "price_per_unit":  61.59,
+                                                     "year":  30
+                                                 }
+                                             ],
+                          "price_volatility":  0.4,
+                          "scenario_name":  "Volatile Case"
+                      }
+                  ]
+}

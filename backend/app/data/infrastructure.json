@@ -1,0 +1,13 @@
+{
+  "pipelines": [
+    {"name": "Permian Highway Pipeline", "basin": "permian_delaware", "latitude": 31.6, "longitude": -103.2},
+    {"name": "Whistler Pipeline", "basin": "permian_midland", "latitude": 31.9, "longitude": -102.1},
+    {"name": "Colonial / Gulf Coast Hub", "basin": "gom_shelf", "latitude": 29.7, "longitude": -93.9},
+    {"name": "Transco Northeast", "basin": "marcellus_utica", "latitude": 40.2, "longitude": -79.8}
+  ],
+  "processing_facilities": [
+    {"name": "Midland Processing Hub", "basin": "permian_midland", "latitude": 31.9, "longitude": -102.1},
+    {"name": "Corpus Christi Export", "basin": "eagle_ford_oil", "latitude": 27.8, "longitude": -97.4},
+    {"name": "Henry Hub", "basin": "haynesville", "latitude": 31.8, "longitude": -93.2}
+  ]
+}

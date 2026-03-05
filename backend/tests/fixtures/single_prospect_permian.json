@@ -1,0 +1,18 @@
+{
+  "prospect_id": "permian_det_1",
+  "name": "Permian Deterministic A",
+  "latitude": 31.8,
+  "longitude": -103.5,
+  "basin": "permian_delaware",
+  "hydrocarbon_type": "oil",
+  "resource_estimate": {"p10": 1100, "p50": 900, "p90": 700, "distribution_type": "lognormal", "unit": "MBOE"},
+  "recovery_factor": {"base": 0.10, "low": 0.10, "high": 0.10, "distribution_type": "triangular"},
+  "well_cost": {"base": 8000000, "low": 8000000, "high": 8000000, "distribution_type": "triangular"},
+  "completion_cost": {"base": 3000000, "low": 3000000, "high": 3000000, "distribution_type": "triangular"},
+  "facility_cost": 1000000,
+  "opex_per_boe": {"base": 10, "low": 10, "high": 10, "distribution_type": "triangular"},
+  "royalty_rate": 0.2,
+  "tax_rate": 0.22,
+  "working_interest": 1.0,
+  "decline_params": {"initial_production_rate": 1200, "initial_decline_rate": 0.7, "b_factor": 1.1, "terminal_decline_rate": 0.08, "well_life_years": 30}
+}

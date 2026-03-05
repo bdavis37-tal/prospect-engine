@@ -1,0 +1,19 @@
+{
+  "prospect_id": "gom_dw_1",
+  "name": "GoM Deepwater Alpha",
+  "latitude": 27.4,
+  "longitude": -90.2,
+  "basin": "gom_deepwater",
+  "hydrocarbon_type": "oil",
+  "water_depth_ft": 5200,
+  "resource_estimate": {"p10": 180, "p50": 90, "p90": 40, "distribution_type": "lognormal", "unit": "MMBOE"},
+  "recovery_factor": {"base": 0.28, "low": 0.22, "high": 0.35, "distribution_type": "triangular"},
+  "well_cost": {"base": 120000000, "low": 90000000, "high": 170000000, "distribution_type": "triangular"},
+  "completion_cost": {"base": 55000000, "low": 40000000, "high": 85000000, "distribution_type": "triangular"},
+  "facility_cost": 500000000,
+  "opex_per_boe": {"base": 18, "low": 15, "high": 24, "distribution_type": "triangular"},
+  "royalty_rate": 0.1875,
+  "tax_rate": 0.25,
+  "working_interest": 1.0,
+  "decline_params": {"initial_production_rate": 18000, "initial_decline_rate": 0.22, "b_factor": 0.5, "terminal_decline_rate": 0.06, "well_life_years": 30}
+}

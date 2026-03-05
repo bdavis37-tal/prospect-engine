@@ -1,0 +1,504 @@
+{
+    "prospects":  [
+                      {
+                          "completion_cost":  {
+                                                  "low":  2000000,
+                                                  "high":  3200000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  2500000
+                                              },
+                          "well_cost":  {
+                                            "low":  5000000,
+                                            "high":  7000000,
+                                            "distribution_type":  "triangular",
+                                            "base":  6000000
+                                        },
+                          "latitude":  30,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "permian_delaware",
+                          "opex_per_boe":  {
+                                               "low":  8,
+                                               "high":  11,
+                                               "distribution_type":  "triangular",
+                                               "base":  9
+                                           },
+                          "name":  "Prospect 1",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  900
+                                             },
+                          "hydrocarbon_type":  "oil",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  900,
+                                                    "p10":  1200,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  650,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p1",
+                          "facility_cost":  500000,
+                          "tax_rate":  0.22,
+                          "longitude":  -100
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  2150000,
+                                                  "high":  3450000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  2700000
+                                              },
+                          "well_cost":  {
+                                            "low":  5400000,
+                                            "high":  7600000,
+                                            "distribution_type":  "triangular",
+                                            "base":  6500000
+                                        },
+                          "latitude":  31,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "permian_midland",
+                          "opex_per_boe":  {
+                                               "low":  8.4,
+                                               "high":  11.6,
+                                               "distribution_type":  "triangular",
+                                               "base":  9.5
+                                           },
+                          "name":  "Prospect 2",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  980
+                                             },
+                          "hydrocarbon_type":  "oil",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  980,
+                                                    "p10":  1300,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  710,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p2",
+                          "facility_cost":  600000,
+                          "tax_rate":  0.22,
+                          "longitude":  -101
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  2300000,
+                                                  "high":  3700000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  2900000
+                                              },
+                          "well_cost":  {
+                                            "low":  5800000,
+                                            "high":  8200000,
+                                            "distribution_type":  "triangular",
+                                            "base":  7000000
+                                        },
+                          "latitude":  32,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "eagle_ford_oil",
+                          "opex_per_boe":  {
+                                               "low":  8.8,
+                                               "high":  12.2,
+                                               "distribution_type":  "triangular",
+                                               "base":  10
+                                           },
+                          "name":  "Prospect 3",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  1060
+                                             },
+                          "hydrocarbon_type":  "oil",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  1060,
+                                                    "p10":  1400,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  770,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p3",
+                          "facility_cost":  700000,
+                          "tax_rate":  0.22,
+                          "longitude":  -102
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  2450000,
+                                                  "high":  3950000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  3100000
+                                              },
+                          "well_cost":  {
+                                            "low":  6200000,
+                                            "high":  8800000,
+                                            "distribution_type":  "triangular",
+                                            "base":  7500000
+                                        },
+                          "latitude":  33,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "bakken",
+                          "opex_per_boe":  {
+                                               "low":  9.2,
+                                               "high":  12.8,
+                                               "distribution_type":  "triangular",
+                                               "base":  10.5
+                                           },
+                          "name":  "Prospect 4",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  1140
+                                             },
+                          "hydrocarbon_type":  "oil",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  1140,
+                                                    "p10":  1500,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  830,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p4",
+                          "facility_cost":  800000,
+                          "tax_rate":  0.22,
+                          "longitude":  -103
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  2600000,
+                                                  "high":  4200000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  3300000
+                                              },
+                          "well_cost":  {
+                                            "low":  6600000,
+                                            "high":  9400000,
+                                            "distribution_type":  "triangular",
+                                            "base":  8000000
+                                        },
+                          "latitude":  34,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "dj_niobrara",
+                          "opex_per_boe":  {
+                                               "low":  9.6,
+                                               "high":  13.4,
+                                               "distribution_type":  "triangular",
+                                               "base":  11
+                                           },
+                          "name":  "Prospect 5",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  1220
+                                             },
+                          "hydrocarbon_type":  "oil",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  1220,
+                                                    "p10":  1600,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  890,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p5",
+                          "facility_cost":  900000,
+                          "tax_rate":  0.22,
+                          "longitude":  -104
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  2750000,
+                                                  "high":  4450000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  3500000
+                                              },
+                          "well_cost":  {
+                                            "low":  7000000,
+                                            "high":  10000000,
+                                            "distribution_type":  "triangular",
+                                            "base":  8500000
+                                        },
+                          "latitude":  35,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "gom_shelf",
+                          "opex_per_boe":  {
+                                               "low":  10,
+                                               "high":  14,
+                                               "distribution_type":  "triangular",
+                                               "base":  11.5
+                                           },
+                          "name":  "Prospect 6",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  1300
+                                             },
+                          "hydrocarbon_type":  "oil",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  1300,
+                                                    "p10":  1700,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  950,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p6",
+                          "facility_cost":  1000000,
+                          "tax_rate":  0.22,
+                          "longitude":  -105
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  2900000,
+                                                  "high":  4700000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  3700000
+                                              },
+                          "well_cost":  {
+                                            "low":  7400000,
+                                            "high":  10600000,
+                                            "distribution_type":  "triangular",
+                                            "base":  9000000
+                                        },
+                          "latitude":  36,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "marcellus_utica",
+                          "opex_per_boe":  {
+                                               "low":  10.4,
+                                               "high":  14.6,
+                                               "distribution_type":  "triangular",
+                                               "base":  12
+                                           },
+                          "name":  "Prospect 7",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  1380
+                                             },
+                          "hydrocarbon_type":  "gas",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  1380,
+                                                    "p10":  1800,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  1010,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p7",
+                          "facility_cost":  1100000,
+                          "tax_rate":  0.22,
+                          "longitude":  -106
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  3050000,
+                                                  "high":  4950000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  3900000
+                                              },
+                          "well_cost":  {
+                                            "low":  7800000,
+                                            "high":  11200000,
+                                            "distribution_type":  "triangular",
+                                            "base":  9500000
+                                        },
+                          "latitude":  37,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "haynesville",
+                          "opex_per_boe":  {
+                                               "low":  10.8,
+                                               "high":  15.2,
+                                               "distribution_type":  "triangular",
+                                               "base":  12.5
+                                           },
+                          "name":  "Prospect 8",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  1460
+                                             },
+                          "hydrocarbon_type":  "gas",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  1460,
+                                                    "p10":  1900,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  1070,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p8",
+                          "facility_cost":  1200000,
+                          "tax_rate":  0.22,
+                          "longitude":  -107
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  3200000,
+                                                  "high":  5200000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  4100000
+                                              },
+                          "well_cost":  {
+                                            "low":  8200000,
+                                            "high":  11800000,
+                                            "distribution_type":  "triangular",
+                                            "base":  10000000
+                                        },
+                          "latitude":  38,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "scoop_stack",
+                          "opex_per_boe":  {
+                                               "low":  11.2,
+                                               "high":  15.8,
+                                               "distribution_type":  "triangular",
+                                               "base":  13
+                                           },
+                          "name":  "Prospect 9",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  1540
+                                             },
+                          "hydrocarbon_type":  "gas",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  1540,
+                                                    "p10":  2000,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  1130,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p9",
+                          "facility_cost":  1300000,
+                          "tax_rate":  0.22,
+                          "longitude":  -108
+                      },
+                      {
+                          "completion_cost":  {
+                                                  "low":  3350000,
+                                                  "high":  5450000,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  4300000
+                                              },
+                          "well_cost":  {
+                                            "low":  8600000,
+                                            "high":  12400000,
+                                            "distribution_type":  "triangular",
+                                            "base":  10500000
+                                        },
+                          "latitude":  39,
+                          "recovery_factor":  {
+                                                  "low":  0.09,
+                                                  "high":  0.15,
+                                                  "distribution_type":  "triangular",
+                                                  "base":  0.12
+                                              },
+                          "working_interest":  1,
+                          "basin":  "powder_river",
+                          "opex_per_boe":  {
+                                               "low":  11.6,
+                                               "high":  16.4,
+                                               "distribution_type":  "triangular",
+                                               "base":  13.5
+                                           },
+                          "name":  "Prospect 10",
+                          "decline_params":  {
+                                                 "terminal_decline_rate":  0.08,
+                                                 "b_factor":  1,
+                                                 "well_life_years":  30,
+                                                 "initial_decline_rate":  0.62,
+                                                 "initial_production_rate":  1620
+                                             },
+                          "hydrocarbon_type":  "gas",
+                          "royalty_rate":  0.2,
+                          "resource_estimate":  {
+                                                    "p50":  1620,
+                                                    "p10":  2100,
+                                                    "distribution_type":  "lognormal",
+                                                    "p90":  1190,
+                                                    "unit":  "MBOE"
+                                                },
+                          "prospect_id":  "p10",
+                          "facility_cost":  1400000,
+                          "tax_rate":  0.22,
+                          "longitude":  -109
+                      }
+                  ]
+}

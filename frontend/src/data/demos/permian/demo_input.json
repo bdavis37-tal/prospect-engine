@@ -15,9 +15,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.88,
+        "low": 0.78,
+        "high": 0.95,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -66,9 +66,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.87,
+        "low": 0.77,
+        "high": 0.94,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -117,9 +117,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.08,
-        "low": 0.04,
-        "high": 0.14,
+        "base": 0.7,
+        "low": 0.45,
+        "high": 0.9,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -168,9 +168,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.85,
+        "low": 0.75,
+        "high": 0.93,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -219,9 +219,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.09,
-        "low": 0.05,
-        "high": 0.12,
+        "base": 0.82,
+        "low": 0.72,
+        "high": 0.92,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -270,9 +270,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.86,
+        "low": 0.76,
+        "high": 0.93,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -321,9 +321,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.13,
+        "base": 0.87,
+        "low": 0.77,
+        "high": 0.94,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -372,9 +372,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.09,
-        "low": 0.07,
-        "high": 0.11,
+        "base": 0.8,
+        "low": 0.65,
+        "high": 0.9,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -423,9 +423,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.88,
+        "low": 0.78,
+        "high": 0.95,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -475,9 +475,9 @@
         "unit": "BCF"
       },
       "recovery_factor": {
-        "base": 0.15,
-        "low": 0.1,
-        "high": 0.2,
+        "base": 0.85,
+        "low": 0.7,
+        "high": 0.92,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -526,9 +526,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.75,
+        "low": 0.55,
+        "high": 0.88,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -578,9 +578,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.86,
+        "low": 0.76,
+        "high": 0.94,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -629,9 +629,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.87,
+        "low": 0.77,
+        "high": 0.95,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -681,9 +681,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.13,
+        "base": 0.83,
+        "low": 0.7,
+        "high": 0.92,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -732,9 +732,9 @@
         "unit": "MBOE"
       },
       "recovery_factor": {
-        "base": 0.1,
-        "low": 0.08,
-        "high": 0.12,
+        "base": 0.85,
+        "low": 0.75,
+        "high": 0.93,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -771,7 +771,12 @@
   ],
   "capital_budget": 150000000,
   "discount_rate": 0.1,
-  "simulation_iterations": 5000,
+  "constraints": {
+    "mandatory_drill": [
+      "permian_9",
+      "permian_13"
+    ]
+  },
   "price_scenarios": [
     {
       "scenario_name": "Base Case",
@@ -2024,10 +2029,5 @@
       "price_correlation_oil_gas": 0.6
     }
   ],
-  "constraints": {
-    "mandatory_drill": [
-      "permian_9",
-      "permian_13"
-    ]
-  }
+  "simulation_iterations": 5000
 }

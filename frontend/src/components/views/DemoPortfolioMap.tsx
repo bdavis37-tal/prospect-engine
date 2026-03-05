@@ -1,19 +1,13 @@
 import type { DemoData } from "../../types/demo";
 import type { DecisionType } from "../../types/portfolio";
 import { formatCurrency } from "../../lib/formatters";
+import { DECISION_COLORS, DECISION_ICONS, DECISION_LABELS } from "../../lib/constants";
 
 interface Props {
   demoData: DemoData;
   activeScenario: string;
   onSelectProspect?: (id: string) => void;
 }
-
-const DECISION_COLORS: Record<string, string> = {
-  drill: "#23D18B",
-  farm_out: "#2FA7FF",
-  divest: "#F97316",
-  defer: "#94A3B8",
-};
 
 export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }: Props) {
   const scenarioResult = demoData.results.scenario_comparison.scenario_results.find(
@@ -89,11 +83,12 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
             );
           })}
 
-          {/* Prospect pins */}
+          {/* Prospect pins with decision letter icons for accessibility */}
           {demoData.input.prospects.map((prospect) => {
             const [cx, cy] = toSvg(prospect.latitude, prospect.longitude);
             const decision = decisions[prospect.prospect_id] || "defer";
             const color = DECISION_COLORS[decision];
+            const icon = DECISION_ICONS[decision];
             const pr = demoData.results.prospect_results.find((r) => r.prospect_id === prospect.prospect_id);
             const size = Math.max(6, Math.min(14, (prospect.resource_estimate.p50 / 200) * 3));
 
@@ -102,9 +97,24 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
                 key={prospect.prospect_id}
                 onClick={() => onSelectProspect?.(prospect.prospect_id)}
                 className="cursor-pointer"
+                role="button"
+                aria-label={`${prospect.name}: ${DECISION_LABELS[decision]}, NPV ${pr ? formatCurrency(pr.simulation.expected_npv) : "N/A"}`}
               >
+                <title>{`${prospect.name}\n${DECISION_LABELS[decision]}${pr ? `\nNPV: ${formatCurrency(pr.simulation.expected_npv)}` : ""}${pr ? `\nP(+NPV): ${(pr.simulation.probability_positive_npv * 100).toFixed(0)}%` : ""}`}</title>
                 <circle cx={cx} cy={cy} r={size + 4} fill={color} opacity={0.15} />
                 <circle cx={cx} cy={cy} r={size} fill={color} opacity={0.85} stroke="#000" strokeWidth={0.5} />
+                {/* Decision letter icon inside pin for colorblind accessibility */}
+                <text
+                  x={cx}
+                  y={cy + 1}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  className="font-bold select-none pointer-events-none"
+                  fill="#000"
+                  fontSize={size * 0.9}
+                >
+                  {icon}
+                </text>
                 {prospect.lease_expiry_years && prospect.lease_expiry_years <= 1.5 && (
                   <text x={cx + size + 2} y={cy - size} className="text-[8px] fill-red-400 font-bold">!</text>
                 )}
@@ -121,12 +131,17 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
           })}
         </svg>
 
-        {/* Legend */}
+        {/* Legend with icons */}
         <div className="absolute bottom-3 left-3 bg-panel/90 border border-slate-700/50 rounded px-3 py-2 flex gap-4 text-xs text-slate-400">
-          {Object.entries(DECISION_COLORS).map(([key, color]) => (
+          {(Object.entries(DECISION_COLORS) as [DecisionType, string][]).map(([key, color]) => (
             <span key={key} className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: color }} />
-              {key.replace("_", " ")}
+              <span
+                className="w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-bold text-black"
+                style={{ backgroundColor: color }}
+              >
+                {DECISION_ICONS[key]}
+              </span>
+              {DECISION_LABELS[key]}
             </span>
           ))}
         </div>

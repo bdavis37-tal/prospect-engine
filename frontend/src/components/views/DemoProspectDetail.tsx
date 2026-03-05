@@ -2,6 +2,7 @@ import { SubsurfaceScene } from "../three/SubsurfaceScene";
 import type { DemoData, ProspectResult } from "../../types/demo";
 import type { DecisionType } from "../../types/portfolio";
 import { formatCurrency } from "../../lib/formatters";
+import { DECISION_COLORS, DECISION_LABELS } from "../../lib/constants";
 
 interface Props {
   demoData: DemoData;
@@ -9,13 +10,6 @@ interface Props {
   selectedProspectId: string | null;
   onSelectProspect: (id: string | null) => void;
 }
-
-const DECISION_COLORS: Record<string, string> = {
-  drill: "#23D18B",
-  farm_out: "#2FA7FF",
-  divest: "#F97316",
-  defer: "#94A3B8",
-};
 
 function NPVHistogram({ data }: { data: ProspectResult["simulation"]["npv_histogram_data"] }) {
   const maxFreq = Math.max(...data.map((b) => b.frequency), 1);

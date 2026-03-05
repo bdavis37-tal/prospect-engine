@@ -16,9 +16,9 @@
         "unit": "MMBOE"
       },
       "recovery_factor": {
-        "base": 0.25,
-        "low": 0.18,
-        "high": 0.35,
+        "base": 0.55,
+        "low": 0.4,
+        "high": 0.68,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -33,7 +33,7 @@
         "high": 80000000,
         "distribution_type": "triangular"
       },
-      "facility_cost": 80000000,
+      "facility_cost": 25000000,
       "opex_per_boe": {
         "base": 18,
         "low": 14,
@@ -69,9 +69,9 @@
         "unit": "MMBOE"
       },
       "recovery_factor": {
-        "base": 0.22,
-        "low": 0.15,
-        "high": 0.3,
+        "base": 0.5,
+        "low": 0.35,
+        "high": 0.62,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -86,7 +86,7 @@
         "high": 90000000,
         "distribution_type": "triangular"
       },
-      "facility_cost": 120000000,
+      "facility_cost": 40000000,
       "opex_per_boe": {
         "base": 20,
         "low": 16,
@@ -122,9 +122,9 @@
         "unit": "MMBOE"
       },
       "recovery_factor": {
-        "base": 0.2,
-        "low": 0.14,
-        "high": 0.28,
+        "base": 0.45,
+        "low": 0.3,
+        "high": 0.58,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -139,7 +139,7 @@
         "high": 75000000,
         "distribution_type": "triangular"
       },
-      "facility_cost": 350000000,
+      "facility_cost": 180000000,
       "opex_per_boe": {
         "base": 19,
         "low": 15,
@@ -174,9 +174,9 @@
         "unit": "MMBOE"
       },
       "recovery_factor": {
-        "base": 0.3,
-        "low": 0.22,
-        "high": 0.38,
+        "base": 0.6,
+        "low": 0.45,
+        "high": 0.72,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -191,7 +191,7 @@
         "high": 55000000,
         "distribution_type": "triangular"
       },
-      "facility_cost": 50000000,
+      "facility_cost": 20000000,
       "opex_per_boe": {
         "base": 16,
         "low": 12,
@@ -227,9 +227,9 @@
         "unit": "MMBOE"
       },
       "recovery_factor": {
-        "base": 0.18,
-        "low": 0.1,
-        "high": 0.28,
+        "base": 0.38,
+        "low": 0.22,
+        "high": 0.52,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -244,7 +244,7 @@
         "high": 100000000,
         "distribution_type": "triangular"
       },
-      "facility_cost": 800000000,
+      "facility_cost": 350000000,
       "opex_per_boe": {
         "base": 22,
         "low": 17,
@@ -280,9 +280,9 @@
         "unit": "MMBOE"
       },
       "recovery_factor": {
-        "base": 0.28,
-        "low": 0.22,
-        "high": 0.35,
+        "base": 0.58,
+        "low": 0.42,
+        "high": 0.7,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -297,7 +297,7 @@
         "high": 50000000,
         "distribution_type": "triangular"
       },
-      "facility_cost": 60000000,
+      "facility_cost": 18000000,
       "opex_per_boe": {
         "base": 16,
         "low": 13,
@@ -333,9 +333,9 @@
         "unit": "MMBOE"
       },
       "recovery_factor": {
-        "base": 0.24,
-        "low": 0.18,
-        "high": 0.32,
+        "base": 0.42,
+        "low": 0.28,
+        "high": 0.55,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -350,7 +350,7 @@
         "high": 60000000,
         "distribution_type": "triangular"
       },
-      "facility_cost": 250000000,
+      "facility_cost": 120000000,
       "opex_per_boe": {
         "base": 17,
         "low": 14,
@@ -385,9 +385,9 @@
         "unit": "MMBOE"
       },
       "recovery_factor": {
-        "base": 0.2,
-        "low": 0.12,
-        "high": 0.3,
+        "base": 0.35,
+        "low": 0.2,
+        "high": 0.48,
         "distribution_type": "triangular"
       },
       "well_cost": {
@@ -402,7 +402,7 @@
         "high": 120000000,
         "distribution_type": "triangular"
       },
-      "facility_cost": 1200000000,
+      "facility_cost": 500000000,
       "opex_per_boe": {
         "base": 24,
         "low": 18,
@@ -425,7 +425,10 @@
   ],
   "capital_budget": 600000000,
   "discount_rate": 0.1,
-  "simulation_iterations": 5000,
+  "constraints": {
+    "max_single_prospect_pct_of_budget": 0.6,
+    "min_prospects_drilled": 2
+  },
   "price_scenarios": [
     {
       "scenario_name": "Base Case",
@@ -1678,7 +1681,5 @@
       "price_correlation_oil_gas": 0.6
     }
   ],
-  "constraints": {
-    "max_single_prospect_pct_of_budget": 0.6
-  }
+  "simulation_iterations": 5000
 }

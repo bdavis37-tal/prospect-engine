@@ -15,3 +15,40 @@ body {
 button {
   cursor: pointer;
 }
+
+/* Print styles for Executive Summary */
+@media print {
+  body {
+    background: white !important;
+    color: #1e293b !important;
+  }
+
+  /* Hide navigation, sidebar, and non-print elements */
+  nav, [data-print-hide], button {
+    display: none !important;
+  }
+
+  /* Override dark panel backgrounds */
+  .bg-panel {
+    background: white !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Make text readable on white */
+  .text-slate-100, .text-slate-200, .text-slate-300 {
+    color: #1e293b !important;
+  }
+  .text-slate-400, .text-slate-500 {
+    color: #475569 !important;
+  }
+
+  /* Keep decision colors visible */
+  .text-drill { color: #16a34a !important; }
+  .text-divest { color: #ea580c !important; }
+  .text-farm { color: #2563eb !important; }
+
+  /* Page break control */
+  .space-y-6 > div {
+    break-inside: avoid;
+  }
+}

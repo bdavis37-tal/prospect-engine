@@ -10,13 +10,7 @@ import type {
   CameraPreset,
 } from "../../types/demo";
 import type { DecisionType } from "../../types/portfolio";
-
-const DECISION_COLORS: Record<DecisionType, string> = {
-  drill: "#23D18B",
-  farm_out: "#2FA7FF",
-  divest: "#F97316",
-  defer: "#94A3B8",
-};
+import { DECISION_COLORS } from "../../lib/constants";
 
 interface SubsurfaceSceneProps {
   prospects: DemoProspect[];

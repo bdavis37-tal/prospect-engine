@@ -72,14 +72,17 @@ def generate_prospect_results(
         discount_rate=discount_rate,
     )
 
-    # Tornado sensitivity
+    # Tornado sensitivity — use absolute capital as swing scale to avoid
+    # sign inversions when base NPV is near zero or negative.
     base_npv = sim_result.expected_npv
+    cap = sim_result.capital_at_risk
+    swing_scale = max(abs(base_npv), cap * 0.3, 1_000_000)
     tornado = generate_tornado(base_npv, {
-        "Oil Price": (base_npv * 0.6, base_npv * 1.4),
-        "Well Cost": (base_npv * 1.2, base_npv * 0.8),
-        "EUR": (base_npv * 0.7, base_npv * 1.5),
-        "Opex": (base_npv * 1.1, base_npv * 0.9),
-        "Decline Rate": (base_npv * 0.85, base_npv * 1.15),
+        "Oil Price": (base_npv - swing_scale * 0.40, base_npv + swing_scale * 0.40),
+        "Well Cost": (base_npv - swing_scale * 0.20, base_npv + swing_scale * 0.20),
+        "EUR": (base_npv - swing_scale * 0.30, base_npv + swing_scale * 0.50),
+        "Opex": (base_npv - swing_scale * 0.10, base_npv + swing_scale * 0.10),
+        "Decline Rate": (base_npv - swing_scale * 0.15, base_npv + swing_scale * 0.15),
     })
 
     # Strip sample_npvs to keep file size manageable (keep first 500)

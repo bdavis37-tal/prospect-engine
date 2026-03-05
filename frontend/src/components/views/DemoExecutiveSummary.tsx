@@ -1,18 +1,13 @@
 import type { DemoData } from "../../types/demo";
 import type { DecisionType } from "../../types/portfolio";
 import { formatCurrency } from "../../lib/formatters";
+import { DECISION_COLORS, DECISION_LABELS } from "../../lib/constants";
+import { exportPortfolioCSV, exportScenarioCSV } from "../../lib/export";
 
 interface Props {
   demoData: DemoData;
   activeScenario: string;
 }
-
-const DECISION_COLORS: Record<string, string> = {
-  drill: "#23D18B",
-  farm_out: "#2FA7FF",
-  divest: "#F97316",
-  defer: "#94A3B8",
-};
 
 export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
   const scenarioResult = demoData.results.scenario_comparison.scenario_results.find(
@@ -125,6 +120,28 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
             })}
           </tbody>
         </table>
+      </div>
+
+      {/* Export actions */}
+      <div className="flex justify-center gap-3">
+        <button
+          onClick={() => exportPortfolioCSV(demoData, activeScenario)}
+          className="px-4 py-2 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded border border-slate-700 transition-colors"
+        >
+          Export Portfolio CSV
+        </button>
+        <button
+          onClick={() => exportScenarioCSV(demoData)}
+          className="px-4 py-2 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded border border-slate-700 transition-colors"
+        >
+          Export Scenario CSV
+        </button>
+        <button
+          onClick={() => window.print()}
+          className="px-4 py-2 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded border border-slate-700 transition-colors"
+        >
+          Print Summary
+        </button>
       </div>
 
       {/* Robustness summary */}

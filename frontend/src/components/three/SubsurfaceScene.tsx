@@ -596,7 +596,7 @@ export function SubsurfaceScene({
               <input
                 type="checkbox"
                 checked={visible}
-                onChange={() => setLayers((prev) => ({ ...prev, [key]: !prev[key] }))}
+                onChange={() => setLayers((prev) => ({ ...prev, [key]: !prev[key as keyof typeof prev] }))}
                 className="w-3 h-3"
               />
               {key.charAt(0).toUpperCase() + key.slice(1)}

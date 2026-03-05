@@ -1,0 +1,141 @@
+import type { DemoData } from "../../types/demo";
+import type { DecisionType } from "../../types/portfolio";
+import { formatCurrency } from "../../lib/formatters";
+
+interface Props {
+  demoData: DemoData;
+  activeScenario: string;
+  onSelectProspect?: (id: string) => void;
+}
+
+const DECISION_COLORS: Record<string, string> = {
+  drill: "#23D18B",
+  farm_out: "#2FA7FF",
+  divest: "#F97316",
+  defer: "#94A3B8",
+};
+
+export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }: Props) {
+  const scenarioResult = demoData.results.scenario_comparison.scenario_results.find(
+    (s) => s.scenario_name === activeScenario
+  );
+
+  const decisions: Record<string, DecisionType> = {};
+  if (scenarioResult) {
+    for (const [id, dec] of Object.entries(scenarioResult.optimization_result.recommended_portfolio.allocation)) {
+      decisions[id] = dec as DecisionType;
+    }
+  }
+  for (const p of demoData.input.prospects) {
+    if (!decisions[p.prospect_id]) {
+      const pr = demoData.results.prospect_results.find((r) => r.prospect_id === p.prospect_id);
+      decisions[p.prospect_id] = (pr?.decision_comparison.recommendation || "defer") as DecisionType;
+    }
+  }
+
+  // Compute SVG-based map bounds
+  const lats = demoData.input.prospects.map((p) => p.latitude);
+  const lons = demoData.input.prospects.map((p) => p.longitude);
+  const padding = 0.15;
+  const latMin = Math.min(...lats) - padding;
+  const latMax = Math.max(...lats) + padding;
+  const lonMin = Math.min(...lons) - padding;
+  const lonMax = Math.max(...lons) + padding;
+
+  const toSvg = (lat: number, lon: number): [number, number] => {
+    const x = ((lon - lonMin) / (lonMax - lonMin)) * 800;
+    const y = ((latMax - lat) / (latMax - latMin)) * 500;
+    return [x, y];
+  };
+
+  return (
+    <div className="p-4 h-[calc(100vh-10rem)]">
+      <div className="w-full h-full rounded-xl border border-slate-800 bg-panel/40 relative overflow-hidden">
+        <svg viewBox="0 0 800 500" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+          {/* Grid */}
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a2840" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="800" height="500" fill="url(#grid)" />
+
+          {/* Infrastructure connections from 3D scene */}
+          {demoData.scene3d.infrastructure.map((infra, i) => {
+            const [ix, iy] = toSvg(infra.latitude, infra.longitude);
+            return (
+              <g key={`infra-${i}`}>
+                <rect x={ix - 6} y={iy - 6} width={12} height={12} rx={2} fill="#444" stroke="#666" strokeWidth={1} />
+                <text x={ix} y={iy - 10} textAnchor="middle" className="text-[8px] fill-slate-500">
+                  {infra.name}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Tiebacks */}
+          {(demoData.scene3d.tieback_connections || []).map((tb, i) => {
+            const prospect = demoData.input.prospects.find((p) => p.prospect_id === tb.from_prospect);
+            const infra = demoData.scene3d.infrastructure.find((inf) => inf.name === tb.to_infrastructure);
+            if (!prospect || !infra) return null;
+            const [x1, y1] = toSvg(prospect.latitude, prospect.longitude);
+            const [x2, y2] = toSvg(infra.latitude, infra.longitude);
+            return (
+              <line
+                key={`tb-${i}`}
+                x1={x1} y1={y1} x2={x2} y2={y2}
+                stroke="#4fc3f7" strokeWidth={1} strokeDasharray="4,3" opacity={0.5}
+              />
+            );
+          })}
+
+          {/* Prospect pins */}
+          {demoData.input.prospects.map((prospect) => {
+            const [cx, cy] = toSvg(prospect.latitude, prospect.longitude);
+            const decision = decisions[prospect.prospect_id] || "defer";
+            const color = DECISION_COLORS[decision];
+            const pr = demoData.results.prospect_results.find((r) => r.prospect_id === prospect.prospect_id);
+            const size = Math.max(6, Math.min(14, (prospect.resource_estimate.p50 / 200) * 3));
+
+            return (
+              <g
+                key={prospect.prospect_id}
+                onClick={() => onSelectProspect?.(prospect.prospect_id)}
+                className="cursor-pointer"
+              >
+                <circle cx={cx} cy={cy} r={size + 4} fill={color} opacity={0.15} />
+                <circle cx={cx} cy={cy} r={size} fill={color} opacity={0.85} stroke="#000" strokeWidth={0.5} />
+                {prospect.lease_expiry_years && prospect.lease_expiry_years <= 1.5 && (
+                  <text x={cx + size + 2} y={cy - size} className="text-[8px] fill-red-400 font-bold">!</text>
+                )}
+                <text x={cx} y={cy + size + 12} textAnchor="middle" className="text-[9px] fill-slate-300 font-medium">
+                  {prospect.name}
+                </text>
+                {pr && (
+                  <text x={cx} y={cy + size + 22} textAnchor="middle" className="text-[8px] fill-slate-500">
+                    {formatCurrency(pr.simulation.expected_npv)}
+                  </text>
+                )}
+              </g>
+            );
+          })}
+        </svg>
+
+        {/* Legend */}
+        <div className="absolute bottom-3 left-3 bg-panel/90 border border-slate-700/50 rounded px-3 py-2 flex gap-4 text-xs text-slate-400">
+          {Object.entries(DECISION_COLORS).map(([key, color]) => (
+            <span key={key} className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: color }} />
+              {key.replace("_", " ")}
+            </span>
+          ))}
+        </div>
+
+        {/* Basin label */}
+        <div className="absolute top-3 left-3 text-xs text-slate-500">
+          {demoData.scene3d.scene_type === "offshore" ? "Gulf of Mexico" : "Permian Basin"} — {activeScenario}
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,1684 @@
+{
+  "prospects": [
+    {
+      "prospect_id": "gom_1",
+      "name": "Thunderhawk Deep",
+      "latitude": 27.8,
+      "longitude": -90.5,
+      "basin": "gom_deepwater",
+      "hydrocarbon_type": "oil",
+      "water_depth_ft": 6500,
+      "resource_estimate": {
+        "p10": 150,
+        "p50": 50,
+        "p90": 15,
+        "distribution_type": "lognormal",
+        "unit": "MMBOE"
+      },
+      "recovery_factor": {
+        "base": 0.25,
+        "low": 0.18,
+        "high": 0.35,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 180000000,
+        "low": 150000000,
+        "high": 220000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 60000000,
+        "low": 45000000,
+        "high": 80000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 80000000,
+      "opex_per_boe": {
+        "base": 18,
+        "low": 14,
+        "high": 24,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.1875,
+      "tax_rate": 0.25,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 25000,
+        "initial_decline_rate": 0.18,
+        "b_factor": 0.5,
+        "terminal_decline_rate": 0.06,
+        "well_life_years": 30
+      },
+      "infrastructure_distance_miles": 8.0,
+      "notes": "Miocene target. 8 miles from existing Thunderhawk platform \u2014 tieback feasible reducing facility cost from $400M to $80M."
+    },
+    {
+      "prospect_id": "gom_2",
+      "name": "Cascade Extension",
+      "latitude": 26.9,
+      "longitude": -90.8,
+      "basin": "gom_deepwater",
+      "hydrocarbon_type": "oil",
+      "water_depth_ft": 8200,
+      "resource_estimate": {
+        "p10": 120,
+        "p50": 40,
+        "p90": 10,
+        "distribution_type": "lognormal",
+        "unit": "MMBOE"
+      },
+      "recovery_factor": {
+        "base": 0.22,
+        "low": 0.15,
+        "high": 0.3,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 200000000,
+        "low": 170000000,
+        "high": 250000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 70000000,
+        "low": 55000000,
+        "high": 90000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 120000000,
+      "opex_per_boe": {
+        "base": 20,
+        "low": 16,
+        "high": 26,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.1875,
+      "tax_rate": 0.25,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 20000,
+        "initial_decline_rate": 0.15,
+        "b_factor": 0.4,
+        "terminal_decline_rate": 0.06,
+        "well_life_years": 30
+      },
+      "infrastructure_distance_miles": 12.0,
+      "notes": "Wilcox formation. Ultra-deep, ultra-high pressure. Tieback to Cascade-Chinook FPSO (12 miles) reduces facility from $500M to $120M. Farm-out candidate."
+    },
+    {
+      "prospect_id": "gom_3",
+      "name": "Walker Ridge Block 758",
+      "latitude": 26.65,
+      "longitude": -91.2,
+      "basin": "gom_deepwater",
+      "hydrocarbon_type": "oil",
+      "water_depth_ft": 7000,
+      "resource_estimate": {
+        "p10": 80,
+        "p50": 30,
+        "p90": 5,
+        "distribution_type": "lognormal",
+        "unit": "MMBOE"
+      },
+      "recovery_factor": {
+        "base": 0.2,
+        "low": 0.14,
+        "high": 0.28,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 160000000,
+        "low": 130000000,
+        "high": 200000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 55000000,
+        "low": 40000000,
+        "high": 75000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 350000000,
+      "opex_per_boe": {
+        "base": 19,
+        "low": 15,
+        "high": 25,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.1875,
+      "tax_rate": 0.25,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 18000,
+        "initial_decline_rate": 0.17,
+        "b_factor": 0.45,
+        "terminal_decline_rate": 0.06,
+        "well_life_years": 30
+      },
+      "notes": "Lower Tertiary target. No nearby infrastructure \u2014 fully standalone. Facility cost kills economics. Divest or defer."
+    },
+    {
+      "prospect_id": "gom_4",
+      "name": "Green Canyon 955",
+      "latitude": 27.25,
+      "longitude": -90.1,
+      "basin": "gom_deepwater",
+      "hydrocarbon_type": "mixed",
+      "water_depth_ft": 5800,
+      "resource_estimate": {
+        "p10": 20,
+        "p50": 8,
+        "p90": 3,
+        "distribution_type": "lognormal",
+        "unit": "MMBOE"
+      },
+      "recovery_factor": {
+        "base": 0.3,
+        "low": 0.22,
+        "high": 0.38,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 120000000,
+        "low": 100000000,
+        "high": 150000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 40000000,
+        "low": 30000000,
+        "high": 55000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 50000000,
+      "opex_per_boe": {
+        "base": 16,
+        "low": 12,
+        "high": 22,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.1875,
+      "tax_rate": 0.25,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 15000,
+        "initial_decline_rate": 0.2,
+        "b_factor": 0.5,
+        "terminal_decline_rate": 0.06,
+        "well_life_years": 30
+      },
+      "infrastructure_distance_miles": 3.0,
+      "notes": "Frio formation. Gas-condensate heavy. Best-in-portfolio capital efficiency due to 3-mile tieback to existing subsea manifold. Drill in every scenario."
+    },
+    {
+      "prospect_id": "gom_5",
+      "name": "Keathley Canyon Wildcat",
+      "latitude": 26.3,
+      "longitude": -91.6,
+      "basin": "gom_deepwater",
+      "hydrocarbon_type": "oil",
+      "water_depth_ft": 9500,
+      "resource_estimate": {
+        "p10": 200,
+        "p50": 25,
+        "p90": 2,
+        "distribution_type": "lognormal",
+        "unit": "MMBOE"
+      },
+      "recovery_factor": {
+        "base": 0.18,
+        "low": 0.1,
+        "high": 0.28,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 210000000,
+        "low": 180000000,
+        "high": 280000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 75000000,
+        "low": 60000000,
+        "high": 100000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 800000000,
+      "opex_per_boe": {
+        "base": 22,
+        "low": 17,
+        "high": 28,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.1875,
+      "tax_rate": 0.25,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 22000,
+        "initial_decline_rate": 0.16,
+        "b_factor": 0.4,
+        "terminal_decline_rate": 0.06,
+        "well_life_years": 30
+      },
+      "infrastructure_distance_miles": 30.0,
+      "notes": "True frontier exploration. Extreme depth, extreme uncertainty. Widest distribution \u2014 dry hole or giant field. Farm-down candidate."
+    },
+    {
+      "prospect_id": "gom_6",
+      "name": "Mississippi Canyon Block 520",
+      "latitude": 28.2,
+      "longitude": -89.5,
+      "basin": "gom_deepwater",
+      "hydrocarbon_type": "oil",
+      "water_depth_ft": 4200,
+      "resource_estimate": {
+        "p10": 45,
+        "p50": 25,
+        "p90": 12,
+        "distribution_type": "lognormal",
+        "unit": "MMBOE"
+      },
+      "recovery_factor": {
+        "base": 0.28,
+        "low": 0.22,
+        "high": 0.35,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 95000000,
+        "low": 80000000,
+        "high": 120000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 35000000,
+        "low": 25000000,
+        "high": 50000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 60000000,
+      "opex_per_boe": {
+        "base": 16,
+        "low": 13,
+        "high": 20,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.1875,
+      "tax_rate": 0.25,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 15000,
+        "initial_decline_rate": 0.2,
+        "b_factor": 0.5,
+        "terminal_decline_rate": 0.06,
+        "well_life_years": 30
+      },
+      "infrastructure_distance_miles": 4.0,
+      "notes": "Shallower target, well-understood geology. Tight distribution \u2014 lowest risk in portfolio. Tieback to existing host."
+    },
+    {
+      "prospect_id": "gom_7",
+      "name": "Atwater Valley Prospect",
+      "latitude": 27.5,
+      "longitude": -89.8,
+      "basin": "gom_deepwater",
+      "hydrocarbon_type": "oil",
+      "water_depth_ft": 5500,
+      "resource_estimate": {
+        "p10": 55,
+        "p50": 20,
+        "p90": 8,
+        "distribution_type": "lognormal",
+        "unit": "MMBOE"
+      },
+      "recovery_factor": {
+        "base": 0.24,
+        "low": 0.18,
+        "high": 0.32,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 110000000,
+        "low": 90000000,
+        "high": 140000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 45000000,
+        "low": 35000000,
+        "high": 60000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 250000000,
+      "opex_per_boe": {
+        "base": 17,
+        "low": 14,
+        "high": 22,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.1875,
+      "tax_rate": 0.25,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 16000,
+        "initial_decline_rate": 0.19,
+        "b_factor": 0.45,
+        "terminal_decline_rate": 0.06,
+        "well_life_years": 30
+      },
+      "notes": "Pleistocene target. Partner offered $90M for 50% stake. Drill-with-partner vs sell-half decision."
+    },
+    {
+      "prospect_id": "gom_8",
+      "name": "Alaminos Canyon Deep",
+      "latitude": 26.1,
+      "longitude": -92.5,
+      "basin": "gom_deepwater",
+      "hydrocarbon_type": "oil",
+      "water_depth_ft": 10000,
+      "resource_estimate": {
+        "p10": 300,
+        "p50": 60,
+        "p90": 8,
+        "distribution_type": "lognormal",
+        "unit": "MMBOE"
+      },
+      "recovery_factor": {
+        "base": 0.2,
+        "low": 0.12,
+        "high": 0.3,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 250000000,
+        "low": 210000000,
+        "high": 320000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 90000000,
+        "low": 70000000,
+        "high": 120000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 1200000000,
+      "opex_per_boe": {
+        "base": 24,
+        "low": 18,
+        "high": 30,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.1875,
+      "tax_rate": 0.25,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 30000,
+        "initial_decline_rate": 0.14,
+        "b_factor": 0.35,
+        "terminal_decline_rate": 0.06,
+        "well_life_years": 30
+      },
+      "infrastructure_distance_miles": 50.0,
+      "notes": "Lower Tertiary \u2014 deepest, most expensive. Capital requirement ($1.4B+) is enormous. P10 case is a company-maker. Almost certainly defer or farm-out."
+    }
+  ],
+  "capital_budget": 600000000,
+  "discount_rate": 0.1,
+  "simulation_iterations": 5000,
+  "price_scenarios": [
+    {
+      "scenario_name": "Base Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 75.0
+        },
+        {
+          "year": 2,
+          "price_per_unit": 76.12
+        },
+        {
+          "year": 3,
+          "price_per_unit": 77.27
+        },
+        {
+          "year": 4,
+          "price_per_unit": 78.43
+        },
+        {
+          "year": 5,
+          "price_per_unit": 79.6
+        },
+        {
+          "year": 6,
+          "price_per_unit": 80.8
+        },
+        {
+          "year": 7,
+          "price_per_unit": 82.01
+        },
+        {
+          "year": 8,
+          "price_per_unit": 83.24
+        },
+        {
+          "year": 9,
+          "price_per_unit": 84.49
+        },
+        {
+          "year": 10,
+          "price_per_unit": 85.75
+        },
+        {
+          "year": 11,
+          "price_per_unit": 87.04
+        },
+        {
+          "year": 12,
+          "price_per_unit": 88.35
+        },
+        {
+          "year": 13,
+          "price_per_unit": 89.67
+        },
+        {
+          "year": 14,
+          "price_per_unit": 91.02
+        },
+        {
+          "year": 15,
+          "price_per_unit": 92.38
+        },
+        {
+          "year": 16,
+          "price_per_unit": 93.77
+        },
+        {
+          "year": 17,
+          "price_per_unit": 95.17
+        },
+        {
+          "year": 18,
+          "price_per_unit": 96.6
+        },
+        {
+          "year": 19,
+          "price_per_unit": 98.05
+        },
+        {
+          "year": 20,
+          "price_per_unit": 99.52
+        },
+        {
+          "year": 21,
+          "price_per_unit": 101.01
+        },
+        {
+          "year": 22,
+          "price_per_unit": 102.53
+        },
+        {
+          "year": 23,
+          "price_per_unit": 104.07
+        },
+        {
+          "year": 24,
+          "price_per_unit": 105.63
+        },
+        {
+          "year": 25,
+          "price_per_unit": 107.21
+        },
+        {
+          "year": 26,
+          "price_per_unit": 108.82
+        },
+        {
+          "year": 27,
+          "price_per_unit": 110.45
+        },
+        {
+          "year": 28,
+          "price_per_unit": 112.11
+        },
+        {
+          "year": 29,
+          "price_per_unit": 113.79
+        },
+        {
+          "year": 30,
+          "price_per_unit": 115.5
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 3.25
+        },
+        {
+          "year": 2,
+          "price_per_unit": 3.3
+        },
+        {
+          "year": 3,
+          "price_per_unit": 3.35
+        },
+        {
+          "year": 4,
+          "price_per_unit": 3.4
+        },
+        {
+          "year": 5,
+          "price_per_unit": 3.45
+        },
+        {
+          "year": 6,
+          "price_per_unit": 3.5
+        },
+        {
+          "year": 7,
+          "price_per_unit": 3.55
+        },
+        {
+          "year": 8,
+          "price_per_unit": 3.61
+        },
+        {
+          "year": 9,
+          "price_per_unit": 3.66
+        },
+        {
+          "year": 10,
+          "price_per_unit": 3.72
+        },
+        {
+          "year": 11,
+          "price_per_unit": 3.77
+        },
+        {
+          "year": 12,
+          "price_per_unit": 3.83
+        },
+        {
+          "year": 13,
+          "price_per_unit": 3.89
+        },
+        {
+          "year": 14,
+          "price_per_unit": 3.94
+        },
+        {
+          "year": 15,
+          "price_per_unit": 4.0
+        },
+        {
+          "year": 16,
+          "price_per_unit": 4.06
+        },
+        {
+          "year": 17,
+          "price_per_unit": 4.12
+        },
+        {
+          "year": 18,
+          "price_per_unit": 4.19
+        },
+        {
+          "year": 19,
+          "price_per_unit": 4.25
+        },
+        {
+          "year": 20,
+          "price_per_unit": 4.31
+        },
+        {
+          "year": 21,
+          "price_per_unit": 4.38
+        },
+        {
+          "year": 22,
+          "price_per_unit": 4.44
+        },
+        {
+          "year": 23,
+          "price_per_unit": 4.51
+        },
+        {
+          "year": 24,
+          "price_per_unit": 4.58
+        },
+        {
+          "year": 25,
+          "price_per_unit": 4.65
+        },
+        {
+          "year": 26,
+          "price_per_unit": 4.72
+        },
+        {
+          "year": 27,
+          "price_per_unit": 4.79
+        },
+        {
+          "year": 28,
+          "price_per_unit": 4.86
+        },
+        {
+          "year": 29,
+          "price_per_unit": 4.93
+        },
+        {
+          "year": 30,
+          "price_per_unit": 5.0
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.2,
+      "price_correlation_oil_gas": 0.5
+    },
+    {
+      "scenario_name": "Bull Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 95.0
+        },
+        {
+          "year": 2,
+          "price_per_unit": 96.71
+        },
+        {
+          "year": 3,
+          "price_per_unit": 98.45
+        },
+        {
+          "year": 4,
+          "price_per_unit": 100.22
+        },
+        {
+          "year": 5,
+          "price_per_unit": 102.03
+        },
+        {
+          "year": 6,
+          "price_per_unit": 103.86
+        },
+        {
+          "year": 7,
+          "price_per_unit": 105.73
+        },
+        {
+          "year": 8,
+          "price_per_unit": 107.64
+        },
+        {
+          "year": 9,
+          "price_per_unit": 109.57
+        },
+        {
+          "year": 10,
+          "price_per_unit": 111.55
+        },
+        {
+          "year": 11,
+          "price_per_unit": 113.55
+        },
+        {
+          "year": 12,
+          "price_per_unit": 115.6
+        },
+        {
+          "year": 13,
+          "price_per_unit": 117.68
+        },
+        {
+          "year": 14,
+          "price_per_unit": 119.8
+        },
+        {
+          "year": 15,
+          "price_per_unit": 121.95
+        },
+        {
+          "year": 16,
+          "price_per_unit": 124.15
+        },
+        {
+          "year": 17,
+          "price_per_unit": 126.38
+        },
+        {
+          "year": 18,
+          "price_per_unit": 128.66
+        },
+        {
+          "year": 19,
+          "price_per_unit": 130.97
+        },
+        {
+          "year": 20,
+          "price_per_unit": 133.33
+        },
+        {
+          "year": 21,
+          "price_per_unit": 135.73
+        },
+        {
+          "year": 22,
+          "price_per_unit": 138.17
+        },
+        {
+          "year": 23,
+          "price_per_unit": 140.66
+        },
+        {
+          "year": 24,
+          "price_per_unit": 143.19
+        },
+        {
+          "year": 25,
+          "price_per_unit": 145.77
+        },
+        {
+          "year": 26,
+          "price_per_unit": 148.39
+        },
+        {
+          "year": 27,
+          "price_per_unit": 151.07
+        },
+        {
+          "year": 28,
+          "price_per_unit": 153.78
+        },
+        {
+          "year": 29,
+          "price_per_unit": 156.55
+        },
+        {
+          "year": 30,
+          "price_per_unit": 159.37
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 4.25
+        },
+        {
+          "year": 2,
+          "price_per_unit": 4.33
+        },
+        {
+          "year": 3,
+          "price_per_unit": 4.4
+        },
+        {
+          "year": 4,
+          "price_per_unit": 4.48
+        },
+        {
+          "year": 5,
+          "price_per_unit": 4.56
+        },
+        {
+          "year": 6,
+          "price_per_unit": 4.65
+        },
+        {
+          "year": 7,
+          "price_per_unit": 4.73
+        },
+        {
+          "year": 8,
+          "price_per_unit": 4.82
+        },
+        {
+          "year": 9,
+          "price_per_unit": 4.9
+        },
+        {
+          "year": 10,
+          "price_per_unit": 4.99
+        },
+        {
+          "year": 11,
+          "price_per_unit": 5.08
+        },
+        {
+          "year": 12,
+          "price_per_unit": 5.17
+        },
+        {
+          "year": 13,
+          "price_per_unit": 5.26
+        },
+        {
+          "year": 14,
+          "price_per_unit": 5.36
+        },
+        {
+          "year": 15,
+          "price_per_unit": 5.46
+        },
+        {
+          "year": 16,
+          "price_per_unit": 5.55
+        },
+        {
+          "year": 17,
+          "price_per_unit": 5.65
+        },
+        {
+          "year": 18,
+          "price_per_unit": 5.76
+        },
+        {
+          "year": 19,
+          "price_per_unit": 5.86
+        },
+        {
+          "year": 20,
+          "price_per_unit": 5.96
+        },
+        {
+          "year": 21,
+          "price_per_unit": 6.07
+        },
+        {
+          "year": 22,
+          "price_per_unit": 6.18
+        },
+        {
+          "year": 23,
+          "price_per_unit": 6.29
+        },
+        {
+          "year": 24,
+          "price_per_unit": 6.41
+        },
+        {
+          "year": 25,
+          "price_per_unit": 6.52
+        },
+        {
+          "year": 26,
+          "price_per_unit": 6.64
+        },
+        {
+          "year": 27,
+          "price_per_unit": 6.76
+        },
+        {
+          "year": 28,
+          "price_per_unit": 6.88
+        },
+        {
+          "year": 29,
+          "price_per_unit": 7.0
+        },
+        {
+          "year": 30,
+          "price_per_unit": 7.13
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.25,
+      "price_correlation_oil_gas": 0.55
+    },
+    {
+      "scenario_name": "Bear Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 50.0
+        },
+        {
+          "year": 2,
+          "price_per_unit": 50.25
+        },
+        {
+          "year": 3,
+          "price_per_unit": 50.5
+        },
+        {
+          "year": 4,
+          "price_per_unit": 50.75
+        },
+        {
+          "year": 5,
+          "price_per_unit": 51.01
+        },
+        {
+          "year": 6,
+          "price_per_unit": 51.26
+        },
+        {
+          "year": 7,
+          "price_per_unit": 51.52
+        },
+        {
+          "year": 8,
+          "price_per_unit": 51.78
+        },
+        {
+          "year": 9,
+          "price_per_unit": 52.04
+        },
+        {
+          "year": 10,
+          "price_per_unit": 52.3
+        },
+        {
+          "year": 11,
+          "price_per_unit": 52.56
+        },
+        {
+          "year": 12,
+          "price_per_unit": 52.82
+        },
+        {
+          "year": 13,
+          "price_per_unit": 53.08
+        },
+        {
+          "year": 14,
+          "price_per_unit": 53.35
+        },
+        {
+          "year": 15,
+          "price_per_unit": 53.62
+        },
+        {
+          "year": 16,
+          "price_per_unit": 53.88
+        },
+        {
+          "year": 17,
+          "price_per_unit": 54.15
+        },
+        {
+          "year": 18,
+          "price_per_unit": 54.42
+        },
+        {
+          "year": 19,
+          "price_per_unit": 54.7
+        },
+        {
+          "year": 20,
+          "price_per_unit": 54.97
+        },
+        {
+          "year": 21,
+          "price_per_unit": 55.24
+        },
+        {
+          "year": 22,
+          "price_per_unit": 55.52
+        },
+        {
+          "year": 23,
+          "price_per_unit": 55.8
+        },
+        {
+          "year": 24,
+          "price_per_unit": 56.08
+        },
+        {
+          "year": 25,
+          "price_per_unit": 56.36
+        },
+        {
+          "year": 26,
+          "price_per_unit": 56.64
+        },
+        {
+          "year": 27,
+          "price_per_unit": 56.92
+        },
+        {
+          "year": 28,
+          "price_per_unit": 57.21
+        },
+        {
+          "year": 29,
+          "price_per_unit": 57.49
+        },
+        {
+          "year": 30,
+          "price_per_unit": 57.78
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 2.25
+        },
+        {
+          "year": 2,
+          "price_per_unit": 2.26
+        },
+        {
+          "year": 3,
+          "price_per_unit": 2.27
+        },
+        {
+          "year": 4,
+          "price_per_unit": 2.28
+        },
+        {
+          "year": 5,
+          "price_per_unit": 2.3
+        },
+        {
+          "year": 6,
+          "price_per_unit": 2.31
+        },
+        {
+          "year": 7,
+          "price_per_unit": 2.32
+        },
+        {
+          "year": 8,
+          "price_per_unit": 2.33
+        },
+        {
+          "year": 9,
+          "price_per_unit": 2.34
+        },
+        {
+          "year": 10,
+          "price_per_unit": 2.35
+        },
+        {
+          "year": 11,
+          "price_per_unit": 2.37
+        },
+        {
+          "year": 12,
+          "price_per_unit": 2.38
+        },
+        {
+          "year": 13,
+          "price_per_unit": 2.39
+        },
+        {
+          "year": 14,
+          "price_per_unit": 2.4
+        },
+        {
+          "year": 15,
+          "price_per_unit": 2.41
+        },
+        {
+          "year": 16,
+          "price_per_unit": 2.42
+        },
+        {
+          "year": 17,
+          "price_per_unit": 2.44
+        },
+        {
+          "year": 18,
+          "price_per_unit": 2.45
+        },
+        {
+          "year": 19,
+          "price_per_unit": 2.46
+        },
+        {
+          "year": 20,
+          "price_per_unit": 2.47
+        },
+        {
+          "year": 21,
+          "price_per_unit": 2.49
+        },
+        {
+          "year": 22,
+          "price_per_unit": 2.5
+        },
+        {
+          "year": 23,
+          "price_per_unit": 2.51
+        },
+        {
+          "year": 24,
+          "price_per_unit": 2.52
+        },
+        {
+          "year": 25,
+          "price_per_unit": 2.54
+        },
+        {
+          "year": 26,
+          "price_per_unit": 2.55
+        },
+        {
+          "year": 27,
+          "price_per_unit": 2.56
+        },
+        {
+          "year": 28,
+          "price_per_unit": 2.57
+        },
+        {
+          "year": 29,
+          "price_per_unit": 2.59
+        },
+        {
+          "year": 30,
+          "price_per_unit": 2.6
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.18,
+      "price_correlation_oil_gas": 0.45
+    },
+    {
+      "scenario_name": "Crash Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 35.0
+        },
+        {
+          "year": 2,
+          "price_per_unit": 35.0
+        },
+        {
+          "year": 3,
+          "price_per_unit": 35.0
+        },
+        {
+          "year": 4,
+          "price_per_unit": 52.5
+        },
+        {
+          "year": 5,
+          "price_per_unit": 60.0
+        },
+        {
+          "year": 6,
+          "price_per_unit": 60.6
+        },
+        {
+          "year": 7,
+          "price_per_unit": 61.21
+        },
+        {
+          "year": 8,
+          "price_per_unit": 61.82
+        },
+        {
+          "year": 9,
+          "price_per_unit": 62.44
+        },
+        {
+          "year": 10,
+          "price_per_unit": 63.06
+        },
+        {
+          "year": 11,
+          "price_per_unit": 63.69
+        },
+        {
+          "year": 12,
+          "price_per_unit": 64.33
+        },
+        {
+          "year": 13,
+          "price_per_unit": 64.97
+        },
+        {
+          "year": 14,
+          "price_per_unit": 65.62
+        },
+        {
+          "year": 15,
+          "price_per_unit": 66.28
+        },
+        {
+          "year": 16,
+          "price_per_unit": 66.94
+        },
+        {
+          "year": 17,
+          "price_per_unit": 67.61
+        },
+        {
+          "year": 18,
+          "price_per_unit": 68.29
+        },
+        {
+          "year": 19,
+          "price_per_unit": 68.97
+        },
+        {
+          "year": 20,
+          "price_per_unit": 69.66
+        },
+        {
+          "year": 21,
+          "price_per_unit": 70.35
+        },
+        {
+          "year": 22,
+          "price_per_unit": 71.06
+        },
+        {
+          "year": 23,
+          "price_per_unit": 71.77
+        },
+        {
+          "year": 24,
+          "price_per_unit": 72.49
+        },
+        {
+          "year": 25,
+          "price_per_unit": 73.21
+        },
+        {
+          "year": 26,
+          "price_per_unit": 73.94
+        },
+        {
+          "year": 27,
+          "price_per_unit": 74.68
+        },
+        {
+          "year": 28,
+          "price_per_unit": 75.43
+        },
+        {
+          "year": 29,
+          "price_per_unit": 76.18
+        },
+        {
+          "year": 30,
+          "price_per_unit": 76.95
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 1.75
+        },
+        {
+          "year": 2,
+          "price_per_unit": 1.75
+        },
+        {
+          "year": 3,
+          "price_per_unit": 1.75
+        },
+        {
+          "year": 4,
+          "price_per_unit": 2.25
+        },
+        {
+          "year": 5,
+          "price_per_unit": 2.5
+        },
+        {
+          "year": 6,
+          "price_per_unit": 2.52
+        },
+        {
+          "year": 7,
+          "price_per_unit": 2.55
+        },
+        {
+          "year": 8,
+          "price_per_unit": 2.58
+        },
+        {
+          "year": 9,
+          "price_per_unit": 2.6
+        },
+        {
+          "year": 10,
+          "price_per_unit": 2.63
+        },
+        {
+          "year": 11,
+          "price_per_unit": 2.65
+        },
+        {
+          "year": 12,
+          "price_per_unit": 2.68
+        },
+        {
+          "year": 13,
+          "price_per_unit": 2.71
+        },
+        {
+          "year": 14,
+          "price_per_unit": 2.73
+        },
+        {
+          "year": 15,
+          "price_per_unit": 2.76
+        },
+        {
+          "year": 16,
+          "price_per_unit": 2.79
+        },
+        {
+          "year": 17,
+          "price_per_unit": 2.82
+        },
+        {
+          "year": 18,
+          "price_per_unit": 2.85
+        },
+        {
+          "year": 19,
+          "price_per_unit": 2.87
+        },
+        {
+          "year": 20,
+          "price_per_unit": 2.9
+        },
+        {
+          "year": 21,
+          "price_per_unit": 2.93
+        },
+        {
+          "year": 22,
+          "price_per_unit": 2.96
+        },
+        {
+          "year": 23,
+          "price_per_unit": 2.99
+        },
+        {
+          "year": 24,
+          "price_per_unit": 3.02
+        },
+        {
+          "year": 25,
+          "price_per_unit": 3.05
+        },
+        {
+          "year": 26,
+          "price_per_unit": 3.08
+        },
+        {
+          "year": 27,
+          "price_per_unit": 3.11
+        },
+        {
+          "year": 28,
+          "price_per_unit": 3.14
+        },
+        {
+          "year": 29,
+          "price_per_unit": 3.17
+        },
+        {
+          "year": 30,
+          "price_per_unit": 3.21
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.35,
+      "price_correlation_oil_gas": 0.4
+    },
+    {
+      "scenario_name": "Volatile Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 84.74
+        },
+        {
+          "year": 2,
+          "price_per_unit": 92.93
+        },
+        {
+          "year": 3,
+          "price_per_unit": 98.3
+        },
+        {
+          "year": 4,
+          "price_per_unit": 99.99
+        },
+        {
+          "year": 5,
+          "price_per_unit": 97.73
+        },
+        {
+          "year": 6,
+          "price_per_unit": 91.89
+        },
+        {
+          "year": 7,
+          "price_per_unit": 83.37
+        },
+        {
+          "year": 8,
+          "price_per_unit": 73.54
+        },
+        {
+          "year": 9,
+          "price_per_unit": 63.94
+        },
+        {
+          "year": 10,
+          "price_per_unit": 56.08
+        },
+        {
+          "year": 11,
+          "price_per_unit": 51.21
+        },
+        {
+          "year": 12,
+          "price_per_unit": 50.1
+        },
+        {
+          "year": 13,
+          "price_per_unit": 52.91
+        },
+        {
+          "year": 14,
+          "price_per_unit": 59.22
+        },
+        {
+          "year": 15,
+          "price_per_unit": 68.01
+        },
+        {
+          "year": 16,
+          "price_per_unit": 77.91
+        },
+        {
+          "year": 17,
+          "price_per_unit": 87.35
+        },
+        {
+          "year": 18,
+          "price_per_unit": 94.84
+        },
+        {
+          "year": 19,
+          "price_per_unit": 99.2
+        },
+        {
+          "year": 20,
+          "price_per_unit": 99.73
+        },
+        {
+          "year": 21,
+          "price_per_unit": 96.36
+        },
+        {
+          "year": 22,
+          "price_per_unit": 89.62
+        },
+        {
+          "year": 23,
+          "price_per_unit": 80.57
+        },
+        {
+          "year": 24,
+          "price_per_unit": 70.64
+        },
+        {
+          "year": 25,
+          "price_per_unit": 61.4
+        },
+        {
+          "year": 26,
+          "price_per_unit": 54.3
+        },
+        {
+          "year": 27,
+          "price_per_unit": 50.48
+        },
+        {
+          "year": 28,
+          "price_per_unit": 50.52
+        },
+        {
+          "year": 29,
+          "price_per_unit": 54.43
+        },
+        {
+          "year": 30,
+          "price_per_unit": 61.59
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 3.73
+        },
+        {
+          "year": 2,
+          "price_per_unit": 4.15
+        },
+        {
+          "year": 3,
+          "price_per_unit": 4.37
+        },
+        {
+          "year": 4,
+          "price_per_unit": 4.36
+        },
+        {
+          "year": 5,
+          "price_per_unit": 4.12
+        },
+        {
+          "year": 6,
+          "price_per_unit": 3.68
+        },
+        {
+          "year": 7,
+          "price_per_unit": 3.15
+        },
+        {
+          "year": 8,
+          "price_per_unit": 2.63
+        },
+        {
+          "year": 9,
+          "price_per_unit": 2.22
+        },
+        {
+          "year": 10,
+          "price_per_unit": 2.02
+        },
+        {
+          "year": 11,
+          "price_per_unit": 2.05
+        },
+        {
+          "year": 12,
+          "price_per_unit": 2.32
+        },
+        {
+          "year": 13,
+          "price_per_unit": 2.76
+        },
+        {
+          "year": 14,
+          "price_per_unit": 3.3
+        },
+        {
+          "year": 15,
+          "price_per_unit": 3.81
+        },
+        {
+          "year": 16,
+          "price_per_unit": 4.2
+        },
+        {
+          "year": 17,
+          "price_per_unit": 4.39
+        },
+        {
+          "year": 18,
+          "price_per_unit": 4.34
+        },
+        {
+          "year": 19,
+          "price_per_unit": 4.05
+        },
+        {
+          "year": 20,
+          "price_per_unit": 3.59
+        },
+        {
+          "year": 21,
+          "price_per_unit": 3.06
+        },
+        {
+          "year": 22,
+          "price_per_unit": 2.55
+        },
+        {
+          "year": 23,
+          "price_per_unit": 2.17
+        },
+        {
+          "year": 24,
+          "price_per_unit": 2.0
+        },
+        {
+          "year": 25,
+          "price_per_unit": 2.08
+        },
+        {
+          "year": 26,
+          "price_per_unit": 2.38
+        },
+        {
+          "year": 27,
+          "price_per_unit": 2.85
+        },
+        {
+          "year": 28,
+          "price_per_unit": 3.39
+        },
+        {
+          "year": 29,
+          "price_per_unit": 3.89
+        },
+        {
+          "year": 30,
+          "price_per_unit": 4.25
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.4,
+      "price_correlation_oil_gas": 0.6
+    }
+  ],
+  "constraints": {
+    "max_single_prospect_pct_of_budget": 0.6
+  }
+}

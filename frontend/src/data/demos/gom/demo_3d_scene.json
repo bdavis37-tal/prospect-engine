@@ -1,0 +1,47 @@
+{
+  "scene_type": "offshore",
+  "bounds": {
+    "lat_min": 25.8,
+    "lat_max": 28.5,
+    "lon_min": -93.0,
+    "lon_max": -89.0
+  },
+  "sea_level_ft": 0,
+  "geological_layers": [
+    {"name": "Pleistocene", "depth_ft": 12000, "color": "#4A90D9", "opacity": 0.12},
+    {"name": "Miocene", "depth_ft": 18000, "color": "#2E6BA6", "opacity": 0.12},
+    {"name": "Wilcox / Lower Tertiary", "depth_ft": 25000, "color": "#1A4472", "opacity": 0.12}
+  ],
+  "prospect_3d": [
+    {"prospect_id": "gom_1", "water_depth_ft": 6500, "target_depth_ft": 25000, "formation": "Miocene"},
+    {"prospect_id": "gom_2", "water_depth_ft": 8200, "target_depth_ft": 28000, "formation": "Wilcox"},
+    {"prospect_id": "gom_3", "water_depth_ft": 7000, "target_depth_ft": 26000, "formation": "Lower Tertiary"},
+    {"prospect_id": "gom_4", "water_depth_ft": 5800, "target_depth_ft": 16000, "formation": "Frio"},
+    {"prospect_id": "gom_5", "water_depth_ft": 9500, "target_depth_ft": 30000, "formation": "Lower Tertiary"},
+    {"prospect_id": "gom_6", "water_depth_ft": 4200, "target_depth_ft": 14000, "formation": "Pleistocene"},
+    {"prospect_id": "gom_7", "water_depth_ft": 5500, "target_depth_ft": 15000, "formation": "Pleistocene"},
+    {"prospect_id": "gom_8", "water_depth_ft": 10000, "target_depth_ft": 32000, "formation": "Lower Tertiary"}
+  ],
+  "infrastructure": [
+    {"name": "Thunderhawk Platform", "latitude": 27.85, "longitude": -90.45, "type": "fixed_platform", "water_depth_ft": 6000},
+    {"name": "Cascade-Chinook FPSO", "latitude": 26.95, "longitude": -90.65, "type": "fpso", "water_depth_ft": 8100},
+    {"name": "Mississippi Canyon Host", "latitude": 28.22, "longitude": -89.45, "type": "fixed_platform", "water_depth_ft": 3800},
+    {"name": "Green Canyon Subsea Manifold", "latitude": 27.28, "longitude": -90.08, "type": "subsea_manifold", "water_depth_ft": 5500}
+  ],
+  "tieback_connections": [
+    {"from_prospect": "gom_1", "to_infrastructure": "Thunderhawk Platform", "distance_miles": 8, "type": "feasible"},
+    {"from_prospect": "gom_2", "to_infrastructure": "Cascade-Chinook FPSO", "distance_miles": 12, "type": "feasible"},
+    {"from_prospect": "gom_4", "to_infrastructure": "Green Canyon Subsea Manifold", "distance_miles": 3, "type": "feasible"},
+    {"from_prospect": "gom_6", "to_infrastructure": "Mississippi Canyon Host", "distance_miles": 4, "type": "feasible"}
+  ],
+  "pipelines": [
+    {"from": "Thunderhawk Platform", "to": "Mississippi Canyon Host", "diameter_in": 20},
+    {"from": "Green Canyon Subsea Manifold", "to": "Mississippi Canyon Host", "diameter_in": 16}
+  ],
+  "camera_presets": {
+    "perspective": {"position": [0, 40, 60], "target": [0, -15, 0]},
+    "top_down": {"position": [0, 80, 0], "target": [0, 0, 0]},
+    "cross_section": {"position": [70, -10, 0], "target": [0, -15, 0]},
+    "infrastructure_focus": {"position": [25, 15, 35], "target": [5, -5, 0]}
+  }
+}

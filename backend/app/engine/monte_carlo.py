@@ -17,6 +17,8 @@ from app.engine.price_models import generate_correlated_oil_gas_paths
 
 
 def _sample_distribution(params: DistributionParams, n: int, rng: np.random.Generator) -> np.ndarray:
+    if params.low == params.high:
+        return np.full(n, params.base, dtype=float)
     if params.distribution_type == "lognormal":
         mu = np.log(max(params.base, 1e-6))
         sigma = abs(np.log(max(params.high, 1e-6) / max(params.low, 1e-6))) / 2.563
@@ -40,6 +42,15 @@ def _summary(values: np.ndarray) -> DistributionSummary:
         min=float(np.min(values)),
         max=float(np.max(values)),
     )
+
+
+def _resource_unit_multiplier(unit: str) -> float:
+    unit_upper = unit.upper()
+    if unit_upper in {"MBOE", "MBO"}:
+        return 1_000.0
+    if unit_upper in {"MMBOE", "MMBO", "BCF"}:
+        return 1_000_000.0
+    return 1.0
 
 
 def _hist(values: np.ndarray, bins: int = 30) -> list[BinData]:
@@ -72,7 +83,7 @@ def run_simulation(
 
     resource = _sample_resource(prospect.resource_estimate, n_iterations, rng)
     recovery = _sample_distribution(prospect.recovery_factor, n_iterations, rng)
-    recoverable = resource * recovery
+    recoverable = resource * recovery * _resource_unit_multiplier(prospect.resource_estimate.unit)
 
     base_profile = np.array([r.volume for r in calculate_production_profile(prospect.decline_params)], dtype=float)
     base_eur = max(base_profile.sum(), 1e-6)

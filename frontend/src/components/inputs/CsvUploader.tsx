@@ -1,1 +1,3 @@
-export function CsvUploader() {`n  return <div className="text-slate-300">CsvUploader</div>;`n}`n
+export function CsvUploader() {
+  return <div className="text-slate-300">CsvUploader</div>;
+}

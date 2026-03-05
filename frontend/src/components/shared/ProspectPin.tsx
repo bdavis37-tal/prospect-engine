@@ -1,1 +1,3 @@
-export function ProspectPin() {`n  return <div className="text-slate-300">ProspectPin</div>;`n}`n
+export function ProspectPin() {
+  return <div className="text-slate-300">ProspectPin</div>;
+}

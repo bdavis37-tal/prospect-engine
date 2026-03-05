@@ -1,1 +1,3 @@
-export function PriceScenarioEditor() {`n  return <div className="text-slate-300">PriceScenarioEditor</div>;`n}`n
+export function PriceScenarioEditor() {
+  return <div className="text-slate-300">PriceScenarioEditor</div>;
+}

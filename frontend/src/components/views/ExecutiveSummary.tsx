@@ -1,1 +1,3 @@
-export function ExecutiveSummary() {`n  return <div className="text-slate-300">ExecutiveSummary</div>;`n}`n
+export function ExecutiveSummary() {
+  return <div className="text-slate-300">ExecutiveSummary</div>;
+}

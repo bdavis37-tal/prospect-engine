@@ -1,1 +1,3 @@
-export function DeclineCurve() {`n  return <div className="text-slate-300">DeclineCurve</div>;`n}`n
+export function DeclineCurve() {
+  return <div className="text-slate-300">DeclineCurve</div>;
+}

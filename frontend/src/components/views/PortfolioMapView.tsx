@@ -1,1 +1,3 @@
-export function PortfolioMapView() {`n  return <div className="text-slate-300">PortfolioMapView</div>;`n}`n
+export function PortfolioMapView() {
+  return <div className="text-slate-300">PortfolioMapView</div>;
+}

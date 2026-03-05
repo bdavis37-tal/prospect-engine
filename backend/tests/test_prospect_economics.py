@@ -32,8 +32,8 @@ def test_single_permian_deterministic_economics_within_tolerance() -> None:
         opex_per_unit=prospect.opex_per_boe.base,
     )
 
-    assert abs(econ.npv - expected["npv"]) / max(abs(expected["npv"]), 1) < 0.25
+    assert abs(econ.npv - expected["npv"]) / max(abs(expected["npv"]), 1) < 0.01
     assert econ.irr is not None
-    assert abs(econ.irr - expected["irr"]) < 0.2
-    assert econ.payout_period_years is not None
-    assert abs(econ.capital_efficiency - expected["capital_efficiency"]) < 0.75
+    assert abs(econ.irr - expected["irr"]) < 0.01
+    assert econ.payout_period_years == expected["payout_period_years"]
+    assert abs(econ.capital_efficiency - expected["capital_efficiency"]) < 0.01

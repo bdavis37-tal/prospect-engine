@@ -1,1 +1,3 @@
-export function PricePathChart() {`n  return <div className="text-slate-300">PricePathChart</div>;`n}`n
+export function PricePathChart() {
+  return <div className="text-slate-300">PricePathChart</div>;
+}

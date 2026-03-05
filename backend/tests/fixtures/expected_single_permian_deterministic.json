@@ -1,6 +1,6 @@
 {
-  "npv": 17900000,
-  "irr": 0.24,
-  "payout_period_years": 5,
-  "capital_efficiency": 1.49
+  "npv": -10074283.651180789,
+  "irr": -0.09770294228646054,
+  "payout_period_years": null,
+  "capital_efficiency": -0.8395236375983991
 }

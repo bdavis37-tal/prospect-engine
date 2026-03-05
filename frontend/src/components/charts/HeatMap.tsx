@@ -1,1 +1,3 @@
-export function HeatMap() {`n  return <div className="text-slate-300">HeatMap</div>;`n}`n
+export function HeatMap() {
+  return <div className="text-slate-300">HeatMap</div>;
+}

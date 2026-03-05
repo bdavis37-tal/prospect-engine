@@ -3,6 +3,7 @@ import { SubsurfaceScene } from "../three/SubsurfaceScene";
 import type { DemoData } from "../../types/demo";
 import type { DecisionType } from "../../types/portfolio";
 import { formatCurrency } from "../../lib/formatters";
+import { DECISION_COLORS } from "../../lib/constants";
 
 interface SubsurfaceViewProps {
   demoData: DemoData;
@@ -44,13 +45,6 @@ export function SubsurfaceView({ demoData, activeScenario, onSelectProspect }: S
   const selectedResult = selectedId
     ? demoData.results.prospect_results.find((r) => r.prospect_id === selectedId)
     : null;
-
-  const DECISION_COLORS: Record<string, string> = {
-    drill: "#23D18B",
-    farm_out: "#2FA7FF",
-    divest: "#F97316",
-    defer: "#94A3B8",
-  };
 
   return (
     <div className="flex h-[calc(100vh-10rem)]">

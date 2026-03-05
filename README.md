@@ -1,6 +1,6 @@
 # prospect-engine
 
-Open-source E&P portfolio optimization engine. Monte Carlo simulation meets capital allocation � interactive exploration portfolio decisions for everyone, not just $5M consulting engagements.
+Open-source E&P portfolio optimization engine. Monte Carlo simulation meets capital allocation — interactive exploration portfolio decisions for everyone, not just $5M consulting engagements.
 
 ![Portfolio Map View](./frontend/public/og-image.png)
 
@@ -34,15 +34,21 @@ Backend: `http://localhost:8000/docs`
 
 ## Demo Walkthrough
 
-1. Choose **Build Portfolio** in Quick Mode.
-2. Add 5 Permian Basin prospects with defaults.
-3. Set budget to `$40M` and discount rate to `10%`.
-4. Select `Base + Bull + Bear` scenarios.
-5. Run optimization and inspect recommendations, frontier shape, and scenario robustness.
+The app ships with two pre-computed demo portfolios that run entirely in the browser (no backend required):
+
+**Permian Basin Growth Portfolio** — 15 onshore prospects, $150M budget
+1. Launch the app and select **Permian Basin** from the demo selector.
+2. Explore the **Portfolio Map** — colored pins with decision letters (D=Drill, F=Farm Out, S=Divest, W=Defer).
+3. Click any prospect to see its **NPV distribution**, **tornado sensitivity**, and **decline curve**.
+4. Switch to the **Optimizer** tab to view the **efficient frontier** and allocation breakdown.
+5. Use the **Scenario Dashboard** to compare outcomes across 5 price scenarios.
+6. Open the **Executive Summary** for a printable overview and CSV export.
+
+**Gulf of Mexico Deepwater** — 8 offshore prospects, $600M budget, with subsea tiebacks and platform infrastructure in the 3D view.
 
 ## Tech Stack
 
-- Frontend: React + TypeScript + Vite + Tailwind + D3 + Leaflet
+- Frontend: React + TypeScript + Vite + Tailwind + D3 + Three.js
 - Backend: FastAPI + Pydantic + NumPy + SciPy
 - Tests: pytest + Vitest
 - Runtime: Docker / docker-compose

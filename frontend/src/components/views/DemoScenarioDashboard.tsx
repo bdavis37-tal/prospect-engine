@@ -1,17 +1,11 @@
 import type { DemoData } from "../../types/demo";
 import type { DecisionType } from "../../types/portfolio";
 import { formatCurrency } from "../../lib/formatters";
+import { DECISION_COLORS, DECISION_LABELS } from "../../lib/constants";
 
 interface Props {
   demoData: DemoData;
 }
-
-const DECISION_COLORS: Record<string, string> = {
-  drill: "#23D18B",
-  farm_out: "#2FA7FF",
-  divest: "#F97316",
-  defer: "#94A3B8",
-};
 
 export function DemoScenarioDashboard({ demoData }: Props) {
   const comp = demoData.results.scenario_comparison;

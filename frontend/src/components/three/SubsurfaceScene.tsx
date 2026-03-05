@@ -574,6 +574,7 @@ export function SubsurfaceScene({
             <button
               key={p.key}
               onClick={() => animateToPreset(p.key)}
+              aria-label={`Camera view: ${p.label}`}
               className="px-2 py-1 text-xs rounded bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700/50"
             >
               {p.label}
@@ -603,6 +604,7 @@ export function SubsurfaceScene({
       {!compact && (
         <button
           onClick={captureView}
+          aria-label="Capture 3D view as PNG"
           className="absolute bottom-3 right-3 px-3 py-1.5 text-xs rounded bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700/50"
         >
           Capture View

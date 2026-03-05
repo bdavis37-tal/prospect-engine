@@ -45,7 +45,7 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
   return (
     <div className="p-4 h-[calc(100vh-10rem)]">
       <div className="w-full h-full rounded-xl border border-slate-800 bg-panel/40 relative overflow-hidden">
-        <svg viewBox="0 0 800 500" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+        <svg viewBox="0 0 800 500" className="w-full h-full" preserveAspectRatio="xMidYMid meet" role="img" aria-label={`Portfolio map showing ${demoData.input.prospects.length} prospects with decision allocations`}>
           {/* Grid */}
           <defs>
             <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">

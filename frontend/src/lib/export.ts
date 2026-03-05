@@ -4,14 +4,6 @@ import { formatCurrency } from "./formatters";
 import { DECISION_LABELS } from "./constants";
 
 /**
- * Export executive summary as a printable PDF via the browser print dialog.
- * Uses @media print CSS to create a clean layout.
- */
-export function exportExecutiveSummary(): void {
-  window.print();
-}
-
-/**
  * Export portfolio data as a CSV file (Excel-compatible).
  */
 export function exportPortfolioCSV(demoData: DemoData, scenarioName: string): void {

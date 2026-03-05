@@ -1,0 +1,47 @@
+{
+  "scene_type": "onshore",
+  "bounds": {
+    "lat_min": 31.0,
+    "lat_max": 32.5,
+    "lon_min": -104.6,
+    "lon_max": -101.6
+  },
+  "surface_elevation_ft": 3000,
+  "geological_layers": [
+    {"name": "Bone Spring", "depth_ft": 7000, "color": "#8B6914", "opacity": 0.15},
+    {"name": "Wolfcamp A", "depth_ft": 8500, "color": "#6B4226", "opacity": 0.15},
+    {"name": "Wolfcamp B", "depth_ft": 10000, "color": "#4A2D12", "opacity": 0.15}
+  ],
+  "prospect_3d": [
+    {"prospect_id": "permian_1", "target_depth_ft": 8500, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_2", "target_depth_ft": 8500, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_3", "target_depth_ft": 9200, "formation": "Wolfcamp A/B"},
+    {"prospect_id": "permian_4", "target_depth_ft": 8800, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_5", "target_depth_ft": 8800, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_6", "target_depth_ft": 8500, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_7", "target_depth_ft": 10000, "formation": "Wolfcamp B"},
+    {"prospect_id": "permian_8", "target_depth_ft": 8500, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_9", "target_depth_ft": 8800, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_10", "target_depth_ft": 7200, "formation": "Bone Spring"},
+    {"prospect_id": "permian_11", "target_depth_ft": 8500, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_12", "target_depth_ft": 8500, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_13", "target_depth_ft": 8500, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_14", "target_depth_ft": 8800, "formation": "Wolfcamp A"},
+    {"prospect_id": "permian_15", "target_depth_ft": 8500, "formation": "Wolfcamp A"}
+  ],
+  "infrastructure": [
+    {"name": "Central Gathering Hub", "latitude": 31.80, "longitude": -103.20, "type": "gathering_station"},
+    {"name": "Midland Processing Plant", "latitude": 31.95, "longitude": -102.00, "type": "processing_plant"},
+    {"name": "Reeves Compressor Station", "latitude": 31.90, "longitude": -103.65, "type": "compressor_station"}
+  ],
+  "pipelines": [
+    {"from": "Central Gathering Hub", "to": "Midland Processing Plant", "diameter_in": 16},
+    {"from": "Reeves Compressor Station", "to": "Central Gathering Hub", "diameter_in": 12}
+  ],
+  "camera_presets": {
+    "perspective": {"position": [0, 40, 60], "target": [0, -10, 0]},
+    "top_down": {"position": [0, 80, 0], "target": [0, 0, 0]},
+    "cross_section": {"position": [70, 0, 0], "target": [0, -10, 0]},
+    "infrastructure_focus": {"position": [20, 20, 30], "target": [0, 0, 0]}
+  }
+}

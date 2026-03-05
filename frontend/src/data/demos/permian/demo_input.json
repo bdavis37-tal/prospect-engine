@@ -1,0 +1,2033 @@
+{
+  "prospects": [
+    {
+      "prospect_id": "permian_1",
+      "name": "Reeves County A-1",
+      "latitude": 31.95,
+      "longitude": -103.7,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 1300,
+        "p50": 900,
+        "p90": 600,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 8200000,
+        "low": 7500000,
+        "high": 9500000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 3000000,
+        "low": 2500000,
+        "high": 3500000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 500000,
+      "opex_per_boe": {
+        "base": 9,
+        "low": 7,
+        "high": 12,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1400,
+        "initial_decline_rate": 0.7,
+        "b_factor": 1.1,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Tier 1 development well on proven acreage. Low geological risk, high confidence EUR."
+    },
+    {
+      "prospect_id": "permian_2",
+      "name": "Reeves County A-2",
+      "latitude": 31.94,
+      "longitude": -103.71,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 1100,
+        "p50": 800,
+        "p90": 500,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 8000000,
+        "low": 7200000,
+        "high": 9200000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2800000,
+        "low": 2300000,
+        "high": 3300000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 400000,
+      "opex_per_boe": {
+        "base": 9,
+        "low": 7,
+        "high": 12,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1200,
+        "initial_decline_rate": 0.7,
+        "b_factor": 1.1,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Offset to A-1 on same pad. Similar geology but slightly thinner pay."
+    },
+    {
+      "prospect_id": "permian_3",
+      "name": "Loving County Wildcat",
+      "latitude": 32.1,
+      "longitude": -103.95,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 2000,
+        "p50": 700,
+        "p90": 200,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.08,
+        "low": 0.04,
+        "high": 0.14,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 9500000,
+        "low": 8000000,
+        "high": 12000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 3500000,
+        "low": 2800000,
+        "high": 4500000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 800000,
+      "opex_per_boe": {
+        "base": 11,
+        "low": 8,
+        "high": 15,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1100,
+        "initial_decline_rate": 0.72,
+        "b_factor": 1.2,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Exploration well on newly acquired acreage. Higher risk, higher potential. Wide distribution \u2014 high uncertainty."
+    },
+    {
+      "prospect_id": "permian_4",
+      "name": "Ward County B-1",
+      "latitude": 31.5,
+      "longitude": -103.45,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 900,
+        "p50": 650,
+        "p90": 450,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 7800000,
+        "low": 7000000,
+        "high": 9000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2800000,
+        "low": 2300000,
+        "high": 3300000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 500000,
+      "opex_per_boe": {
+        "base": 9.5,
+        "low": 7.5,
+        "high": 12,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1000,
+        "initial_decline_rate": 0.68,
+        "b_factor": 1.1,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Development well, solid but not spectacular. Mid-tier."
+    },
+    {
+      "prospect_id": "permian_5",
+      "name": "Ward County B-2",
+      "latitude": 31.49,
+      "longitude": -103.47,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 850,
+        "p50": 550,
+        "p90": 200,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.09,
+        "low": 0.05,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 8000000,
+        "low": 7200000,
+        "high": 9200000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2900000,
+        "low": 2400000,
+        "high": 3400000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 500000,
+      "opex_per_boe": {
+        "base": 10,
+        "low": 8,
+        "high": 13,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 900,
+        "initial_decline_rate": 0.7,
+        "b_factor": 1.1,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Adjacent to B-1 but with a fault risk that could reduce recovery. Farm-out candidate."
+    },
+    {
+      "prospect_id": "permian_6",
+      "name": "Midland County C-1",
+      "latitude": 31.95,
+      "longitude": -102.1,
+      "basin": "permian_midland",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 950,
+        "p50": 700,
+        "p90": 500,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 6500000,
+        "low": 5800000,
+        "high": 7500000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2500000,
+        "low": 2000000,
+        "high": 3000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 400000,
+      "opex_per_boe": {
+        "base": 8.5,
+        "low": 7,
+        "high": 11,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1000,
+        "initial_decline_rate": 0.65,
+        "b_factor": 1.0,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Bread-and-butter Wolfcamp A well. Very predictable. High capital efficiency."
+    },
+    {
+      "prospect_id": "permian_7",
+      "name": "Midland County C-2",
+      "latitude": 31.96,
+      "longitude": -102.12,
+      "basin": "permian_midland",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 1400,
+        "p50": 850,
+        "p90": 550,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.13,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 7500000,
+        "low": 6800000,
+        "high": 8500000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2800000,
+        "low": 2300000,
+        "high": 3300000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 500000,
+      "opex_per_boe": {
+        "base": 9,
+        "low": 7,
+        "high": 12,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1150,
+        "initial_decline_rate": 0.68,
+        "b_factor": 1.1,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Wolfcamp B bench \u2014 deeper, more expensive, higher resource potential."
+    },
+    {
+      "prospect_id": "permian_8",
+      "name": "Martin County D-1",
+      "latitude": 32.25,
+      "longitude": -101.95,
+      "basin": "permian_midland",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 700,
+        "p50": 500,
+        "p90": 300,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.09,
+        "low": 0.07,
+        "high": 0.11,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 6800000,
+        "low": 6000000,
+        "high": 7800000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2500000,
+        "low": 2000000,
+        "high": 3000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 400000,
+      "opex_per_boe": {
+        "base": 10,
+        "low": 8,
+        "high": 13,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 800,
+        "initial_decline_rate": 0.65,
+        "b_factor": 1.0,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Older acreage, offset wells show declining performance in this area. Divest candidate in bear case."
+    },
+    {
+      "prospect_id": "permian_9",
+      "name": "Upton County E-1",
+      "latitude": 31.3,
+      "longitude": -101.95,
+      "basin": "permian_midland",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 850,
+        "p50": 600,
+        "p90": 350,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 7000000,
+        "low": 6200000,
+        "high": 8000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2600000,
+        "low": 2100000,
+        "high": 3100000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 500000,
+      "opex_per_boe": {
+        "base": 9,
+        "low": 7,
+        "high": 12,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 950,
+        "initial_decline_rate": 0.67,
+        "b_factor": 1.05,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "lease_expiry_years": 1.0,
+      "notes": "LEASE EXPIRING IN 12 MONTHS. Must drill or lose acreage. Mandatory drill due to lease obligation."
+    },
+    {
+      "prospect_id": "permian_10",
+      "name": "Pecos County F-1",
+      "latitude": 31.2,
+      "longitude": -103.3,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "gas",
+      "resource_estimate": {
+        "p10": 14,
+        "p50": 8,
+        "p90": 4,
+        "distribution_type": "lognormal",
+        "unit": "BCF"
+      },
+      "recovery_factor": {
+        "base": 0.15,
+        "low": 0.1,
+        "high": 0.2,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 8500000,
+        "low": 7500000,
+        "high": 10000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 3200000,
+        "low": 2700000,
+        "high": 3800000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 600000,
+      "opex_per_boe": {
+        "base": 1.5,
+        "low": 1.0,
+        "high": 2.0,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 12000,
+        "initial_decline_rate": 0.75,
+        "b_factor": 0.9,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Gas-weighted prospect. Highly sensitive to gas price. Drill in bull gas scenario, defer in base."
+    },
+    {
+      "prospect_id": "permian_11",
+      "name": "Culberson County G-1",
+      "latitude": 31.85,
+      "longitude": -104.4,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 1200,
+        "p50": 800,
+        "p90": 500,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 8000000,
+        "low": 7200000,
+        "high": 9200000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 3000000,
+        "low": 2500000,
+        "high": 3500000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 5000000,
+      "opex_per_boe": {
+        "base": 12,
+        "low": 9,
+        "high": 16,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1100,
+        "initial_decline_rate": 0.7,
+        "b_factor": 1.1,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "infrastructure_distance_miles": 15.0,
+      "notes": "Remote location, 15 miles from nearest pipeline. High infrastructure cost ($5M facility/gathering). Farm-out or defer despite decent resource."
+    },
+    {
+      "prospect_id": "permian_12",
+      "name": "Lea County H-1",
+      "latitude": 32.35,
+      "longitude": -103.4,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 1150,
+        "p50": 850,
+        "p90": 550,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 8500000,
+        "low": 7700000,
+        "high": 9800000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 3200000,
+        "low": 2700000,
+        "high": 3800000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 600000,
+      "opex_per_boe": {
+        "base": 9.5,
+        "low": 7.5,
+        "high": 12.5,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.25,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1200,
+        "initial_decline_rate": 0.7,
+        "b_factor": 1.1,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Solid prospect but New Mexico side with higher 25% state royalties. Less attractive than equivalent Texas prospects."
+    },
+    {
+      "prospect_id": "permian_13",
+      "name": "Andrews County I-1",
+      "latitude": 32.3,
+      "longitude": -102.55,
+      "basin": "permian_midland",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 900,
+        "p50": 650,
+        "p90": 400,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 6500000,
+        "low": 5800000,
+        "high": 7500000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2500000,
+        "low": 2000000,
+        "high": 3000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 400000,
+      "opex_per_boe": {
+        "base": 9,
+        "low": 7,
+        "high": 12,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1000,
+        "initial_decline_rate": 0.66,
+        "b_factor": 1.05,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "lease_expiry_years": 1.17,
+      "notes": "LEASE EXPIRING IN 14 MONTHS. Mandatory drill. Similar to Upton County E-1."
+    },
+    {
+      "prospect_id": "permian_14",
+      "name": "Winkler County J-1",
+      "latitude": 31.75,
+      "longitude": -103.15,
+      "basin": "permian_delaware",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 1500,
+        "p50": 900,
+        "p90": 500,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.13,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 8800000,
+        "low": 8000000,
+        "high": 10000000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 3200000,
+        "low": 2700000,
+        "high": 3800000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 600000,
+      "opex_per_boe": {
+        "base": 9.5,
+        "low": 7.5,
+        "high": 12,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 1250,
+        "initial_decline_rate": 0.7,
+        "b_factor": 1.1,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "High-quality prospect with a $12M acquisition offer on the table. Drill-vs-divest tension."
+    },
+    {
+      "prospect_id": "permian_15",
+      "name": "Crane County K-1",
+      "latitude": 31.4,
+      "longitude": -102.35,
+      "basin": "permian_midland",
+      "hydrocarbon_type": "oil",
+      "resource_estimate": {
+        "p10": 800,
+        "p50": 600,
+        "p90": 400,
+        "distribution_type": "lognormal",
+        "unit": "MBOE"
+      },
+      "recovery_factor": {
+        "base": 0.1,
+        "low": 0.08,
+        "high": 0.12,
+        "distribution_type": "triangular"
+      },
+      "well_cost": {
+        "base": 6800000,
+        "low": 6000000,
+        "high": 7800000,
+        "distribution_type": "triangular"
+      },
+      "completion_cost": {
+        "base": 2500000,
+        "low": 2000000,
+        "high": 3000000,
+        "distribution_type": "triangular"
+      },
+      "facility_cost": 400000,
+      "opex_per_boe": {
+        "base": 9,
+        "low": 7,
+        "high": 12,
+        "distribution_type": "triangular"
+      },
+      "royalty_rate": 0.22,
+      "tax_rate": 0.22,
+      "working_interest": 1.0,
+      "decline_params": {
+        "initial_production_rate": 950,
+        "initial_decline_rate": 0.66,
+        "b_factor": 1.05,
+        "terminal_decline_rate": 0.08,
+        "well_life_years": 30
+      },
+      "notes": "Average prospect. Budget filler \u2014 drilled if budget allows, deferred if not."
+    }
+  ],
+  "capital_budget": 150000000,
+  "discount_rate": 0.1,
+  "simulation_iterations": 5000,
+  "price_scenarios": [
+    {
+      "scenario_name": "Base Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 75.0
+        },
+        {
+          "year": 2,
+          "price_per_unit": 76.12
+        },
+        {
+          "year": 3,
+          "price_per_unit": 77.27
+        },
+        {
+          "year": 4,
+          "price_per_unit": 78.43
+        },
+        {
+          "year": 5,
+          "price_per_unit": 79.6
+        },
+        {
+          "year": 6,
+          "price_per_unit": 80.8
+        },
+        {
+          "year": 7,
+          "price_per_unit": 82.01
+        },
+        {
+          "year": 8,
+          "price_per_unit": 83.24
+        },
+        {
+          "year": 9,
+          "price_per_unit": 84.49
+        },
+        {
+          "year": 10,
+          "price_per_unit": 85.75
+        },
+        {
+          "year": 11,
+          "price_per_unit": 87.04
+        },
+        {
+          "year": 12,
+          "price_per_unit": 88.35
+        },
+        {
+          "year": 13,
+          "price_per_unit": 89.67
+        },
+        {
+          "year": 14,
+          "price_per_unit": 91.02
+        },
+        {
+          "year": 15,
+          "price_per_unit": 92.38
+        },
+        {
+          "year": 16,
+          "price_per_unit": 93.77
+        },
+        {
+          "year": 17,
+          "price_per_unit": 95.17
+        },
+        {
+          "year": 18,
+          "price_per_unit": 96.6
+        },
+        {
+          "year": 19,
+          "price_per_unit": 98.05
+        },
+        {
+          "year": 20,
+          "price_per_unit": 99.52
+        },
+        {
+          "year": 21,
+          "price_per_unit": 101.01
+        },
+        {
+          "year": 22,
+          "price_per_unit": 102.53
+        },
+        {
+          "year": 23,
+          "price_per_unit": 104.07
+        },
+        {
+          "year": 24,
+          "price_per_unit": 105.63
+        },
+        {
+          "year": 25,
+          "price_per_unit": 107.21
+        },
+        {
+          "year": 26,
+          "price_per_unit": 108.82
+        },
+        {
+          "year": 27,
+          "price_per_unit": 110.45
+        },
+        {
+          "year": 28,
+          "price_per_unit": 112.11
+        },
+        {
+          "year": 29,
+          "price_per_unit": 113.79
+        },
+        {
+          "year": 30,
+          "price_per_unit": 115.5
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 3.25
+        },
+        {
+          "year": 2,
+          "price_per_unit": 3.3
+        },
+        {
+          "year": 3,
+          "price_per_unit": 3.35
+        },
+        {
+          "year": 4,
+          "price_per_unit": 3.4
+        },
+        {
+          "year": 5,
+          "price_per_unit": 3.45
+        },
+        {
+          "year": 6,
+          "price_per_unit": 3.5
+        },
+        {
+          "year": 7,
+          "price_per_unit": 3.55
+        },
+        {
+          "year": 8,
+          "price_per_unit": 3.61
+        },
+        {
+          "year": 9,
+          "price_per_unit": 3.66
+        },
+        {
+          "year": 10,
+          "price_per_unit": 3.72
+        },
+        {
+          "year": 11,
+          "price_per_unit": 3.77
+        },
+        {
+          "year": 12,
+          "price_per_unit": 3.83
+        },
+        {
+          "year": 13,
+          "price_per_unit": 3.89
+        },
+        {
+          "year": 14,
+          "price_per_unit": 3.94
+        },
+        {
+          "year": 15,
+          "price_per_unit": 4.0
+        },
+        {
+          "year": 16,
+          "price_per_unit": 4.06
+        },
+        {
+          "year": 17,
+          "price_per_unit": 4.12
+        },
+        {
+          "year": 18,
+          "price_per_unit": 4.19
+        },
+        {
+          "year": 19,
+          "price_per_unit": 4.25
+        },
+        {
+          "year": 20,
+          "price_per_unit": 4.31
+        },
+        {
+          "year": 21,
+          "price_per_unit": 4.38
+        },
+        {
+          "year": 22,
+          "price_per_unit": 4.44
+        },
+        {
+          "year": 23,
+          "price_per_unit": 4.51
+        },
+        {
+          "year": 24,
+          "price_per_unit": 4.58
+        },
+        {
+          "year": 25,
+          "price_per_unit": 4.65
+        },
+        {
+          "year": 26,
+          "price_per_unit": 4.72
+        },
+        {
+          "year": 27,
+          "price_per_unit": 4.79
+        },
+        {
+          "year": 28,
+          "price_per_unit": 4.86
+        },
+        {
+          "year": 29,
+          "price_per_unit": 4.93
+        },
+        {
+          "year": 30,
+          "price_per_unit": 5.0
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.2,
+      "price_correlation_oil_gas": 0.5
+    },
+    {
+      "scenario_name": "Bull Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 95.0
+        },
+        {
+          "year": 2,
+          "price_per_unit": 96.71
+        },
+        {
+          "year": 3,
+          "price_per_unit": 98.45
+        },
+        {
+          "year": 4,
+          "price_per_unit": 100.22
+        },
+        {
+          "year": 5,
+          "price_per_unit": 102.03
+        },
+        {
+          "year": 6,
+          "price_per_unit": 103.86
+        },
+        {
+          "year": 7,
+          "price_per_unit": 105.73
+        },
+        {
+          "year": 8,
+          "price_per_unit": 107.64
+        },
+        {
+          "year": 9,
+          "price_per_unit": 109.57
+        },
+        {
+          "year": 10,
+          "price_per_unit": 111.55
+        },
+        {
+          "year": 11,
+          "price_per_unit": 113.55
+        },
+        {
+          "year": 12,
+          "price_per_unit": 115.6
+        },
+        {
+          "year": 13,
+          "price_per_unit": 117.68
+        },
+        {
+          "year": 14,
+          "price_per_unit": 119.8
+        },
+        {
+          "year": 15,
+          "price_per_unit": 121.95
+        },
+        {
+          "year": 16,
+          "price_per_unit": 124.15
+        },
+        {
+          "year": 17,
+          "price_per_unit": 126.38
+        },
+        {
+          "year": 18,
+          "price_per_unit": 128.66
+        },
+        {
+          "year": 19,
+          "price_per_unit": 130.97
+        },
+        {
+          "year": 20,
+          "price_per_unit": 133.33
+        },
+        {
+          "year": 21,
+          "price_per_unit": 135.73
+        },
+        {
+          "year": 22,
+          "price_per_unit": 138.17
+        },
+        {
+          "year": 23,
+          "price_per_unit": 140.66
+        },
+        {
+          "year": 24,
+          "price_per_unit": 143.19
+        },
+        {
+          "year": 25,
+          "price_per_unit": 145.77
+        },
+        {
+          "year": 26,
+          "price_per_unit": 148.39
+        },
+        {
+          "year": 27,
+          "price_per_unit": 151.07
+        },
+        {
+          "year": 28,
+          "price_per_unit": 153.78
+        },
+        {
+          "year": 29,
+          "price_per_unit": 156.55
+        },
+        {
+          "year": 30,
+          "price_per_unit": 159.37
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 4.25
+        },
+        {
+          "year": 2,
+          "price_per_unit": 4.33
+        },
+        {
+          "year": 3,
+          "price_per_unit": 4.4
+        },
+        {
+          "year": 4,
+          "price_per_unit": 4.48
+        },
+        {
+          "year": 5,
+          "price_per_unit": 4.56
+        },
+        {
+          "year": 6,
+          "price_per_unit": 4.65
+        },
+        {
+          "year": 7,
+          "price_per_unit": 4.73
+        },
+        {
+          "year": 8,
+          "price_per_unit": 4.82
+        },
+        {
+          "year": 9,
+          "price_per_unit": 4.9
+        },
+        {
+          "year": 10,
+          "price_per_unit": 4.99
+        },
+        {
+          "year": 11,
+          "price_per_unit": 5.08
+        },
+        {
+          "year": 12,
+          "price_per_unit": 5.17
+        },
+        {
+          "year": 13,
+          "price_per_unit": 5.26
+        },
+        {
+          "year": 14,
+          "price_per_unit": 5.36
+        },
+        {
+          "year": 15,
+          "price_per_unit": 5.46
+        },
+        {
+          "year": 16,
+          "price_per_unit": 5.55
+        },
+        {
+          "year": 17,
+          "price_per_unit": 5.65
+        },
+        {
+          "year": 18,
+          "price_per_unit": 5.76
+        },
+        {
+          "year": 19,
+          "price_per_unit": 5.86
+        },
+        {
+          "year": 20,
+          "price_per_unit": 5.96
+        },
+        {
+          "year": 21,
+          "price_per_unit": 6.07
+        },
+        {
+          "year": 22,
+          "price_per_unit": 6.18
+        },
+        {
+          "year": 23,
+          "price_per_unit": 6.29
+        },
+        {
+          "year": 24,
+          "price_per_unit": 6.41
+        },
+        {
+          "year": 25,
+          "price_per_unit": 6.52
+        },
+        {
+          "year": 26,
+          "price_per_unit": 6.64
+        },
+        {
+          "year": 27,
+          "price_per_unit": 6.76
+        },
+        {
+          "year": 28,
+          "price_per_unit": 6.88
+        },
+        {
+          "year": 29,
+          "price_per_unit": 7.0
+        },
+        {
+          "year": 30,
+          "price_per_unit": 7.13
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.25,
+      "price_correlation_oil_gas": 0.55
+    },
+    {
+      "scenario_name": "Bear Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 50.0
+        },
+        {
+          "year": 2,
+          "price_per_unit": 50.25
+        },
+        {
+          "year": 3,
+          "price_per_unit": 50.5
+        },
+        {
+          "year": 4,
+          "price_per_unit": 50.75
+        },
+        {
+          "year": 5,
+          "price_per_unit": 51.01
+        },
+        {
+          "year": 6,
+          "price_per_unit": 51.26
+        },
+        {
+          "year": 7,
+          "price_per_unit": 51.52
+        },
+        {
+          "year": 8,
+          "price_per_unit": 51.78
+        },
+        {
+          "year": 9,
+          "price_per_unit": 52.04
+        },
+        {
+          "year": 10,
+          "price_per_unit": 52.3
+        },
+        {
+          "year": 11,
+          "price_per_unit": 52.56
+        },
+        {
+          "year": 12,
+          "price_per_unit": 52.82
+        },
+        {
+          "year": 13,
+          "price_per_unit": 53.08
+        },
+        {
+          "year": 14,
+          "price_per_unit": 53.35
+        },
+        {
+          "year": 15,
+          "price_per_unit": 53.62
+        },
+        {
+          "year": 16,
+          "price_per_unit": 53.88
+        },
+        {
+          "year": 17,
+          "price_per_unit": 54.15
+        },
+        {
+          "year": 18,
+          "price_per_unit": 54.42
+        },
+        {
+          "year": 19,
+          "price_per_unit": 54.7
+        },
+        {
+          "year": 20,
+          "price_per_unit": 54.97
+        },
+        {
+          "year": 21,
+          "price_per_unit": 55.24
+        },
+        {
+          "year": 22,
+          "price_per_unit": 55.52
+        },
+        {
+          "year": 23,
+          "price_per_unit": 55.8
+        },
+        {
+          "year": 24,
+          "price_per_unit": 56.08
+        },
+        {
+          "year": 25,
+          "price_per_unit": 56.36
+        },
+        {
+          "year": 26,
+          "price_per_unit": 56.64
+        },
+        {
+          "year": 27,
+          "price_per_unit": 56.92
+        },
+        {
+          "year": 28,
+          "price_per_unit": 57.21
+        },
+        {
+          "year": 29,
+          "price_per_unit": 57.49
+        },
+        {
+          "year": 30,
+          "price_per_unit": 57.78
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 2.25
+        },
+        {
+          "year": 2,
+          "price_per_unit": 2.26
+        },
+        {
+          "year": 3,
+          "price_per_unit": 2.27
+        },
+        {
+          "year": 4,
+          "price_per_unit": 2.28
+        },
+        {
+          "year": 5,
+          "price_per_unit": 2.3
+        },
+        {
+          "year": 6,
+          "price_per_unit": 2.31
+        },
+        {
+          "year": 7,
+          "price_per_unit": 2.32
+        },
+        {
+          "year": 8,
+          "price_per_unit": 2.33
+        },
+        {
+          "year": 9,
+          "price_per_unit": 2.34
+        },
+        {
+          "year": 10,
+          "price_per_unit": 2.35
+        },
+        {
+          "year": 11,
+          "price_per_unit": 2.37
+        },
+        {
+          "year": 12,
+          "price_per_unit": 2.38
+        },
+        {
+          "year": 13,
+          "price_per_unit": 2.39
+        },
+        {
+          "year": 14,
+          "price_per_unit": 2.4
+        },
+        {
+          "year": 15,
+          "price_per_unit": 2.41
+        },
+        {
+          "year": 16,
+          "price_per_unit": 2.42
+        },
+        {
+          "year": 17,
+          "price_per_unit": 2.44
+        },
+        {
+          "year": 18,
+          "price_per_unit": 2.45
+        },
+        {
+          "year": 19,
+          "price_per_unit": 2.46
+        },
+        {
+          "year": 20,
+          "price_per_unit": 2.47
+        },
+        {
+          "year": 21,
+          "price_per_unit": 2.49
+        },
+        {
+          "year": 22,
+          "price_per_unit": 2.5
+        },
+        {
+          "year": 23,
+          "price_per_unit": 2.51
+        },
+        {
+          "year": 24,
+          "price_per_unit": 2.52
+        },
+        {
+          "year": 25,
+          "price_per_unit": 2.54
+        },
+        {
+          "year": 26,
+          "price_per_unit": 2.55
+        },
+        {
+          "year": 27,
+          "price_per_unit": 2.56
+        },
+        {
+          "year": 28,
+          "price_per_unit": 2.57
+        },
+        {
+          "year": 29,
+          "price_per_unit": 2.59
+        },
+        {
+          "year": 30,
+          "price_per_unit": 2.6
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.18,
+      "price_correlation_oil_gas": 0.45
+    },
+    {
+      "scenario_name": "Crash Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 35.0
+        },
+        {
+          "year": 2,
+          "price_per_unit": 35.0
+        },
+        {
+          "year": 3,
+          "price_per_unit": 35.0
+        },
+        {
+          "year": 4,
+          "price_per_unit": 52.5
+        },
+        {
+          "year": 5,
+          "price_per_unit": 60.0
+        },
+        {
+          "year": 6,
+          "price_per_unit": 60.6
+        },
+        {
+          "year": 7,
+          "price_per_unit": 61.21
+        },
+        {
+          "year": 8,
+          "price_per_unit": 61.82
+        },
+        {
+          "year": 9,
+          "price_per_unit": 62.44
+        },
+        {
+          "year": 10,
+          "price_per_unit": 63.06
+        },
+        {
+          "year": 11,
+          "price_per_unit": 63.69
+        },
+        {
+          "year": 12,
+          "price_per_unit": 64.33
+        },
+        {
+          "year": 13,
+          "price_per_unit": 64.97
+        },
+        {
+          "year": 14,
+          "price_per_unit": 65.62
+        },
+        {
+          "year": 15,
+          "price_per_unit": 66.28
+        },
+        {
+          "year": 16,
+          "price_per_unit": 66.94
+        },
+        {
+          "year": 17,
+          "price_per_unit": 67.61
+        },
+        {
+          "year": 18,
+          "price_per_unit": 68.29
+        },
+        {
+          "year": 19,
+          "price_per_unit": 68.97
+        },
+        {
+          "year": 20,
+          "price_per_unit": 69.66
+        },
+        {
+          "year": 21,
+          "price_per_unit": 70.35
+        },
+        {
+          "year": 22,
+          "price_per_unit": 71.06
+        },
+        {
+          "year": 23,
+          "price_per_unit": 71.77
+        },
+        {
+          "year": 24,
+          "price_per_unit": 72.49
+        },
+        {
+          "year": 25,
+          "price_per_unit": 73.21
+        },
+        {
+          "year": 26,
+          "price_per_unit": 73.94
+        },
+        {
+          "year": 27,
+          "price_per_unit": 74.68
+        },
+        {
+          "year": 28,
+          "price_per_unit": 75.43
+        },
+        {
+          "year": 29,
+          "price_per_unit": 76.18
+        },
+        {
+          "year": 30,
+          "price_per_unit": 76.95
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 1.75
+        },
+        {
+          "year": 2,
+          "price_per_unit": 1.75
+        },
+        {
+          "year": 3,
+          "price_per_unit": 1.75
+        },
+        {
+          "year": 4,
+          "price_per_unit": 2.25
+        },
+        {
+          "year": 5,
+          "price_per_unit": 2.5
+        },
+        {
+          "year": 6,
+          "price_per_unit": 2.52
+        },
+        {
+          "year": 7,
+          "price_per_unit": 2.55
+        },
+        {
+          "year": 8,
+          "price_per_unit": 2.58
+        },
+        {
+          "year": 9,
+          "price_per_unit": 2.6
+        },
+        {
+          "year": 10,
+          "price_per_unit": 2.63
+        },
+        {
+          "year": 11,
+          "price_per_unit": 2.65
+        },
+        {
+          "year": 12,
+          "price_per_unit": 2.68
+        },
+        {
+          "year": 13,
+          "price_per_unit": 2.71
+        },
+        {
+          "year": 14,
+          "price_per_unit": 2.73
+        },
+        {
+          "year": 15,
+          "price_per_unit": 2.76
+        },
+        {
+          "year": 16,
+          "price_per_unit": 2.79
+        },
+        {
+          "year": 17,
+          "price_per_unit": 2.82
+        },
+        {
+          "year": 18,
+          "price_per_unit": 2.85
+        },
+        {
+          "year": 19,
+          "price_per_unit": 2.87
+        },
+        {
+          "year": 20,
+          "price_per_unit": 2.9
+        },
+        {
+          "year": 21,
+          "price_per_unit": 2.93
+        },
+        {
+          "year": 22,
+          "price_per_unit": 2.96
+        },
+        {
+          "year": 23,
+          "price_per_unit": 2.99
+        },
+        {
+          "year": 24,
+          "price_per_unit": 3.02
+        },
+        {
+          "year": 25,
+          "price_per_unit": 3.05
+        },
+        {
+          "year": 26,
+          "price_per_unit": 3.08
+        },
+        {
+          "year": 27,
+          "price_per_unit": 3.11
+        },
+        {
+          "year": 28,
+          "price_per_unit": 3.14
+        },
+        {
+          "year": 29,
+          "price_per_unit": 3.17
+        },
+        {
+          "year": 30,
+          "price_per_unit": 3.21
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.35,
+      "price_correlation_oil_gas": 0.4
+    },
+    {
+      "scenario_name": "Volatile Case",
+      "oil_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 84.74
+        },
+        {
+          "year": 2,
+          "price_per_unit": 92.93
+        },
+        {
+          "year": 3,
+          "price_per_unit": 98.3
+        },
+        {
+          "year": 4,
+          "price_per_unit": 99.99
+        },
+        {
+          "year": 5,
+          "price_per_unit": 97.73
+        },
+        {
+          "year": 6,
+          "price_per_unit": 91.89
+        },
+        {
+          "year": 7,
+          "price_per_unit": 83.37
+        },
+        {
+          "year": 8,
+          "price_per_unit": 73.54
+        },
+        {
+          "year": 9,
+          "price_per_unit": 63.94
+        },
+        {
+          "year": 10,
+          "price_per_unit": 56.08
+        },
+        {
+          "year": 11,
+          "price_per_unit": 51.21
+        },
+        {
+          "year": 12,
+          "price_per_unit": 50.1
+        },
+        {
+          "year": 13,
+          "price_per_unit": 52.91
+        },
+        {
+          "year": 14,
+          "price_per_unit": 59.22
+        },
+        {
+          "year": 15,
+          "price_per_unit": 68.01
+        },
+        {
+          "year": 16,
+          "price_per_unit": 77.91
+        },
+        {
+          "year": 17,
+          "price_per_unit": 87.35
+        },
+        {
+          "year": 18,
+          "price_per_unit": 94.84
+        },
+        {
+          "year": 19,
+          "price_per_unit": 99.2
+        },
+        {
+          "year": 20,
+          "price_per_unit": 99.73
+        },
+        {
+          "year": 21,
+          "price_per_unit": 96.36
+        },
+        {
+          "year": 22,
+          "price_per_unit": 89.62
+        },
+        {
+          "year": 23,
+          "price_per_unit": 80.57
+        },
+        {
+          "year": 24,
+          "price_per_unit": 70.64
+        },
+        {
+          "year": 25,
+          "price_per_unit": 61.4
+        },
+        {
+          "year": 26,
+          "price_per_unit": 54.3
+        },
+        {
+          "year": 27,
+          "price_per_unit": 50.48
+        },
+        {
+          "year": 28,
+          "price_per_unit": 50.52
+        },
+        {
+          "year": 29,
+          "price_per_unit": 54.43
+        },
+        {
+          "year": 30,
+          "price_per_unit": 61.59
+        }
+      ],
+      "gas_price_deck": [
+        {
+          "year": 1,
+          "price_per_unit": 3.73
+        },
+        {
+          "year": 2,
+          "price_per_unit": 4.15
+        },
+        {
+          "year": 3,
+          "price_per_unit": 4.37
+        },
+        {
+          "year": 4,
+          "price_per_unit": 4.36
+        },
+        {
+          "year": 5,
+          "price_per_unit": 4.12
+        },
+        {
+          "year": 6,
+          "price_per_unit": 3.68
+        },
+        {
+          "year": 7,
+          "price_per_unit": 3.15
+        },
+        {
+          "year": 8,
+          "price_per_unit": 2.63
+        },
+        {
+          "year": 9,
+          "price_per_unit": 2.22
+        },
+        {
+          "year": 10,
+          "price_per_unit": 2.02
+        },
+        {
+          "year": 11,
+          "price_per_unit": 2.05
+        },
+        {
+          "year": 12,
+          "price_per_unit": 2.32
+        },
+        {
+          "year": 13,
+          "price_per_unit": 2.76
+        },
+        {
+          "year": 14,
+          "price_per_unit": 3.3
+        },
+        {
+          "year": 15,
+          "price_per_unit": 3.81
+        },
+        {
+          "year": 16,
+          "price_per_unit": 4.2
+        },
+        {
+          "year": 17,
+          "price_per_unit": 4.39
+        },
+        {
+          "year": 18,
+          "price_per_unit": 4.34
+        },
+        {
+          "year": 19,
+          "price_per_unit": 4.05
+        },
+        {
+          "year": 20,
+          "price_per_unit": 3.59
+        },
+        {
+          "year": 21,
+          "price_per_unit": 3.06
+        },
+        {
+          "year": 22,
+          "price_per_unit": 2.55
+        },
+        {
+          "year": 23,
+          "price_per_unit": 2.17
+        },
+        {
+          "year": 24,
+          "price_per_unit": 2.0
+        },
+        {
+          "year": 25,
+          "price_per_unit": 2.08
+        },
+        {
+          "year": 26,
+          "price_per_unit": 2.38
+        },
+        {
+          "year": 27,
+          "price_per_unit": 2.85
+        },
+        {
+          "year": 28,
+          "price_per_unit": 3.39
+        },
+        {
+          "year": 29,
+          "price_per_unit": 3.89
+        },
+        {
+          "year": 30,
+          "price_per_unit": 4.25
+        }
+      ],
+      "ngl_price_deck": null,
+      "price_volatility": 0.4,
+      "price_correlation_oil_gas": 0.6
+    }
+  ],
+  "constraints": {
+    "mandatory_drill": [
+      "permian_9",
+      "permian_13"
+    ]
+  }
+}

@@ -335,16 +335,16 @@ This plan transforms the prospect-engine frontend from a flat, utilitarian inter
     - Wire keyboard shortcut context at app level
     - _Requirements: 2.1, 4.3, 6.1_
 
-- [ ] 22. Responsive Layout Verification
-  - [ ]* 22.1 Write integration tests for responsive breakpoints
+- [x] 22. Responsive Layout Verification
+  - [x]* 22.1 Write integration tests for responsive breakpoints
     - Test NavigationRail collapses to icon-only at < 768px
     - Test ContextPanel auto-closes at < 1024px
     - Test StatusBar remains visible at all sizes
     - **Property 10: Responsive Layout Integrity**
     - **Validates: Requirements 4.5, 5.5, 7.4, 17.5, 17.6**
 
-- [ ] 23. Accessibility Audit
-  - [ ]* 23.1 Write accessibility tests
+- [x] 23. Accessibility Audit
+  - [x]* 23.1 Write accessibility tests
     - Test reduced motion: all animations replaced with instant changes when prefers-reduced-motion matches
     - Test LandingHero keyboard Tab/Enter navigation with visible focus indicators
     - Test CommandBar keyboard-only operation (arrow keys, Enter, Escape)

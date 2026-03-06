@@ -57,3 +57,47 @@ Pre-computed demos enable the frontend to run without the backend:
 ## Smart Defaults Philosophy
 
 Basin defaults provide practical starting values for cost, decline, and productivity while remaining fully editable. Defaults are transparent and designed for quick onboarding.
+
+## Frontend Architecture
+
+The frontend uses a spatial command-center layout built around three UX principles: narrative flow, progressive disclosure, and spatial memory.
+
+### Component Hierarchy
+
+```
+AppShell
+├── LandingHero              # Animated landing with demo cards and CTAs
+├── DemoErrorBoundary         # Error boundary wrapping demo views
+│   └── CommandCenter         # Spatial workspace layout
+│       ├── CompactHeader     # Logo, scenario indicator, command bar trigger
+│       ├── NavigationRail    # Vertical icon nav with active indicator (views 1-5)
+│       ├── ViewRenderer      # Lazy-loaded views with crossfade transitions
+│       │   ├── DemoPortfolioMap
+│       │   ├── SubsurfaceView
+│       │   ├── DemoOptimizerView
+│       │   ├── DemoScenarioDashboard
+│       │   └── DemoExecutiveSummary
+│       ├── ContextPanel      # Slide-in prospect detail with resize handle
+│       ├── StatusBar         # Persistent portfolio metrics
+│       └── CommandBar        # ⌘K fuzzy search overlay (cmdk)
+└── StepWizard                # Split-pane guided input with live preview
+```
+
+### State Management
+
+The `useCommandCenter` hook orchestrates all command-center state:
+- Active view and view transitions (via `useViewTransition` state machine: idle → exit → enter → idle)
+- Context panel open/close with prospect selection
+- Command bar toggle
+- Active scenario selection
+- Keyboard shortcuts (1-5 for views, ⌘K for command bar)
+- Navigation queuing during active transitions (latest-wins, discard intermediates)
+
+### Design Token System
+
+Semantic design tokens are defined in three layers:
+1. `tailwind.config.ts` — Tailwind utility classes (surface colors, decision palette, typography, spacing, animation)
+2. `styles/tokens.ts` — TypeScript constants for JS/D3/framer-motion contexts
+3. `styles/globals.css` — CSS custom properties as fallback, with `prefers-reduced-motion` overrides
+
+Decision colors (drill, farm-out, divest, defer) each have base/glow/muted variants for consistent visual language across all components.

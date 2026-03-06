@@ -16,7 +16,7 @@ E&P capital allocation is often done through expensive consulting studies and br
 - **Four-decision modeling** — Drill, Farm-out, Divest, Defer — with realistic economics for each
 - **Constrained portfolio optimization** via mixed-integer linear programming with efficient frontier sweep
 - **Multi-scenario analysis** across commodity price decks to assess decision robustness
-- **Interactive visualization** — 2D maps, D3 charts, and Three.js 3D subsurface scenes
+- **Interactive visualization** — spatial command-center UI with 2D maps, D3 charts, and Three.js 3D subsurface scenes
 
 ## Quick Start
 
@@ -71,16 +71,26 @@ The app ships with two pre-computed demo portfolios that run entirely in the bro
 
 15 onshore prospects, $150M budget.
 
-1. Launch the app and select **Permian Basin** from the demo selector.
-2. Explore the **Portfolio Map** — colored pins with decision letters (D=Drill, F=Farm Out, S=Divest, W=Defer).
-3. Click any prospect to see its **NPV distribution**, **tornado sensitivity**, and **decline curve**.
-4. Switch to the **Optimizer** tab to view the **efficient frontier** and allocation breakdown.
-5. Use the **Scenario Dashboard** to compare outcomes across 5 price scenarios.
-6. Open the **Executive Summary** for a printable overview and CSV export.
+1. Launch the app and select **Permian Basin** from the landing hero.
+2. The **Command Center** opens with a spatial layout — navigation rail on the left, main content area, and a collapsible context panel.
+3. Explore the **Portfolio Map** — colored pins with decision-colored accents (Drill, Farm-out, Divest, Defer).
+4. Click any prospect to open the **Context Panel** with NPV histogram, cash flow sparklines, and decision details.
+5. Use the **Navigation Rail** (or keyboard shortcuts 1-5) to switch between Map, Subsurface, Optimizer, Scenarios, and Summary views.
+6. Press **⌘K / Ctrl+K** to open the **Command Bar** for fuzzy search across prospects, views, and actions.
+7. The **Status Bar** at the bottom shows live portfolio metrics — NPV, capital deployed, risk level.
 
 ### Gulf of Mexico Deepwater
 
 8 offshore prospects, $600M budget, with subsea tiebacks and platform infrastructure in the 3D subsurface view.
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `1`–`5` | Switch between views |
+| `⌘K` / `Ctrl+K` | Open command bar |
+| `↑` / `↓` | Navigate prospects in context panel |
+| `Esc` | Close command bar or context panel |
 
 ## Architecture
 
@@ -137,14 +147,15 @@ prospect-engine/
 │   │   │   ├── charts/              # D3 visualizations (histogram, frontier, tornado)
 │   │   │   ├── three/               # Three.js 3D subsurface scene + orbit controls
 │   │   │   ├── views/               # Full-page views (map, optimizer, detail, summary)
-│   │   │   ├── layout/              # App shell, landing page, demo explorer
-│   │   │   ├── flow/                # 5-step guided input workflow
+│   │   │   ├── layout/              # CommandCenter, NavigationRail, ContextPanel, StatusBar, CommandBar, LandingHero
+│   │   │   ├── flow/                # StepWizard guided input workflow
+│   │   │   ├── shared/              # ProspectCard, AnimatedMetricCard, VirtualizedProspectList, DemoErrorBoundary
 │   │   │   └── inputs/              # Form components (CSV upload, distributions)
 │   │   ├── data/                    # Pre-computed demo JSON fixtures
-│   │   ├── hooks/                   # React hooks (demo mode, simulation)
-│   │   ├── lib/                     # Utilities, constants, formatters, CSV export
-│   │   ├── types/                   # TypeScript type definitions
-│   │   └── styles/                  # Tailwind CSS + print styles
+│   │   ├── hooks/                   # React hooks (useCommandCenter, useViewTransition, useKeyboardShortcuts, useAnimatedValue, useUserPreferences, useDemoMode)
+│   │   ├── lib/                     # Utilities, commandSearch, stepValidation, formatters, CSV export
+│   │   ├── types/                   # TypeScript type definitions (command-center, demo, portfolio)
+│   │   └── styles/                  # Tailwind CSS, design tokens, globals
 │   └── public/                      # Static assets
 ├── docker-compose.yml
 ├── ARCHITECTURE.md
@@ -158,10 +169,14 @@ prospect-engine/
 |-------|-----------|
 | **Backend** | FastAPI, Pydantic, NumPy, SciPy |
 | **Frontend** | React 18, TypeScript, Vite |
-| **Styling** | Tailwind CSS |
+| **Styling** | Tailwind CSS with semantic design tokens |
 | **Charts** | D3.js |
 | **3D** | Three.js (custom subsurface renderer) |
 | **Maps** | Leaflet / react-leaflet |
+| **Animations** | Framer Motion |
+| **Command Palette** | cmdk |
+| **Tooltips** | Radix UI |
+| **Virtualization** | TanStack Virtual |
 | **Testing** | pytest (backend), Vitest (frontend) |
 | **Runtime** | Docker / docker-compose |
 | **Python** | 3.11+ |

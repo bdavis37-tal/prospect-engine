@@ -4,6 +4,105 @@
 
 :root {
   color-scheme: dark;
+
+  /* ── Surface Colors ──────────────────────────────────────── */
+  --color-surface-base: #06090E;
+  --color-surface-raised: #0C1219;
+  --color-surface-overlay: #121C28;
+  --color-surface-interactive: #1A2535;
+  --color-border-subtle: #1E2A3A;
+  --color-border-default: #2A3A4E;
+  --color-border-focus: #3B82F6;
+
+  /* ── Decision Palette ────────────────────────────────────── */
+  --color-decision-drill-base: #23D18B;
+  --color-decision-drill-glow: #34EFA0;
+  --color-decision-drill-muted: #1A5C3F;
+  --color-decision-farmout-base: #2FA7FF;
+  --color-decision-farmout-glow: #5BBDFF;
+  --color-decision-farmout-muted: #1A3F5C;
+  --color-decision-divest-base: #F97316;
+  --color-decision-divest-glow: #FB923C;
+  --color-decision-divest-muted: #5C3A1A;
+  --color-decision-defer-base: #94A3B8;
+  --color-decision-defer-glow: #B0BEC5;
+  --color-decision-defer-muted: #3A4555;
+
+  /* ── Data Colors ─────────────────────────────────────────── */
+  --color-data-positive: #23D18B;
+  --color-data-negative: #EF4444;
+  --color-data-neutral: #94A3B8;
+  --color-data-highlight: #F59E0B;
+  --color-data-info: #3B82F6;
+
+  /* ── Text Colors ─────────────────────────────────────────── */
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-text-inverse: #0F172A;
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --font-size-display: 3rem;
+  --font-weight-display: 700;
+  --tracking-display: -0.02em;
+  --font-size-heading: 1.5rem;
+  --font-weight-heading: 600;
+  --tracking-heading: -0.01em;
+  --font-size-subheading: 1.125rem;
+  --font-weight-subheading: 500;
+  --tracking-subheading: -0.005em;
+  --font-size-body: 0.9375rem;
+  --font-weight-body: 400;
+  --line-height-body: 1.6;
+  --font-size-caption: 0.8125rem;
+  --font-weight-caption: 400;
+  --line-height-caption: 1.5;
+  --font-size-mono: 0.875rem;
+  --font-weight-mono: 400;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* ── Spacing (4px base unit) ─────────────────────────────── */
+  --spacing-unit: 4px;
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* ── Animation ───────────────────────────────────────────── */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Border Radius ───────────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* ── Elevation ───────────────────────────────────────────── */
+  --shadow-low: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-high: 0 12px 32px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Reduced Motion Overrides ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
 }
 
 body {

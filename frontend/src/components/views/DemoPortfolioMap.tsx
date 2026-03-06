@@ -43,13 +43,13 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
   };
 
   return (
-    <div className="p-4 h-[calc(100vh-10rem)]">
-      <div className="w-full h-full rounded-xl border border-slate-800 bg-panel/40 relative overflow-hidden">
+    <div className="h-full p-4">
+      <div className="w-full h-full rounded-xl border border-white/[0.06] bg-[#0a0e14] relative overflow-hidden">
         <svg viewBox="0 0 800 500" className="w-full h-full" preserveAspectRatio="xMidYMid meet" role="img" aria-label={`Portfolio map showing ${demoData.input.prospects.length} prospects with decision allocations`}>
           {/* Grid */}
           <defs>
             <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a2840" strokeWidth="0.5" />
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
             </pattern>
           </defs>
           <rect width="800" height="500" fill="url(#grid)" />
@@ -60,7 +60,7 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
             return (
               <g key={`infra-${i}`}>
                 <rect x={ix - 6} y={iy - 6} width={12} height={12} rx={2} fill="#444" stroke="#666" strokeWidth={1} />
-                <text x={ix} y={iy - 10} textAnchor="middle" className="text-[8px] fill-slate-500">
+                <text x={ix} y={iy - 10} textAnchor="middle" className="text-[8px] fill-white/40">
                   {infra.name}
                 </text>
               </g>
@@ -118,11 +118,11 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
                 {prospect.lease_expiry_years && prospect.lease_expiry_years <= 1.5 && (
                   <text x={cx + size + 2} y={cy - size} className="text-[8px] fill-red-400 font-bold">!</text>
                 )}
-                <text x={cx} y={cy + size + 12} textAnchor="middle" className="text-[9px] fill-slate-300 font-medium">
+                <text x={cx} y={cy + size + 12} textAnchor="middle" className="text-[9px] fill-white/70 font-medium">
                   {prospect.name}
                 </text>
                 {pr && (
-                  <text x={cx} y={cy + size + 22} textAnchor="middle" className="text-[8px] fill-slate-500">
+                  <text x={cx} y={cy + size + 22} textAnchor="middle" className="text-[8px] fill-white/40">
                     {formatCurrency(pr.simulation.expected_npv)}
                   </text>
                 )}
@@ -132,7 +132,7 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
         </svg>
 
         {/* Legend with icons */}
-        <div className="absolute bottom-3 left-3 bg-panel/90 border border-slate-700/50 rounded px-3 py-2 flex gap-4 text-xs text-slate-400">
+        <div className="absolute bottom-3 left-3 bg-[#0a0e14]/90 border border-white/[0.08] rounded-lg px-4 py-2.5 flex gap-4 text-xs text-white/50 backdrop-blur-sm">
           {(Object.entries(DECISION_COLORS) as [DecisionType, string][]).map(([key, color]) => (
             <span key={key} className="flex items-center gap-1.5">
               <span
@@ -147,7 +147,7 @@ export function DemoPortfolioMap({ demoData, activeScenario, onSelectProspect }:
         </div>
 
         {/* Basin label */}
-        <div className="absolute top-3 left-3 text-xs text-slate-500">
+        <div className="absolute top-3 left-3 text-xs text-white/40 bg-[#0a0e14]/80 backdrop-blur-sm rounded-md px-3 py-1.5 border border-white/[0.06]">
           {demoData.scene3d.scene_type === "offshore" ? "Gulf of Mexico" : "Permian Basin"} — {activeScenario}
         </div>
       </div>

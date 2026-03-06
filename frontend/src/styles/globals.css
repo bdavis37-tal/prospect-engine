@@ -61,22 +61,6 @@
   --font-weight-mono: 400;
   --font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
-  /* ── Spacing (4px base unit) ─────────────────────────────── */
-  --spacing-unit: 4px;
-  --spacing-0: 0px;
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-4: 16px;
-  --spacing-5: 20px;
-  --spacing-6: 24px;
-  --spacing-8: 32px;
-  --spacing-10: 40px;
-  --spacing-12: 48px;
-  --spacing-16: 64px;
-  --spacing-20: 80px;
-  --spacing-24: 96px;
-
   /* ── Animation ───────────────────────────────────────────── */
   --duration-fast: 150ms;
   --duration-normal: 250ms;
@@ -107,33 +91,68 @@
 
 body {
   margin: 0;
-  font-family: Inter, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at 20% 20%, #182436 0%, #0b1017 45%, #070b10 100%);
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #06090E;
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
   cursor: pointer;
 }
 
-/* Print styles for Executive Summary */
+/* ── Tabular Numbers for Metrics ───────────────────────────── */
+.font-tnum {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Scrollbar Styling ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ── Skeleton Loading Animation ────────────────────────────── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0.12; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.06) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Print styles for Executive Summary ────────────────────── */
 @media print {
   body {
     background: white !important;
     color: #1e293b !important;
   }
 
-  /* Hide navigation, sidebar, and non-print elements */
   nav, [data-print-hide], button {
     display: none !important;
   }
 
-  /* Override dark panel backgrounds */
   .bg-panel {
     background: white !important;
     border-color: #cbd5e1 !important;
   }
 
-  /* Make text readable on white */
   .text-slate-100, .text-slate-200, .text-slate-300 {
     color: #1e293b !important;
   }
@@ -141,12 +160,10 @@ button {
     color: #475569 !important;
   }
 
-  /* Keep decision colors visible */
   .text-drill { color: #16a34a !important; }
   .text-divest { color: #ea580c !important; }
   .text-farm { color: #2563eb !important; }
 
-  /* Page break control */
   .space-y-6 > div {
     break-inside: avoid;
   }

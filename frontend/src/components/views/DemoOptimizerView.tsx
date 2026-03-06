@@ -12,7 +12,7 @@ export function DemoOptimizerView({ demoData, activeScenario }: Props) {
   const scenarioResult = demoData.results.scenario_comparison.scenario_results.find(
     (s) => s.scenario_name === activeScenario
   );
-  if (!scenarioResult) return <div className="p-6 text-slate-400">No data for scenario.</div>;
+  if (!scenarioResult) return <div className="p-6 text-white/50">No data for scenario.</div>;
 
   const opt = scenarioResult.optimization_result;
   const frontier = opt.efficient_frontier;
@@ -50,10 +50,10 @@ export function DemoOptimizerView({ demoData, activeScenario }: Props) {
 
   return (
     <div className="p-4 space-y-4">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {/* Efficient Frontier Chart */}
-        <div className="col-span-2 bg-panel border border-slate-800 rounded-lg p-4">
-          <h3 className="text-sm font-semibold text-slate-300 mb-3">Efficient Frontier — {activeScenario}</h3>
+        <div className="lg:col-span-2 bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
+          <h3 className="text-sm font-semibold text-white/70 mb-3">Efficient Frontier — {activeScenario}</h3>
           <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full" preserveAspectRatio="xMidYMid meet">
             {/* Grid */}
             {Array.from({ length: 5 }).map((_, i) => {
@@ -62,7 +62,7 @@ export function DemoOptimizerView({ demoData, activeScenario }: Props) {
               return (
                 <g key={`gy-${i}`}>
                   <line x1={pad} y1={y} x2={svgW - pad} y2={y} stroke="#1a2840" strokeWidth={0.5} />
-                  <text x={pad - 5} y={y + 4} textAnchor="end" className="text-[9px] fill-slate-500">
+                  <text x={pad - 5} y={y + 4} textAnchor="end" className="text-[9px] fill-white/40">
                     {formatCurrency(npvVal)}
                   </text>
                 </g>
@@ -74,7 +74,7 @@ export function DemoOptimizerView({ demoData, activeScenario }: Props) {
               return (
                 <g key={`gx-${i}`}>
                   <line x1={x} y1={pad} x2={x} y2={svgH - pad} stroke="#1a2840" strokeWidth={0.5} />
-                  <text x={x} y={svgH - pad + 15} textAnchor="middle" className="text-[9px] fill-slate-500">
+                  <text x={x} y={svgH - pad + 15} textAnchor="middle" className="text-[9px] fill-white/40">
                     {formatCurrency(riskVal)}
                   </text>
                 </g>
@@ -82,14 +82,14 @@ export function DemoOptimizerView({ demoData, activeScenario }: Props) {
             })}
 
             {/* Axis labels */}
-            <text x={svgW / 2} y={svgH - 5} textAnchor="middle" className="text-[10px] fill-slate-400">
+            <text x={svgW / 2} y={svgH - 5} textAnchor="middle" className="text-[10px] fill-white/50">
               Portfolio Risk (Std Dev)
             </text>
             <text
               x={12}
               y={svgH / 2}
               textAnchor="middle"
-              className="text-[10px] fill-slate-400"
+              className="text-[10px] fill-white/50"
               transform={`rotate(-90, 12, ${svgH / 2})`}
             >
               Expected NPV
@@ -115,23 +115,23 @@ export function DemoOptimizerView({ demoData, activeScenario }: Props) {
 
         {/* Summary panel */}
         <div className="space-y-4">
-          <div className="bg-panel border border-slate-800 rounded-lg p-4">
-            <h3 className="text-sm font-semibold text-slate-300 mb-3">Recommended Allocation</h3>
+          <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
+            <h3 className="text-sm font-semibold text-white/70 mb-3">Recommended Allocation</h3>
             <div className="space-y-2">
               {Object.entries(allocationCounts).map(([dec, count]) => (
                 <div key={dec} className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: DECISION_COLORS[dec] }} />
-                    <span className="text-slate-300 capitalize">{dec.replace("_", " ")}</span>
+                    <span className="text-white/70 capitalize">{dec.replace("_", " ")}</span>
                   </div>
-                  <span className="text-slate-400">{count} prospects</span>
+                  <span className="text-white/50">{count} prospects</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-panel border border-slate-800 rounded-lg p-4 space-y-2">
-            <h3 className="text-sm font-semibold text-slate-300 mb-2">Portfolio Metrics</h3>
+          <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4 space-y-2">
+            <h3 className="text-sm font-semibold text-white/70 mb-2">Portfolio Metrics</h3>
             {[
               ["Expected NPV", formatCurrency(recommended.expected_npv)],
               ["Portfolio Risk", formatCurrency(recommended.portfolio_risk)],
@@ -140,21 +140,21 @@ export function DemoOptimizerView({ demoData, activeScenario }: Props) {
               ["Diversification Benefit", formatCurrency(opt.diversification_benefit)],
             ].map(([label, value]) => (
               <div key={label} className="flex justify-between text-xs">
-                <span className="text-slate-500">{label}</span>
-                <span className="text-slate-200">{value}</span>
+                <span className="text-white/40">{label}</span>
+                <span className="text-white/80">{value}</span>
               </div>
             ))}
           </div>
 
           {/* Per-prospect allocation */}
-          <div className="bg-panel border border-slate-800 rounded-lg p-4">
-            <h3 className="text-sm font-semibold text-slate-300 mb-2">Prospect Decisions</h3>
+          <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
+            <h3 className="text-sm font-semibold text-white/70 mb-2">Prospect Decisions</h3>
             <div className="space-y-1 max-h-48 overflow-y-auto">
               {Object.entries(recommended.allocation).map(([id, dec]) => {
                 const p = demoData.input.prospects.find((pr) => pr.prospect_id === id);
                 return (
                   <div key={id} className="flex items-center justify-between text-xs py-0.5">
-                    <span className="text-slate-300 truncate mr-2">{p?.name || id}</span>
+                    <span className="text-white/70 truncate mr-2">{p?.name || id}</span>
                     <span className="capitalize flex-shrink-0" style={{ color: DECISION_COLORS[dec] }}>
                       {dec.replace("_", " ")}
                     </span>

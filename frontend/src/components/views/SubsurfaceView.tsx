@@ -50,11 +50,11 @@ export function SubsurfaceView({ demoData, activeScenario, onSelectProspect }: S
     <div className="flex h-[calc(100vh-10rem)]">
       {/* Sidebar */}
       <div
-        className={`transition-all duration-200 ${sidebarOpen ? "w-72" : "w-0"} overflow-hidden border-r border-slate-800 bg-panel/50 flex-shrink-0`}
+        className={`transition-all duration-200 ${sidebarOpen ? "w-72" : "w-0"} overflow-hidden border-r border-white/[0.06] bg-[#0a0e14]/80 flex-shrink-0`}
       >
-        <div className="p-3 border-b border-slate-800 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-slate-300">Prospects</h3>
-          <button onClick={() => setSidebarOpen(false)} className="text-slate-500 hover:text-slate-300 text-xs">
+        <div className="p-3 border-b border-white/[0.06] flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-white/70">Prospects</h3>
+          <button onClick={() => setSidebarOpen(false)} className="text-white/40 hover:text-white/70 text-xs">
             Hide
           </button>
         </div>
@@ -66,15 +66,15 @@ export function SubsurfaceView({ demoData, activeScenario, onSelectProspect }: S
               <button
                 key={p.prospect_id}
                 onClick={() => handleSelect(p.prospect_id)}
-                className={`w-full text-left px-3 py-2 border-b border-slate-800/50 hover:bg-slate-800/50 ${
-                  selectedId === p.prospect_id ? "bg-slate-800/80" : ""
+                className={`w-full text-left px-3 py-2 border-b border-white/[0.04] transition-colors duration-150 hover:bg-white/[0.06] ${
+                  selectedId === p.prospect_id ? "bg-white/[0.08]" : ""
                 }`}
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: DECISION_COLORS[dec] }} />
-                  <span className="text-xs font-medium text-slate-200 truncate">{p.name}</span>
+                  <span className="text-xs font-medium text-white/80 truncate">{p.name}</span>
                 </div>
-                <div className="text-[10px] text-slate-500 mt-0.5 ml-4">
+                <div className="text-[10px] text-white/40 mt-0.5 ml-4">
                   {pr ? formatCurrency(pr.simulation.expected_npv) : "—"} NPV ·{" "}
                   {pr ? `${(pr.simulation.probability_positive_npv * 100).toFixed(0)}%` : "—"} prob+
                 </div>
@@ -89,7 +89,7 @@ export function SubsurfaceView({ demoData, activeScenario, onSelectProspect }: S
         {!sidebarOpen && (
           <button
             onClick={() => setSidebarOpen(true)}
-            className="absolute top-3 left-3 z-10 px-2 py-1 text-xs rounded bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700/50"
+            className="absolute top-3 left-3 z-10 px-2 py-1 text-xs rounded bg-[#0a0e14]/80 backdrop-blur-sm text-white/70 hover:bg-white/[0.1] border border-white/[0.08] transition-colors duration-150"
           >
             Prospects
           </button>
@@ -105,25 +105,25 @@ export function SubsurfaceView({ demoData, activeScenario, onSelectProspect }: S
 
         {/* Selected prospect detail overlay */}
         {selectedProspect && selectedResult && (
-          <div className="absolute top-3 right-64 bg-panel/95 border border-slate-700 rounded-lg p-4 text-sm w-64">
+          <div className="absolute top-3 right-64 bg-[#0a0e14]/95 border border-white/[0.08] backdrop-blur-sm rounded-lg p-4 text-sm w-64">
             <div className="flex items-center justify-between">
-              <h4 className="font-semibold text-slate-100">{selectedProspect.name}</h4>
-              <button onClick={() => setSelectedId(null)} className="text-slate-500 hover:text-slate-300 text-xs">
+              <h4 className="font-semibold text-white/90">{selectedProspect.name}</h4>
+              <button onClick={() => setSelectedId(null)} className="text-white/40 hover:text-white/70 text-xs">
                 ✕
               </button>
             </div>
-            <div className="mt-2 space-y-1 text-xs text-slate-400">
+            <div className="mt-2 space-y-1 text-xs text-white/50">
               <div className="flex justify-between">
                 <span>Expected NPV</span>
-                <span className="text-slate-200">{formatCurrency(selectedResult.simulation.expected_npv)}</span>
+                <span className="text-white/80">{formatCurrency(selectedResult.simulation.expected_npv)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Capital at Risk</span>
-                <span className="text-slate-200">{formatCurrency(selectedResult.simulation.capital_at_risk)}</span>
+                <span className="text-white/80">{formatCurrency(selectedResult.simulation.capital_at_risk)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Prob. Positive</span>
-                <span className="text-slate-200">
+                <span className="text-white/80">
                   {(selectedResult.simulation.probability_positive_npv * 100).toFixed(1)}%
                 </span>
               </div>
@@ -136,18 +136,18 @@ export function SubsurfaceView({ demoData, activeScenario, onSelectProspect }: S
               {selectedProspect.water_depth_ft && (
                 <div className="flex justify-between">
                   <span>Water Depth</span>
-                  <span className="text-slate-200">{selectedProspect.water_depth_ft.toLocaleString()} ft</span>
+                  <span className="text-white/80">{selectedProspect.water_depth_ft.toLocaleString()} ft</span>
                 </div>
               )}
               <div className="flex justify-between">
                 <span>P50 EUR</span>
-                <span className="text-slate-200">
+                <span className="text-white/80">
                   {selectedProspect.resource_estimate.p50.toLocaleString()} {selectedProspect.resource_estimate.unit}
                 </span>
               </div>
             </div>
             {selectedProspect.notes && (
-              <p className="text-[10px] text-slate-500 mt-2 italic">{selectedProspect.notes}</p>
+              <p className="text-[10px] text-white/40 mt-2 italic">{selectedProspect.notes}</p>
             )}
           </div>
         )}

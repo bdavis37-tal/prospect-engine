@@ -45,7 +45,7 @@ function CashFlowChart({ p10, p50, p90 }: { p10: number[]; p50: number[]; p90: n
 
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-20" preserveAspectRatio="none">
-      <line x1={0} y1={toY(0)} x2={w} y2={toY(0)} stroke="#334155" strokeWidth={0.5} />
+      <line x1={0} y1={toY(0)} x2={w} y2={toY(0)} stroke="rgba(255,255,255,0.08)" strokeWidth={0.5} />
       <path d={toPath(p10)} fill="none" stroke="#23D18B" strokeWidth={1} opacity={0.4} />
       <path d={toPath(p50)} fill="none" stroke="#23D18B" strokeWidth={1.5} />
       <path d={toPath(p90)} fill="none" stroke="#F97316" strokeWidth={1} opacity={0.4} />
@@ -59,14 +59,14 @@ function TornadoMini({ tornado }: { tornado: ProspectResult["tornado"] }) {
     <div className="space-y-1">
       {tornado.sensitivities.slice(0, 5).map((s) => (
         <div key={s.variable_name} className="flex items-center gap-2 text-[10px]">
-          <span className="w-16 text-right text-slate-400 truncate">{s.variable_name}</span>
-          <div className="flex-1 h-3 bg-slate-800 rounded relative">
+          <span className="w-16 text-right text-white/40 truncate">{s.variable_name}</span>
+          <div className="flex-1 h-3 bg-white/[0.04] rounded relative">
             <div
               className="absolute h-full bg-farm/50 rounded"
               style={{ width: `${(s.swing / maxSwing) * 100}%` }}
             />
           </div>
-          <span className="w-14 text-slate-500">{formatCurrency(s.swing)}</span>
+          <span className="w-14 text-white/40">{formatCurrency(s.swing)}</span>
         </div>
       ))}
     </div>
@@ -98,7 +98,7 @@ export function DemoProspectDetail({ demoData, activeScenario, selectedProspectI
     : null;
 
   if (!prospect || !prospectResult) {
-    return <div className="p-6 text-slate-400">Select a prospect to view details.</div>;
+    return <div className="p-6 text-white/40">Select a prospect to view details.</div>;
   }
 
   const sim = prospectResult.simulation;
@@ -117,15 +117,15 @@ export function DemoProspectDetail({ demoData, activeScenario, selectedProspectI
     .map((p) => p.prospect_id);
 
   return (
-    <div className="flex h-[calc(100vh-10rem)]">
+    <div className="flex flex-col md:flex-row h-[calc(100vh-10rem)]">
       {/* Prospect list sidebar */}
-      <div className="w-56 border-r border-slate-800 overflow-y-auto flex-shrink-0">
+      <div className="w-full md:w-56 max-h-32 md:max-h-none border-b md:border-b-0 md:border-r border-white/[0.06] overflow-y-auto flex-shrink-0">
         {demoData.input.prospects.map((p) => (
           <button
             key={p.prospect_id}
             onClick={() => onSelectProspect(p.prospect_id)}
-            className={`w-full text-left px-3 py-2 border-b border-slate-800/50 hover:bg-slate-800/50 text-xs ${
-              p.prospect_id === prospect.prospect_id ? "bg-slate-800/80" : ""
+            className={`w-full text-left px-3 py-2 border-b border-white/[0.04] hover:bg-white/[0.06] transition-colors duration-150 text-xs ${
+              p.prospect_id === prospect.prospect_id ? "bg-white/[0.08]" : ""
             }`}
           >
             <div className="flex items-center gap-1.5">
@@ -133,7 +133,7 @@ export function DemoProspectDetail({ demoData, activeScenario, selectedProspectI
                 className="w-2 h-2 rounded-full flex-shrink-0"
                 style={{ backgroundColor: DECISION_COLORS[decisions[p.prospect_id] || "defer"] }}
               />
-              <span className="text-slate-200 truncate">{p.name}</span>
+              <span className="text-white/80 truncate">{p.name}</span>
             </div>
           </button>
         ))}
@@ -145,7 +145,7 @@ export function DemoProspectDetail({ demoData, activeScenario, selectedProspectI
         <div className="flex items-start justify-between">
           <div>
             <h2 className="text-lg font-semibold">{prospect.name}</h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-white/40">
               {prospect.basin.replace(/_/g, " ")} · {prospect.hydrocarbon_type}
               {prospect.water_depth_ft ? ` · ${prospect.water_depth_ft.toLocaleString()} ft water depth` : ""}
             </p>
@@ -158,16 +158,16 @@ export function DemoProspectDetail({ demoData, activeScenario, selectedProspectI
           </div>
         </div>
 
-        {prospect.notes && <p className="text-xs text-slate-500 italic">{prospect.notes}</p>}
+        {prospect.notes && <p className="text-xs text-white/40 italic">{prospect.notes}</p>}
 
         {prospect.lease_expiry_years && prospect.lease_expiry_years <= 1.5 && (
-          <div className="text-xs text-red-400 bg-red-900/20 border border-red-800/30 rounded px-3 py-1.5">
+          <div className="text-xs text-[#EF4444] bg-[#EF4444]/10 border border-[#EF4444]/20 rounded px-3 py-1.5">
             Lease expires in {(prospect.lease_expiry_years * 12).toFixed(0)} months — mandatory drill constraint
           </div>
         )}
 
         {/* Key metrics grid */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           {[
             { label: "Expected NPV", value: formatCurrency(sim.expected_npv) },
             { label: "Capital at Risk", value: formatCurrency(sim.capital_at_risk) },
@@ -178,68 +178,68 @@ export function DemoProspectDetail({ demoData, activeScenario, selectedProspectI
             { label: "P90 NPV", value: formatCurrency(sim.npv_distribution.p90) },
             { label: "Risk/Reward", value: sim.risk_reward_ratio.toFixed(2) },
           ].map((m) => (
-            <div key={m.label} className="bg-panel border border-slate-800 rounded-lg p-2.5">
-              <div className="text-[10px] text-slate-500">{m.label}</div>
-              <div className="text-sm font-semibold text-slate-200 mt-0.5">{m.value}</div>
+            <div key={m.label} className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-2.5">
+              <div className="text-[10px] text-white/40">{m.label}</div>
+              <div className="text-sm font-semibold text-white/80 mt-0.5">{m.value}</div>
             </div>
           ))}
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           {/* NPV Distribution */}
-          <div className="bg-panel border border-slate-800 rounded-lg p-3">
-            <h3 className="text-xs font-semibold text-slate-300 mb-2">NPV Distribution</h3>
+          <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-3">
+            <h3 className="text-xs font-semibold text-white/70 mb-2">NPV Distribution</h3>
             <NPVHistogram data={sim.npv_histogram_data} />
-            <div className="flex justify-between text-[9px] text-slate-500 mt-1">
+            <div className="flex justify-between text-[9px] text-white/40 mt-1">
               <span>{formatCurrency(sim.npv_distribution.min)}</span>
               <span>{formatCurrency(sim.npv_distribution.max)}</span>
             </div>
           </div>
 
           {/* Cash Flow Projections */}
-          <div className="bg-panel border border-slate-800 rounded-lg p-3">
-            <h3 className="text-xs font-semibold text-slate-300 mb-2">Annual Cash Flows (P10/P50/P90)</h3>
+          <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-3">
+            <h3 className="text-xs font-semibold text-white/70 mb-2">Annual Cash Flows (P10/P50/P90)</h3>
             <CashFlowChart p10={sim.annual_cash_flows_p10} p50={sim.annual_cash_flows_p50} p90={sim.annual_cash_flows_p90} />
-            <div className="flex justify-between text-[9px] text-slate-500 mt-1">
+            <div className="flex justify-between text-[9px] text-white/40 mt-1">
               <span>Year 1</span>
               <span>Year {sim.annual_cash_flows_p50.length}</span>
             </div>
           </div>
 
           {/* Decision Comparison */}
-          <div className="bg-panel border border-slate-800 rounded-lg p-3">
-            <h3 className="text-xs font-semibold text-slate-300 mb-2">Decision Options</h3>
+          <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-3">
+            <h3 className="text-xs font-semibold text-white/70 mb-2">Decision Options</h3>
             <div className="space-y-1.5">
               {Object.entries(dec.options).map(([key, metrics]) => (
                 <div
                   key={key}
                   className={`flex items-center justify-between text-xs px-2 py-1 rounded ${
-                    key === dec.recommendation ? "bg-slate-800/60" : ""
+                    key === dec.recommendation ? "bg-white/[0.06]" : ""
                   }`}
                 >
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: DECISION_COLORS[key] }} />
-                    <span className="capitalize text-slate-300">{key.replace("_", " ")}</span>
+                    <span className="capitalize text-white/70">{key.replace("_", " ")}</span>
                     {key === dec.recommendation && (
                       <span className="text-[9px] text-drill">recommended</span>
                     )}
                   </div>
-                  <span className="text-slate-400">{formatCurrency(metrics.expected_npv)}</span>
+                  <span className="text-white/40">{formatCurrency(metrics.expected_npv)}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Sensitivity */}
-          <div className="bg-panel border border-slate-800 rounded-lg p-3">
-            <h3 className="text-xs font-semibold text-slate-300 mb-2">Sensitivity (Tornado)</h3>
+          <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-3">
+            <h3 className="text-xs font-semibold text-white/70 mb-2">Sensitivity (Tornado)</h3>
             <TornadoMini tornado={prospectResult.tornado} />
           </div>
         </div>
 
         {/* 3D mini panel */}
-        <div className="bg-panel border border-slate-800 rounded-lg p-3">
-          <h3 className="text-xs font-semibold text-slate-300 mb-2">Subsurface Context</h3>
+        <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-3">
+          <h3 className="text-xs font-semibold text-white/70 mb-2">Subsurface Context</h3>
           <SubsurfaceScene
             prospects={demoData.input.prospects}
             scene3d={demoData.scene3d}
@@ -251,8 +251,8 @@ export function DemoProspectDetail({ demoData, activeScenario, selectedProspectI
         </div>
 
         {/* Resource & cost table */}
-        <div className="bg-panel border border-slate-800 rounded-lg p-3">
-          <h3 className="text-xs font-semibold text-slate-300 mb-2">Prospect Parameters</h3>
+        <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-3">
+          <h3 className="text-xs font-semibold text-white/70 mb-2">Prospect Parameters</h3>
           <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-xs">
             {[
               ["P90 EUR", `${prospect.resource_estimate.p90.toLocaleString()} ${prospect.resource_estimate.unit}`],
@@ -268,9 +268,9 @@ export function DemoProspectDetail({ demoData, activeScenario, selectedProspectI
               ["b-factor", prospect.decline_params.b_factor.toFixed(2)],
               ["WI", `${(prospect.working_interest * 100).toFixed(0)}%`],
             ].map(([label, value]) => (
-              <div key={label} className="flex justify-between py-0.5 border-b border-slate-800/30">
-                <span className="text-slate-500">{label}</span>
-                <span className="text-slate-300">{value}</span>
+              <div key={label} className="flex justify-between py-0.5 border-b border-white/[0.04]">
+                <span className="text-white/40">{label}</span>
+                <span className="text-white/70">{value}</span>
               </div>
             ))}
           </div>

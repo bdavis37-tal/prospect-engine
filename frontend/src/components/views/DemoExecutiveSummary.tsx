@@ -13,7 +13,7 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
   const scenarioResult = demoData.results.scenario_comparison.scenario_results.find(
     (s) => s.scenario_name === activeScenario
   );
-  if (!scenarioResult) return <div className="p-6 text-slate-400">No data.</div>;
+  if (!scenarioResult) return <div className="p-6 text-white/50">No data.</div>;
 
   const opt = scenarioResult.optimization_result;
   const rec = opt.recommended_portfolio;
@@ -37,28 +37,28 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
   return (
     <div className="p-4 max-w-4xl mx-auto space-y-6">
       <div className="text-center">
-        <h2 className="text-xl font-bold text-slate-100">Executive Summary</h2>
-        <p className="text-sm text-slate-400 mt-1">{demoData.results.scenario_name} — {activeScenario}</p>
+        <h2 className="text-xl font-bold text-white/90">Executive Summary</h2>
+        <p className="text-sm text-white/50 mt-1">{demoData.results.scenario_name} — {activeScenario}</p>
       </div>
 
       {/* Key headline metrics */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {[
           { label: "Portfolio NPV", value: formatCurrency(rec.expected_npv), color: "text-drill" },
-          { label: "Capital Deployed", value: formatCurrency(rec.capital_deployed), color: "text-slate-200" },
-          { label: "Capital Remaining", value: formatCurrency(rec.capital_remaining), color: "text-slate-200" },
+          { label: "Capital Deployed", value: formatCurrency(rec.capital_deployed), color: "text-white/80" },
+          { label: "Capital Remaining", value: formatCurrency(rec.capital_remaining), color: "text-white/80" },
           { label: "Diversification Benefit", value: formatCurrency(opt.diversification_benefit), color: "text-farm" },
         ].map((m) => (
-          <div key={m.label} className="bg-panel border border-slate-800 rounded-lg p-4 text-center">
-            <div className="text-xs text-slate-500">{m.label}</div>
+          <div key={m.label} className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4 text-center">
+            <div className="text-xs text-white/40">{m.label}</div>
             <div className={`text-lg font-bold mt-1 ${m.color}`}>{m.value}</div>
           </div>
         ))}
       </div>
 
       {/* Allocation breakdown */}
-      <div className="bg-panel border border-slate-800 rounded-lg p-4">
-        <h3 className="text-sm font-semibold text-slate-300 mb-3">Recommended Allocation</h3>
+      <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
+        <h3 className="text-sm font-semibold text-white/70 mb-3">Recommended Allocation</h3>
         <div className="flex h-6 rounded overflow-hidden mb-3">
           {(["drill", "farm_out", "divest", "defer"] as const).map((d) => {
             const count = allocationCounts[d] || 0;
@@ -75,7 +75,7 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
             );
           })}
         </div>
-        <div className="flex gap-6 text-xs text-slate-400">
+        <div className="flex gap-6 text-xs text-white/50">
           {(["drill", "farm_out", "divest", "defer"] as const).map((d) => (
             <span key={d} className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded" style={{ backgroundColor: DECISION_COLORS[d] }} />
@@ -86,11 +86,11 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
       </div>
 
       {/* Top prospects table */}
-      <div className="bg-panel border border-slate-800 rounded-lg p-4">
-        <h3 className="text-sm font-semibold text-slate-300 mb-3">Top 5 Prospects by Expected NPV</h3>
+      <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
+        <h3 className="text-sm font-semibold text-white/70 mb-3">Top 5 Prospects by Expected NPV</h3>
         <table className="w-full text-xs">
           <thead>
-            <tr className="border-b border-slate-700 text-slate-400">
+            <tr className="border-b border-white/[0.08] text-white/50">
               <th className="text-left py-1.5">Prospect</th>
               <th className="text-right py-1.5">NPV</th>
               <th className="text-right py-1.5">Prob+</th>
@@ -103,13 +103,13 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
               const p = demoData.input.prospects.find((pp) => pp.prospect_id === pr.prospect_id);
               const dec = rec.allocation[pr.prospect_id] || pr.decision_comparison.recommendation;
               return (
-                <tr key={pr.prospect_id} className="border-b border-slate-800/30">
-                  <td className="py-1.5 text-slate-300">{p?.name || pr.prospect_id}</td>
+                <tr key={pr.prospect_id} className="border-b border-white/[0.04]">
+                  <td className="py-1.5 text-white/70">{p?.name || pr.prospect_id}</td>
                   <td className="py-1.5 text-right text-drill">{formatCurrency(pr.simulation.expected_npv)}</td>
-                  <td className="py-1.5 text-right text-slate-300">
+                  <td className="py-1.5 text-right text-white/70">
                     {(pr.simulation.probability_positive_npv * 100).toFixed(0)}%
                   </td>
-                  <td className="py-1.5 text-right text-slate-400">{formatCurrency(pr.simulation.capital_at_risk)}</td>
+                  <td className="py-1.5 text-right text-white/50">{formatCurrency(pr.simulation.capital_at_risk)}</td>
                   <td className="py-1.5 text-center">
                     <span className="capitalize" style={{ color: DECISION_COLORS[dec] }}>
                       {dec.replace("_", " ")}
@@ -126,19 +126,19 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
       <div className="flex justify-center gap-3">
         <button
           onClick={() => exportPortfolioCSV(demoData, activeScenario)}
-          className="px-4 py-2 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded border border-slate-700 transition-colors"
+          className="px-4 py-2 text-xs font-medium bg-white/[0.04] hover:bg-white/[0.08] text-white/80 rounded border border-white/[0.08] transition-colors"
         >
           Export Portfolio CSV
         </button>
         <button
           onClick={() => exportScenarioCSV(demoData)}
-          className="px-4 py-2 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded border border-slate-700 transition-colors"
+          className="px-4 py-2 text-xs font-medium bg-white/[0.04] hover:bg-white/[0.08] text-white/80 rounded border border-white/[0.08] transition-colors"
         >
           Export Scenario CSV
         </button>
         <button
           onClick={() => window.print()}
-          className="px-4 py-2 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded border border-slate-700 transition-colors"
+          className="px-4 py-2 text-xs font-medium bg-white/[0.04] hover:bg-white/[0.08] text-white/80 rounded border border-white/[0.08] transition-colors"
         >
           Print Summary
         </button>
@@ -146,9 +146,9 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
 
       {/* Robustness summary */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="bg-panel border border-slate-800 rounded-lg p-4">
-          <h3 className="text-sm font-semibold text-slate-300 mb-2">Scenario Robustness</h3>
-          <div className="text-xs space-y-1.5 text-slate-400">
+        <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
+          <h3 className="text-sm font-semibold text-white/70 mb-2">Scenario Robustness</h3>
+          <div className="text-xs space-y-1.5 text-white/50">
             <div>
               <span className="text-drill">{comp.robust_prospects.length}</span> prospects have consistent
               decisions across all {comp.scenario_results.length} price scenarios.
@@ -160,14 +160,14 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
           </div>
         </div>
 
-        <div className="bg-panel border border-slate-800 rounded-lg p-4">
-          <h3 className="text-sm font-semibold text-slate-300 mb-2">Key Constraints</h3>
-          <div className="text-xs space-y-1.5 text-slate-400">
-            <div>Budget: <span className="text-slate-200">{formatCurrency(demoData.input.capital_budget)}</span></div>
+        <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
+          <h3 className="text-sm font-semibold text-white/70 mb-2">Key Constraints</h3>
+          <div className="text-xs space-y-1.5 text-white/50">
+            <div>Budget: <span className="text-white/80">{formatCurrency(demoData.input.capital_budget)}</span></div>
             {demoData.input.constraints.mandatory_drill && (
               <div>
                 Mandatory drill:{" "}
-                <span className="text-slate-200">
+                <span className="text-white/80">
                   {demoData.input.constraints.mandatory_drill
                     .map((id) => demoData.input.prospects.find((p) => p.prospect_id === id)?.name || id)
                     .join(", ")}
@@ -177,7 +177,7 @@ export function DemoExecutiveSummary({ demoData, activeScenario }: Props) {
             {demoData.input.constraints.max_single_prospect_pct_of_budget && (
               <div>
                 Max single prospect:{" "}
-                <span className="text-slate-200">
+                <span className="text-white/80">
                   {(demoData.input.constraints.max_single_prospect_pct_of_budget * 100).toFixed(0)}% of budget
                 </span>
               </div>

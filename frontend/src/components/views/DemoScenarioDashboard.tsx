@@ -24,24 +24,24 @@ export function DemoScenarioDashboard({ demoData }: Props) {
   return (
     <div className="p-4 space-y-4">
       {/* Scenario comparison cards */}
-      <div className="grid grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
         {scenarios.map((sr) => {
           const rec = sr.optimization_result.recommended_portfolio;
           return (
-            <div key={sr.scenario_name} className="bg-panel border border-slate-800 rounded-lg p-3">
-              <h3 className="text-xs font-semibold text-slate-300 truncate">{sr.scenario_name}</h3>
+            <div key={sr.scenario_name} className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-3">
+              <h3 className="text-xs font-semibold text-white/70 truncate">{sr.scenario_name}</h3>
               <div className="mt-2 space-y-1 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-500">NPV</span>
+                  <span className="text-white/40">NPV</span>
                   <span className="text-drill font-semibold">{formatCurrency(rec.expected_npv)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Risk</span>
-                  <span className="text-slate-300">{formatCurrency(rec.portfolio_risk)}</span>
+                  <span className="text-white/40">Risk</span>
+                  <span className="text-white/70">{formatCurrency(rec.portfolio_risk)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Deployed</span>
-                  <span className="text-slate-300">{formatCurrency(rec.capital_deployed)}</span>
+                  <span className="text-white/40">Deployed</span>
+                  <span className="text-white/70">{formatCurrency(rec.capital_deployed)}</span>
                 </div>
               </div>
               {/* Mini allocation bar */}
@@ -65,18 +65,18 @@ export function DemoScenarioDashboard({ demoData }: Props) {
 
       {/* Robustness classification */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="bg-panel border border-slate-800 rounded-lg p-4">
+        <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
           <h3 className="text-sm font-semibold text-drill mb-2">
             Robust Prospects ({comp.robust_prospects.length})
           </h3>
-          <p className="text-[10px] text-slate-500 mb-2">Same decision across all scenarios</p>
+          <p className="text-[10px] text-white/40 mb-2">Same decision across all scenarios</p>
           <div className="space-y-1">
             {comp.robust_prospects.map((id) => {
               const p = demoData.input.prospects.find((pr) => pr.prospect_id === id);
               const dec = matrix[id]?.[scenarios[0]?.scenario_name] || "defer";
               return (
                 <div key={id} className="flex items-center justify-between text-xs">
-                  <span className="text-slate-300">{p?.name || id}</span>
+                  <span className="text-white/70">{p?.name || id}</span>
                   <span className="capitalize" style={{ color: DECISION_COLORS[dec] }}>
                     {dec.replace("_", " ")}
                   </span>
@@ -84,16 +84,16 @@ export function DemoScenarioDashboard({ demoData }: Props) {
               );
             })}
             {comp.robust_prospects.length === 0 && (
-              <p className="text-xs text-slate-500 italic">No fully robust prospects</p>
+              <p className="text-xs text-white/40 italic">No fully robust prospects</p>
             )}
           </div>
         </div>
 
-        <div className="bg-panel border border-slate-800 rounded-lg p-4">
+        <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4">
           <h3 className="text-sm font-semibold text-divest mb-2">
             Fragile Prospects ({comp.fragile_prospects.length})
           </h3>
-          <p className="text-[10px] text-slate-500 mb-2">Decision changes across scenarios</p>
+          <p className="text-[10px] text-white/40 mb-2">Decision changes across scenarios</p>
           <div className="space-y-1">
             {comp.fragile_prospects.map((id) => {
               const p = demoData.input.prospects.find((pr) => pr.prospect_id === id);
@@ -101,7 +101,7 @@ export function DemoScenarioDashboard({ demoData }: Props) {
               const unique = [...new Set(decisions)];
               return (
                 <div key={id} className="flex items-center justify-between text-xs">
-                  <span className="text-slate-300">{p?.name || id}</span>
+                  <span className="text-white/70">{p?.name || id}</span>
                   <div className="flex gap-1">
                     {unique.map((d) => (
                       <span key={d} className="capitalize text-[10px] px-1 rounded" style={{ color: DECISION_COLORS[d] }}>
@@ -113,21 +113,21 @@ export function DemoScenarioDashboard({ demoData }: Props) {
               );
             })}
             {comp.fragile_prospects.length === 0 && (
-              <p className="text-xs text-slate-500 italic">No fragile prospects</p>
+              <p className="text-xs text-white/40 italic">No fragile prospects</p>
             )}
           </div>
         </div>
       </div>
 
       {/* Full decision matrix */}
-      <div className="bg-panel border border-slate-800 rounded-lg p-4 overflow-x-auto">
-        <h3 className="text-sm font-semibold text-slate-300 mb-3">Decision Matrix — All Scenarios</h3>
+      <div className="bg-[#0a0e14] border border-white/[0.06] rounded-lg p-4 overflow-x-auto">
+        <h3 className="text-sm font-semibold text-white/70 mb-3">Decision Matrix — All Scenarios</h3>
         <table className="w-full text-xs">
           <thead>
-            <tr className="border-b border-slate-700">
-              <th className="text-left py-1.5 pr-3 text-slate-400 font-medium">Prospect</th>
+            <tr className="border-b border-white/[0.08]">
+              <th className="text-left py-1.5 pr-3 text-white/50 font-medium">Prospect</th>
               {scenarios.map((sr) => (
-                <th key={sr.scenario_name} className="text-center py-1.5 px-2 text-slate-400 font-medium">
+                <th key={sr.scenario_name} className="text-center py-1.5 px-2 text-white/50 font-medium">
                   {sr.scenario_name.replace(" Case", "")}
                 </th>
               ))}
@@ -137,8 +137,8 @@ export function DemoScenarioDashboard({ demoData }: Props) {
             {demoData.input.prospects.map((p) => {
               const isFragile = comp.fragile_prospects.includes(p.prospect_id);
               return (
-                <tr key={p.prospect_id} className={`border-b border-slate-800/30 ${isFragile ? "bg-orange-900/5" : ""}`}>
-                  <td className="py-1.5 pr-3 text-slate-300">{p.name}</td>
+                <tr key={p.prospect_id} className={`border-b border-white/[0.04] ${isFragile ? "bg-[#F97316]/[0.03]" : ""}`}>
+                  <td className="py-1.5 pr-3 text-white/70">{p.name}</td>
                   {scenarios.map((sr) => {
                     const dec = matrix[p.prospect_id]?.[sr.scenario_name] || "defer";
                     return (
@@ -158,7 +158,7 @@ export function DemoScenarioDashboard({ demoData }: Props) {
         </table>
 
         {/* Legend */}
-        <div className="flex gap-4 mt-2 text-[10px] text-slate-500">
+        <div className="flex gap-4 mt-2 text-[10px] text-white/40">
           {Object.entries(DECISION_COLORS).map(([key, color]) => (
             <span key={key} className="flex items-center gap-1">
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />

@@ -36,6 +36,22 @@ if (typeof globalThis.ResizeObserver === "undefined") {
   (globalThis as unknown as Record<string, unknown>).ResizeObserver = ResizeObserverMock;
 }
 
+// Polyfill IntersectionObserver for jsdom (required by framer-motion whileInView)
+class IntersectionObserverMock {
+  constructor(private callback: IntersectionObserverCallback) {}
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  get root() { return null; }
+  get rootMargin() { return ""; }
+  get thresholds() { return []; }
+  takeRecords() { return []; }
+}
+
+if (typeof globalThis.IntersectionObserver === "undefined") {
+  (globalThis as unknown as Record<string, unknown>).IntersectionObserver = IntersectionObserverMock;
+}
+
 // cmdk calls scrollIntoView on selected items — stub it for jsdom
 if (typeof Element.prototype.scrollIntoView === "undefined") {
   Element.prototype.scrollIntoView = vi.fn();

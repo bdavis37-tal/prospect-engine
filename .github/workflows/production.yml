@@ -1,0 +1,51 @@
+name: Production gates
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: pip install -r backend/requirements.lock pytest pip-audit
+      - run: pip install -e backend --no-deps
+      - run: pytest backend/tests -q
+      - run: python backend/scripts/generate_types.py --check
+      - run: pip-audit -r backend/requirements.lock
+      - run: npm ci
+        working-directory: frontend
+      - run: npm test && npm run build && npm audit --audit-level=high
+        working-directory: frontend
+      - run: node scripts/check-build.mjs
+        working-directory: frontend
+      - run: docker compose up --build -d --wait
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: npm run test:e2e
+        working-directory: frontend
+      - run: python ops/verify_restart.py snapshot
+      - run: docker compose exec -T backend python scripts/backup.py /data/prospect-engine.sqlite3 /data/ci-backup.sqlite3
+      - run: docker compose exec -T backend python scripts/backup.py /data/ci-backup.sqlite3 /data/ci-restore.sqlite3
+      - run: docker compose restart && docker compose up -d --wait
+      - run: python ops/verify_restart.py check
+      - if: always()
+        run: docker compose logs --no-color > container-logs.txt
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-verification
+          path: |
+            frontend/playwright-report
+            frontend/test-results
+            container-logs.txt
+      - if: always()
+        run: docker compose down

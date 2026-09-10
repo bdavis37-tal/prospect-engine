@@ -575,7 +575,7 @@ export function SubsurfaceScene({
               key={p.key}
               onClick={() => animateToPreset(p.key)}
               aria-label={`Camera view: ${p.label}`}
-              className="px-2 py-1 text-xs rounded bg-[#0a0e14]/80 text-white/70 hover:bg-white/[0.08] border border-white/[0.08] backdrop-blur-sm"
+              className="px-2 py-1 text-xs rounded bg-[#0a0e14]/80 text-white/90 hover:bg-white/[0.08] border border-white/[0.08] backdrop-blur-sm"
             >
               {p.label}
             </button>
@@ -587,7 +587,7 @@ export function SubsurfaceScene({
       {!compact && (
         <div className="absolute top-3 right-3 flex flex-col gap-1">
           {Object.entries(layers).map(([key, visible]) => (
-            <label key={key} className="flex items-center gap-1.5 text-xs text-white/50 cursor-pointer">
+            <label key={key} className="flex items-center gap-1.5 text-xs text-white/90 cursor-pointer">
               <input
                 type="checkbox"
                 checked={visible}
@@ -605,7 +605,7 @@ export function SubsurfaceScene({
         <button
           onClick={captureView}
           aria-label="Capture 3D view as PNG"
-          className="absolute bottom-3 right-3 px-3 py-1.5 text-xs rounded bg-[#0a0e14]/80 text-white/70 hover:bg-white/[0.08] border border-white/[0.08] backdrop-blur-sm"
+          className="absolute bottom-3 right-3 px-3 py-1.5 text-xs rounded bg-[#0a0e14]/80 text-white/90 hover:bg-white/[0.08] border border-white/[0.08] backdrop-blur-sm"
         >
           Capture View
         </button>
@@ -615,17 +615,17 @@ export function SubsurfaceScene({
       {hoveredProspect && (
         <div className="absolute bottom-3 left-3 bg-[#0a0e14]/95 border border-white/[0.08] backdrop-blur-sm rounded-lg p-3 text-sm max-w-xs">
           <div className="font-semibold text-white/90">{hoveredProspect.name}</div>
-          <div className="text-white/50 text-xs mt-1">{hoveredProspect.basin}</div>
+          <div className="text-white/90 text-xs mt-1">{hoveredProspect.basin}</div>
           <div className="flex items-center gap-2 mt-1.5">
             <span
               className="inline-block w-2 h-2 rounded-full"
               style={{ backgroundColor: DECISION_COLORS[decisions[hoveredProspect.prospect_id] || "defer"] }}
             />
-            <span className="text-xs text-white/70 capitalize">
+            <span className="text-xs text-white/90 capitalize">
               {(decisions[hoveredProspect.prospect_id] || "defer").replace("_", " ")}
             </span>
           </div>
-          <div className="text-xs text-white/50 mt-1">
+          <div className="text-xs text-white/90 mt-1">
             P50 EUR: {hoveredProspect.resource_estimate.p50.toLocaleString()} {hoveredProspect.resource_estimate.unit}
           </div>
         </div>
@@ -633,7 +633,7 @@ export function SubsurfaceScene({
 
       {/* Legend */}
       {!compact && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#0a0e14]/80 border border-white/[0.08] backdrop-blur-sm rounded px-3 py-1.5 flex gap-4 text-xs text-white/50">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#0a0e14]/80 border border-white/[0.08] backdrop-blur-sm rounded px-3 py-1.5 flex gap-4 text-xs text-white/90">
           {Object.entries(DECISION_COLORS).map(([key, color]) => (
             <span key={key} className="flex items-center gap-1">
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />

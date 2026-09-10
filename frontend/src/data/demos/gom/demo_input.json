@@ -7,11 +7,11 @@
       "longitude": -90.5,
       "basin": "gom_deepwater",
       "hydrocarbon_type": "oil",
-      "water_depth_ft": 6500,
+      "water_depth_ft": 6500.0,
       "resource_estimate": {
-        "p10": 150,
-        "p50": 50,
-        "p90": 15,
+        "p10": 150.0,
+        "p50": 50.0,
+        "p90": 15.0,
         "distribution_type": "lognormal",
         "unit": "MMBOE"
       },
@@ -22,36 +22,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 180000000,
-        "low": 150000000,
-        "high": 220000000,
+        "base": 180000000.0,
+        "low": 150000000.0,
+        "high": 220000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 60000000,
-        "low": 45000000,
-        "high": 80000000,
+        "base": 60000000.0,
+        "low": 45000000.0,
+        "high": 80000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 25000000,
+      "facility_cost": 25000000.0,
       "opex_per_boe": {
-        "base": 18,
-        "low": 14,
-        "high": 24,
+        "base": 18.0,
+        "low": 14.0,
+        "high": 24.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.1875,
       "tax_rate": 0.25,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.8125,
       "decline_params": {
-        "initial_production_rate": 25000,
+        "initial_production_rate": 25000.0,
         "initial_decline_rate": 0.18,
         "b_factor": 0.5,
         "terminal_decline_rate": 0.06,
         "well_life_years": 30
       },
       "infrastructure_distance_miles": 8.0,
-      "notes": "Miocene target. 8 miles from existing Thunderhawk platform \u2014 tieback feasible reducing facility cost from $400M to $80M."
+      "lease_expiry_years": null,
+      "notes": "Miocene target. 8 miles from existing Thunderhawk platform — tieback feasible reducing facility cost from $400M to $80M.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "gom_2",
@@ -60,11 +64,11 @@
       "longitude": -90.8,
       "basin": "gom_deepwater",
       "hydrocarbon_type": "oil",
-      "water_depth_ft": 8200,
+      "water_depth_ft": 8200.0,
       "resource_estimate": {
-        "p10": 120,
-        "p50": 40,
-        "p90": 10,
+        "p10": 120.0,
+        "p50": 40.0,
+        "p90": 10.0,
         "distribution_type": "lognormal",
         "unit": "MMBOE"
       },
@@ -75,36 +79,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 200000000,
-        "low": 170000000,
-        "high": 250000000,
+        "base": 200000000.0,
+        "low": 170000000.0,
+        "high": 250000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 70000000,
-        "low": 55000000,
-        "high": 90000000,
+        "base": 70000000.0,
+        "low": 55000000.0,
+        "high": 90000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 40000000,
+      "facility_cost": 40000000.0,
       "opex_per_boe": {
-        "base": 20,
-        "low": 16,
-        "high": 26,
+        "base": 20.0,
+        "low": 16.0,
+        "high": 26.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.1875,
       "tax_rate": 0.25,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.8125,
       "decline_params": {
-        "initial_production_rate": 20000,
+        "initial_production_rate": 20000.0,
         "initial_decline_rate": 0.15,
         "b_factor": 0.4,
         "terminal_decline_rate": 0.06,
         "well_life_years": 30
       },
       "infrastructure_distance_miles": 12.0,
-      "notes": "Wilcox formation. Ultra-deep, ultra-high pressure. Tieback to Cascade-Chinook FPSO (12 miles) reduces facility from $500M to $120M. Farm-out candidate."
+      "lease_expiry_years": null,
+      "notes": "Wilcox formation. Ultra-deep, ultra-high pressure. Tieback to Cascade-Chinook FPSO (12 miles) reduces facility from $500M to $120M. Farm-out candidate.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "gom_3",
@@ -113,11 +121,11 @@
       "longitude": -91.2,
       "basin": "gom_deepwater",
       "hydrocarbon_type": "oil",
-      "water_depth_ft": 7000,
+      "water_depth_ft": 7000.0,
       "resource_estimate": {
-        "p10": 80,
-        "p50": 30,
-        "p90": 5,
+        "p10": 80.0,
+        "p50": 30.0,
+        "p90": 5.0,
         "distribution_type": "lognormal",
         "unit": "MMBOE"
       },
@@ -128,35 +136,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 160000000,
-        "low": 130000000,
-        "high": 200000000,
+        "base": 160000000.0,
+        "low": 130000000.0,
+        "high": 200000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 55000000,
-        "low": 40000000,
-        "high": 75000000,
+        "base": 55000000.0,
+        "low": 40000000.0,
+        "high": 75000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 180000000,
+      "facility_cost": 180000000.0,
       "opex_per_boe": {
-        "base": 19,
-        "low": 15,
-        "high": 25,
+        "base": 19.0,
+        "low": 15.0,
+        "high": 25.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.1875,
       "tax_rate": 0.25,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.8125,
       "decline_params": {
-        "initial_production_rate": 18000,
+        "initial_production_rate": 18000.0,
         "initial_decline_rate": 0.17,
         "b_factor": 0.45,
         "terminal_decline_rate": 0.06,
         "well_life_years": 30
       },
-      "notes": "Lower Tertiary target. No nearby infrastructure \u2014 fully standalone. Facility cost kills economics. Divest or defer."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Lower Tertiary target. No nearby infrastructure — fully standalone. Facility cost kills economics. Divest or defer.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "gom_4",
@@ -165,11 +178,11 @@
       "longitude": -90.1,
       "basin": "gom_deepwater",
       "hydrocarbon_type": "mixed",
-      "water_depth_ft": 5800,
+      "water_depth_ft": 5800.0,
       "resource_estimate": {
-        "p10": 20,
-        "p50": 8,
-        "p90": 3,
+        "p10": 20.0,
+        "p50": 8.0,
+        "p90": 3.0,
         "distribution_type": "lognormal",
         "unit": "MMBOE"
       },
@@ -180,36 +193,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 120000000,
-        "low": 100000000,
-        "high": 150000000,
+        "base": 120000000.0,
+        "low": 100000000.0,
+        "high": 150000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 40000000,
-        "low": 30000000,
-        "high": 55000000,
+        "base": 40000000.0,
+        "low": 30000000.0,
+        "high": 55000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 20000000,
+      "facility_cost": 20000000.0,
       "opex_per_boe": {
-        "base": 16,
-        "low": 12,
-        "high": 22,
+        "base": 16.0,
+        "low": 12.0,
+        "high": 22.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.1875,
       "tax_rate": 0.25,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.8125,
       "decline_params": {
-        "initial_production_rate": 15000,
+        "initial_production_rate": 15000.0,
         "initial_decline_rate": 0.2,
         "b_factor": 0.5,
         "terminal_decline_rate": 0.06,
         "well_life_years": 30
       },
       "infrastructure_distance_miles": 3.0,
-      "notes": "Frio formation. Gas-condensate heavy. Best-in-portfolio capital efficiency due to 3-mile tieback to existing subsea manifold. Drill in every scenario."
+      "lease_expiry_years": null,
+      "notes": "Frio formation. Gas-condensate heavy. Best-in-portfolio capital efficiency due to 3-mile tieback to existing subsea manifold. Drill in every scenario.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "gom_5",
@@ -218,11 +235,11 @@
       "longitude": -91.6,
       "basin": "gom_deepwater",
       "hydrocarbon_type": "oil",
-      "water_depth_ft": 9500,
+      "water_depth_ft": 9500.0,
       "resource_estimate": {
-        "p10": 200,
-        "p50": 25,
-        "p90": 2,
+        "p10": 200.0,
+        "p50": 25.0,
+        "p90": 2.0,
         "distribution_type": "lognormal",
         "unit": "MMBOE"
       },
@@ -233,36 +250,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 210000000,
-        "low": 180000000,
-        "high": 280000000,
+        "base": 210000000.0,
+        "low": 180000000.0,
+        "high": 280000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 75000000,
-        "low": 60000000,
-        "high": 100000000,
+        "base": 75000000.0,
+        "low": 60000000.0,
+        "high": 100000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 350000000,
+      "facility_cost": 350000000.0,
       "opex_per_boe": {
-        "base": 22,
-        "low": 17,
-        "high": 28,
+        "base": 22.0,
+        "low": 17.0,
+        "high": 28.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.1875,
       "tax_rate": 0.25,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.8125,
       "decline_params": {
-        "initial_production_rate": 22000,
+        "initial_production_rate": 22000.0,
         "initial_decline_rate": 0.16,
         "b_factor": 0.4,
         "terminal_decline_rate": 0.06,
         "well_life_years": 30
       },
       "infrastructure_distance_miles": 30.0,
-      "notes": "True frontier exploration. Extreme depth, extreme uncertainty. Widest distribution \u2014 dry hole or giant field. Farm-down candidate."
+      "lease_expiry_years": null,
+      "notes": "True frontier exploration. Extreme depth, extreme uncertainty. Widest distribution — dry hole or giant field. Farm-down candidate.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "gom_6",
@@ -271,11 +292,11 @@
       "longitude": -89.5,
       "basin": "gom_deepwater",
       "hydrocarbon_type": "oil",
-      "water_depth_ft": 4200,
+      "water_depth_ft": 4200.0,
       "resource_estimate": {
-        "p10": 45,
-        "p50": 25,
-        "p90": 12,
+        "p10": 45.0,
+        "p50": 25.0,
+        "p90": 12.0,
         "distribution_type": "lognormal",
         "unit": "MMBOE"
       },
@@ -286,36 +307,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 95000000,
-        "low": 80000000,
-        "high": 120000000,
+        "base": 95000000.0,
+        "low": 80000000.0,
+        "high": 120000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 35000000,
-        "low": 25000000,
-        "high": 50000000,
+        "base": 35000000.0,
+        "low": 25000000.0,
+        "high": 50000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 18000000,
+      "facility_cost": 18000000.0,
       "opex_per_boe": {
-        "base": 16,
-        "low": 13,
-        "high": 20,
+        "base": 16.0,
+        "low": 13.0,
+        "high": 20.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.1875,
       "tax_rate": 0.25,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.8125,
       "decline_params": {
-        "initial_production_rate": 15000,
+        "initial_production_rate": 15000.0,
         "initial_decline_rate": 0.2,
         "b_factor": 0.5,
         "terminal_decline_rate": 0.06,
         "well_life_years": 30
       },
       "infrastructure_distance_miles": 4.0,
-      "notes": "Shallower target, well-understood geology. Tight distribution \u2014 lowest risk in portfolio. Tieback to existing host."
+      "lease_expiry_years": null,
+      "notes": "Shallower target, well-understood geology. Tight distribution — lowest risk in portfolio. Tieback to existing host.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "gom_7",
@@ -324,11 +349,11 @@
       "longitude": -89.8,
       "basin": "gom_deepwater",
       "hydrocarbon_type": "oil",
-      "water_depth_ft": 5500,
+      "water_depth_ft": 5500.0,
       "resource_estimate": {
-        "p10": 55,
-        "p50": 20,
-        "p90": 8,
+        "p10": 55.0,
+        "p50": 20.0,
+        "p90": 8.0,
         "distribution_type": "lognormal",
         "unit": "MMBOE"
       },
@@ -339,35 +364,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 110000000,
-        "low": 90000000,
-        "high": 140000000,
+        "base": 110000000.0,
+        "low": 90000000.0,
+        "high": 140000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 45000000,
-        "low": 35000000,
-        "high": 60000000,
+        "base": 45000000.0,
+        "low": 35000000.0,
+        "high": 60000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 120000000,
+      "facility_cost": 120000000.0,
       "opex_per_boe": {
-        "base": 17,
-        "low": 14,
-        "high": 22,
+        "base": 17.0,
+        "low": 14.0,
+        "high": 22.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.1875,
       "tax_rate": 0.25,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.8125,
       "decline_params": {
-        "initial_production_rate": 16000,
+        "initial_production_rate": 16000.0,
         "initial_decline_rate": 0.19,
         "b_factor": 0.45,
         "terminal_decline_rate": 0.06,
         "well_life_years": 30
       },
-      "notes": "Pleistocene target. Partner offered $90M for 50% stake. Drill-with-partner vs sell-half decision."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Pleistocene target. Partner offered $90M for 50% stake. Drill-with-partner vs sell-half decision.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "gom_8",
@@ -376,11 +406,11 @@
       "longitude": -92.5,
       "basin": "gom_deepwater",
       "hydrocarbon_type": "oil",
-      "water_depth_ft": 10000,
+      "water_depth_ft": 10000.0,
       "resource_estimate": {
-        "p10": 300,
-        "p50": 60,
-        "p90": 8,
+        "p10": 300.0,
+        "p50": 60.0,
+        "p90": 8.0,
         "distribution_type": "lognormal",
         "unit": "MMBOE"
       },
@@ -391,44 +421,46 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 250000000,
-        "low": 210000000,
-        "high": 320000000,
+        "base": 250000000.0,
+        "low": 210000000.0,
+        "high": 320000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 90000000,
-        "low": 70000000,
-        "high": 120000000,
+        "base": 90000000.0,
+        "low": 70000000.0,
+        "high": 120000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 500000000,
+      "facility_cost": 500000000.0,
       "opex_per_boe": {
-        "base": 24,
-        "low": 18,
-        "high": 30,
+        "base": 24.0,
+        "low": 18.0,
+        "high": 30.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.1875,
       "tax_rate": 0.25,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.8125,
       "decline_params": {
-        "initial_production_rate": 30000,
+        "initial_production_rate": 30000.0,
         "initial_decline_rate": 0.14,
         "b_factor": 0.35,
         "terminal_decline_rate": 0.06,
         "well_life_years": 30
       },
       "infrastructure_distance_miles": 50.0,
-      "notes": "Lower Tertiary \u2014 deepest, most expensive. Capital requirement ($1.4B+) is enormous. P10 case is a company-maker. Almost certainly defer or farm-out."
+      "lease_expiry_years": null,
+      "notes": "Lower Tertiary — deepest, most expensive. Capital requirement ($1.4B+) is enormous. P10 case is a company-maker. Almost certainly defer or farm-out.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     }
   ],
-  "capital_budget": 600000000,
+  "decisions": null,
+  "capital_budget": 600000000.0,
   "discount_rate": 0.1,
-  "constraints": {
-    "max_single_prospect_pct_of_budget": 0.6,
-    "min_prospects_drilled": 2
-  },
+  "simulation_iterations": 1000,
   "price_scenarios": [
     {
       "scenario_name": "Base Case",
@@ -1681,5 +1713,16 @@
       "price_correlation_oil_gas": 0.6
     }
   ],
-  "simulation_iterations": 5000
+  "random_seed": 42,
+  "risk_aversion": 1.0,
+  "name": "Gulf of Mexico Deepwater Exploration",
+  "constraints": {
+    "min_prospects_drilled": 2,
+    "max_prospects_drilled": null,
+    "mandatory_drill": null,
+    "mandatory_defer": null,
+    "max_single_prospect_pct_of_budget": 0.6,
+    "min_basin_allocation": null,
+    "fixed_decisions": {}
+  }
 }

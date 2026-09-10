@@ -1,103 +1,26 @@
 # Architecture
 
-## System Diagram
-
-```mermaid
-flowchart LR
-  A["Guided Inputs (Prospects, Prices, Budget)"] --> B["Monte Carlo Engine (Vectorized)"]
-  B --> C["Decision Modeling (Drill/Farm-out/Divest/Defer)"]
-  C --> D["Portfolio Optimizer (MILP + Frontier Sweep)"]
-  D --> E["Scenario Engine & Sensitivity"]
-  E --> F["Interactive Visualizations (Map, Frontier, Tornado, Histograms)"]
+```text
+Browser -- HTTPS --> trusted TLS terminator -- loopback --> nginx :8080
+                                                           | /api
+                                                           v
+                                                     FastAPI :8000
+                                                           |
+                                              SQLite WAL on local volume
+                                                           |
+                                                   bounded queue worker
+                                                           |
+                                              isolated analysis subprocess
 ```
 
-## Monte Carlo Approach
+Nginx serves immutable build assets and proxies the API under the same origin. Only nginx is published, on loopback; the production host supplies TLS. FastAPI validates inputs, authenticates requests, enforces owner-scoped access, versions portfolios, queues jobs, and returns saved results. It does not perform simulation in request handlers.
 
-The backend draws all uncertain variables in batch NumPy arrays and computes economics in vectorized operations. This avoids Python iteration overhead and supports high iteration counts for responsive analysis.
+Each portfolio has an owner and an optimistic revision. Jobs contain the exact validated input, SHA-256 canonical input hash and model version at submission; results never depend on subsequent edits. Submission keys are unique per owner, allowing safe retries. The browser keeps the same key after an uncertain submission response. Queue claims use a SQLite immediate transaction. The worker spawns an isolated process, reports progress, honors cancellation, enforces execution deadlines and marks abandoned runs interrupted.
 
-## Portfolio Optimization Methodology
+`/api/health` checks process liveness. `/api/ready` checks the database and a recent worker heartbeat. `/api/metrics` returns owner-scoped job counts; it is not a public administrative dashboard. Request logs include IDs, route, status and duration, without prospect payloads or tokens. Audit rows record save/run/cancel actions.
 
-For each risk tolerance `lambda` in `[0,1]`, the optimizer solves a mixed-integer allocation problem with one decision per prospect and budget/constraint compliance. Sweeping `lambda` yields the efficient frontier.
+Production OIDC uses discovery and Authlib's authorization-code flow with PKCE, token validation, state and nonce. A signed, HTTP-only, Secure, SameSite=Lax session contains an issuer/subject owner key and display name. Subject access is allowlisted. Mutations require an application request header and reject foreign origins. OIDC credentials and session secrets are runtime configuration. The frontend never receives access/refresh tokens.
 
-Objective:
+SQLite is the deliberate single-host persistence choice. Keep the volume on a local durable disk, run one API service and a bounded worker count, and back it up online. Do not share it over NFS or scale this Compose stack across hosts. Move to a managed relational database and external queue before requiring multi-host availability. Workload/queue quotas bound execution; historical job limits bound individual workspaces. Operators must monitor disk capacity and establish retention for the number of authorized users.
 
-`maximize lambda * E[NPV] - (1 - lambda) * StdDev[NPV]`
-
-## Data Flow
-
-1. Input models are validated via Pydantic.
-2. Prospect-level simulation returns per-decision distributions and metrics.
-3. Decision modeler consolidates option economics for each prospect.
-4. Optimizer builds frontier points and selects a risk-adjusted recommendation.
-5. Scenario engine repeats pipeline over commodity decks to assess robustness.
-
-## Correlation Handling
-
-Prospect correlations are estimated from common market exposure and simulation covariance. Portfolio risk uses covariance-aware aggregation rather than naive variance summation.
-
-## 3D Subsurface Visualization
-
-The Three.js pipeline renders geological layers, prospect markers, and infrastructure in a 3D scene:
-
-1. Scene data is pre-computed per demo (`demo_3d_scene.json`) with geological layers, prospect positions, and infrastructure coordinates.
-2. `SubsurfaceScene.tsx` builds the Three.js scene graph: geological layer meshes, decision-colored prospect pins, infrastructure models, and optional tieback pipelines.
-3. Custom `OrbitControls.ts` handles camera rotation, zoom, and pan with smooth damping.
-4. Camera presets (overview, cross-section, close-up) are defined per demo and applied via animated transitions.
-
-## Demo Data Pipeline
-
-Pre-computed demos enable the frontend to run without the backend:
-
-1. `backend/scripts/generate_demo_data.py` loads prospect inputs and price scenarios.
-2. For each prospect: Monte Carlo simulation, decision comparison, and tornado sensitivity are computed.
-3. Portfolio optimization runs across all price scenarios to produce the scenario comparison.
-4. Results are serialized to `demo_results.json` alongside `demo_input.json` and `demo_3d_scene.json`.
-5. The frontend imports these JSON files statically — no API calls needed for demo mode.
-
-## Smart Defaults Philosophy
-
-Basin defaults provide practical starting values for cost, decline, and productivity while remaining fully editable. Defaults are transparent and designed for quick onboarding.
-
-## Frontend Architecture
-
-The frontend uses a spatial command-center layout built around three UX principles: narrative flow, progressive disclosure, and spatial memory.
-
-### Component Hierarchy
-
-```
-AppShell
-├── LandingHero              # Animated landing with demo cards and CTAs
-├── DemoErrorBoundary         # Error boundary wrapping demo views
-│   └── CommandCenter         # Spatial workspace layout
-│       ├── CompactHeader     # Logo, scenario indicator, command bar trigger
-│       ├── NavigationRail    # Vertical icon nav with active indicator (views 1-5)
-│       ├── ViewRenderer      # Lazy-loaded views with crossfade transitions
-│       │   ├── DemoPortfolioMap
-│       │   ├── SubsurfaceView
-│       │   ├── DemoOptimizerView
-│       │   ├── DemoScenarioDashboard
-│       │   └── DemoExecutiveSummary
-│       ├── ContextPanel      # Slide-in prospect detail with resize handle
-│       ├── StatusBar         # Persistent portfolio metrics
-│       └── CommandBar        # ⌘K fuzzy search overlay (cmdk)
-└── StepWizard                # Split-pane guided input with live preview
-```
-
-### State Management
-
-The `useCommandCenter` hook orchestrates all command-center state:
-- Active view and view transitions (via `useViewTransition` state machine: idle → exit → enter → idle)
-- Context panel open/close with prospect selection
-- Command bar toggle
-- Active scenario selection
-- Keyboard shortcuts (1-5 for views, ⌘K for command bar)
-- Navigation queuing during active transitions (latest-wins, discard intermediates)
-
-### Design Token System
-
-Semantic design tokens are defined in three layers:
-1. `tailwind.config.ts` — Tailwind utility classes (surface colors, decision palette, typography, spacing, animation)
-2. `styles/tokens.ts` — TypeScript constants for JS/D3/framer-motion contexts
-3. `styles/globals.css` — CSS custom properties as fallback, with `prefers-reduced-motion` overrides
-
-Decision colors (drill, farm-out, divest, defer) each have base/glow/muted variants for consistent visual language across all components.
+The frontend's canonical types are generated from Pydantic schemas. Samples lazy-load complete analysis snapshots; 3D and scene geometry load only when requested. The active interface is `src/workbench`, with `components/three` retained solely for sample illustrations. The former demo-only interface and placeholder wizard have been removed.

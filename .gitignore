@@ -12,3 +12,7 @@ __pycache__/
 *.log
 *.egg-info/
 tsconfig.tsbuildinfo
+backend/data/
+playwright-report/
+test-results/
+artifacts/

@@ -1,18 +1,16 @@
 from __future__ import annotations
-
 from dataclasses import dataclass
-
 import numpy as np
 from scipy.optimize import Bounds, LinearConstraint, milp
+from scipy.sparse import csc_matrix, eye, hstack, vstack
+from app.engine.models import DecisionComparison, DecisionType, FrontierPoint, PortfolioConstraints, PortfolioOptimizationResult
+from app.engine.monte_carlo import _summary
 
-from app.engine.models import (
-    DecisionComparison,
-    DecisionType,
-    DistributionSummary,
-    FrontierPoint,
-    PortfolioConstraints,
-    PortfolioOptimizationResult,
-)
+
+class OptimizationError(ValueError):
+    def __init__(self, message: str, code: str = 'infeasible'):
+        super().__init__(message)
+        self.code = code
 
 
 @dataclass
@@ -24,165 +22,101 @@ class Candidate:
     capital: float
 
 
-def _portfolio_distribution(selected: list[Candidate], sample_map: dict[tuple[str, DecisionType], np.ndarray]) -> np.ndarray:
-    if not selected:
-        return np.array([0.0])
-    stacked = np.vstack([sample_map[(c.prospect_id, c.decision)] for c in selected])
-    return np.sum(stacked, axis=0)
+def constraint_matrix(candidates, budget, constraints, basins):
+    n = len(candidates)
+    rows, lower, upper, names = [], [], [], []
+    def add(row, lo, hi, name):
+        rows.append(row); lower.append(lo); upper.append(hi); names.append(name)
+    ids = {c.prospect_id for c in candidates}
+    referenced = set(constraints.mandatory_drill or []) | set(constraints.mandatory_defer or []) | set(constraints.fixed_decisions)
+    if referenced - ids:
+        raise OptimizationError('Constraints reference unknown prospects', 'invalid_constraints')
+    for pid in sorted(ids):
+        add([float(c.prospect_id == pid) for c in candidates], 1, 1, f'One decision: {pid}')
+    add([c.capital for c in candidates], 0, budget, 'Capital budget')
+    if constraints.min_prospects_drilled is not None or constraints.max_prospects_drilled is not None:
+        add([float(c.decision == DecisionType.DRILL) for c in candidates], constraints.min_prospects_drilled or 0,
+            constraints.max_prospects_drilled if constraints.max_prospects_drilled is not None else len(ids), 'Drilled prospect count')
+    fixed = dict(constraints.fixed_decisions)
+    fixed.update({p: DecisionType.DRILL for p in constraints.mandatory_drill or []})
+    fixed.update({p: DecisionType.DEFER for p in constraints.mandatory_defer or []})
+    for pid, decision in fixed.items():
+        add([float(c.prospect_id == pid and c.decision == decision) for c in candidates], 1, 1, f'Required {decision.value}: {pid}')
+    if constraints.max_single_prospect_pct_of_budget is not None:
+        for pid in sorted(ids):
+            add([c.capital if c.prospect_id == pid else 0 for c in candidates], 0,
+                budget * constraints.max_single_prospect_pct_of_budget, f'Concentration: {pid}')
+    for basin, fraction in (constraints.min_basin_allocation or {}).items():
+        add([c.capital if basins.get(c.prospect_id) == basin else 0 for c in candidates], budget * fraction, np.inf,
+            f'Minimum basin capital: {basin.value}')
+    return np.array(rows).reshape(-1, n), np.array(lower), np.array(upper), names
 
 
-def _to_constraints(constraints: PortfolioConstraints | dict | None) -> PortfolioConstraints:
-    if isinstance(constraints, PortfolioConstraints):
-        return constraints
-    if isinstance(constraints, dict):
-        return PortfolioConstraints(**constraints)
-    return PortfolioConstraints()
+def solve(candidates, sample_matrix, budget, penalty, constraints, basins):
+    """Maximize E[NPV] - penalty E[max(-portfolio NPV, 0)] over all supplied draws."""
+    n, draws = len(candidates), sample_matrix.shape[0]
+    a, lo, hi, names = constraint_matrix(candidates, budget, constraints, basins)
+    scale = max(budget, float(np.abs(sample_matrix).mean()), 1)
+    row_scale = np.maximum(np.abs(a).max(axis=1), 1)
+    base = hstack([csc_matrix(a / row_scale[:, None]), csc_matrix((len(a), draws))])
+    loss = hstack([csc_matrix(-sample_matrix / scale), -eye(draws, format='csc')])
+    matrix = vstack([base, loss], format='csc')
+    objective = np.r_[-sample_matrix.mean(axis=0) / scale, np.full(draws, penalty / draws)]
+    res = milp(c=objective, integrality=np.r_[np.ones(n), np.zeros(draws)],
+               bounds=Bounds(np.zeros(n + draws), np.r_[np.ones(n), np.full(draws, np.inf)]),
+               constraints=LinearConstraint(matrix, np.r_[lo / row_scale, np.full(draws, -np.inf)],
+                                            np.r_[hi / row_scale, np.zeros(draws)]),
+               options={'time_limit': 20, 'mip_rel_gap': 0.0001})
+    if not res.success or res.x is None:
+        code = 'timeout' if res.status == 1 else 'infeasible' if res.status == 2 else 'solver_failed'
+        raise OptimizationError('No verified allocation. Check the budget, mandatory decisions, concentration and basin minimums.' if code == 'infeasible' else 'Optimization did not finish within the solver limit; reduce the workload or retry.', code)
+    chosen = np.rint(res.x[:n])
+    tolerance = 1e-7 * np.maximum(np.maximum(np.abs(a).sum(axis=1), np.abs(lo)), 1)
+    actual = a @ chosen
+    if np.any(actual < lo - tolerance) or np.any(actual > hi + tolerance):
+        raise OptimizationError('Solver allocation failed independent feasibility verification', 'solver_failed')
+    selected = [c for c, x in zip(candidates, chosen) if x > .5]
+    binding = [name for value, low, high, tol, name in zip(actual, lo, hi, tolerance, names)
+               if not name.startswith('One decision') and (abs(value - low) <= tol or abs(value - high) <= tol)]
+    return selected, sample_matrix @ chosen, binding
 
 
-def _solve_for_lambda(
-    all_candidates: dict[str, list[Candidate]],
-    budget: float,
-    lam: float,
-    constraints: PortfolioConstraints,
-) -> list[Candidate]:
-    prospects = list(all_candidates.keys())
-    flattened: list[Candidate] = [c for p in prospects for c in all_candidates[p]]
-    n = len(flattened)
-
-    c = np.array([-(lam * cand.expected_npv - (1.0 - lam) * cand.risk) for cand in flattened], dtype=float)
-    integrality = np.ones(n, dtype=int)
-    bounds = Bounds(lb=np.zeros(n), ub=np.ones(n))
-
-    rows: list[np.ndarray] = []
-    lower: list[float] = []
-    upper: list[float] = []
-
-    # One decision per prospect.
-    offset = 0
-    for p in prospects:
-        row = np.zeros(n)
-        width = len(all_candidates[p])
-        row[offset : offset + width] = 1.0
-        rows.append(row)
-        lower.append(1.0)
-        upper.append(1.0)
-        offset += width
-
-    # Budget cap.
-    budget_row = np.array([cand.capital for cand in flattened], dtype=float)
-    rows.append(budget_row)
-    lower.append(0.0)
-    upper.append(budget)
-
-    # Optional drilled count constraints.
-    drill_row = np.array([1.0 if cand.decision == DecisionType.DRILL else 0.0 for cand in flattened], dtype=float)
-    if constraints.min_prospects_drilled is not None:
-        rows.append(drill_row)
-        lower.append(float(constraints.min_prospects_drilled))
-        upper.append(np.inf)
-    if constraints.max_prospects_drilled is not None:
-        rows.append(drill_row)
-        lower.append(0.0)
-        upper.append(float(constraints.max_prospects_drilled))
-
-    # Mandatory decisions.
-    mandatory_drill = set(constraints.mandatory_drill or [])
-    mandatory_defer = set(constraints.mandatory_defer or [])
-    for idx, cand in enumerate(flattened):
-        if cand.prospect_id in mandatory_drill:
-            rows.append(np.eye(1, n, idx).reshape(-1))
-            value = 1.0 if cand.decision == DecisionType.DRILL else 0.0
-            lower.append(value)
-            upper.append(value)
-        if cand.prospect_id in mandatory_defer:
-            rows.append(np.eye(1, n, idx).reshape(-1))
-            value = 1.0 if cand.decision == DecisionType.DEFER else 0.0
-            lower.append(value)
-            upper.append(value)
-
-    linear = LinearConstraint(np.vstack(rows), np.array(lower, dtype=float), np.array(upper, dtype=float))
-    res = milp(c=c, constraints=linear, integrality=integrality, bounds=bounds)
-
-    selected: list[Candidate] = []
-    if res.success and res.x is not None:
-        for val, cand in zip(res.x, flattened, strict=False):
-            if val > 0.5:
-                selected.append(cand)
-    else:
-        # Fallback deterministic pick if solver fails.
-        for p in prospects:
-            selected.append(max(all_candidates[p], key=lambda cnd: lam * cnd.expected_npv - (1 - lam) * cnd.risk))
-    return selected
-
-
-def optimize_portfolio(
-    comparisons: list[DecisionComparison],
-    simulation_samples: dict[tuple[str, DecisionType], np.ndarray],
-    budget: float,
-    constraints: PortfolioConstraints | dict | None,
-    n_frontier_points: int = 20,
-) -> PortfolioOptimizationResult:
-    """Build an efficient frontier using MILP at each risk preference point."""
-    typed_constraints = _to_constraints(constraints)
-
-    all_candidates: dict[str, list[Candidate]] = {}
+def optimize_portfolio(comparisons: list[DecisionComparison], simulation_samples: dict,
+                       budget: float, constraints: PortfolioConstraints | dict | None,
+                       n_frontier_points: int = 7, basins: dict | None = None,
+                       risk_aversion: float = 1) -> PortfolioOptimizationResult:
+    typed = constraints if isinstance(constraints, PortfolioConstraints) else PortfolioConstraints(**(constraints or {}))
+    if not comparisons or budget <= 0:
+        raise OptimizationError('A positive budget and at least one prospect are required', 'invalid_input')
+    candidates, samples = [], []
     for comp in comparisons:
-        bucket: list[Candidate] = []
         for decision, metric in comp.options.items():
-            sample = simulation_samples.get((comp.prospect_id, decision), np.array([metric.expected_npv]))
-            bucket.append(
-                Candidate(
-                    prospect_id=comp.prospect_id,
-                    decision=decision,
-                    expected_npv=metric.expected_npv,
-                    risk=float(np.std(sample)),
-                    capital=metric.capital_required,
-                )
-            )
-        all_candidates[comp.prospect_id] = bucket
-
-    frontier: list[FrontierPoint] = []
-    for lam in np.linspace(0, 1, n_frontier_points):
-        selected = _solve_for_lambda(all_candidates, budget, float(lam), typed_constraints)
-        spent = float(sum(c.capital for c in selected))
-        distribution = _portfolio_distribution(selected, simulation_samples)
-        frontier.append(
-            FrontierPoint(
-                expected_npv=float(np.mean(distribution)),
-                portfolio_risk=float(np.std(distribution)),
-                allocation={c.prospect_id: c.decision for c in selected},
-                capital_deployed=spent,
-                capital_remaining=float(budget - spent),
-            )
-        )
-
-    frontier = sorted(frontier, key=lambda f: f.portfolio_risk)
-
-    # Enforce monotonic expected return along increasing-risk frontier.
-    running_max = -np.inf
-    for point in frontier:
-        running_max = max(running_max, point.expected_npv)
-        point.expected_npv = running_max
-
-    recommended = max(frontier, key=lambda f: f.expected_npv / max(f.portfolio_risk, 1e-9))
-    dist = np.array([p.expected_npv for p in frontier], dtype=float)
-    summary = DistributionSummary(
-        mean=float(np.mean(dist)),
-        std=float(np.std(dist)),
-        p10=float(np.percentile(dist, 90)),
-        p50=float(np.percentile(dist, 50)),
-        p90=float(np.percentile(dist, 10)),
-        min=float(np.min(dist)),
-        max=float(np.max(dist)),
-    )
-
-    individual_risks = [float(np.std(simulation_samples.get((comp.prospect_id, comp.recommendation), np.array([0.0])))) for comp in comparisons]
-    diversification = float(max(sum(individual_risks) - recommended.portfolio_risk, 0.0))
-
-    return PortfolioOptimizationResult(
-        efficient_frontier=frontier,
-        recommended_portfolio=recommended,
-        prospect_robustness={c.prospect_id: {"base": c.recommendation} for c in comparisons},
-        total_portfolio_npv_distribution=summary,
-        diversification_benefit=diversification,
-    )
+            sample = np.asarray(simulation_samples[(comp.prospect_id, decision)], dtype=float)
+            if sample.ndim != 1 or not len(sample) or not np.isfinite(sample).all():
+                raise OptimizationError('Invalid simulation samples', 'invalid_input')
+            candidates.append(Candidate(comp.prospect_id, decision, float(sample.mean()), float(sample.std()), metric.capital_required))
+            samples.append(sample)
+    matrix = np.column_stack(samples)
+    records = {}
+    recommended = recommended_dist = None
+    penalties = sorted(set([0., *np.geomspace(.1, 20, max(2, n_frontier_points - 1)), risk_aversion]))
+    for penalty in penalties:
+        selected, distribution, binding = solve(candidates, matrix, budget, penalty, typed, basins or {})
+        loss = np.maximum(-distribution, 0)
+        worst = np.sort(loss)[int(.9 * len(loss)):]
+        point = FrontierPoint(expected_npv=float(distribution.mean()), portfolio_risk=float(distribution.std()),
+                              allocation={c.prospect_id: c.decision for c in selected},
+                              capital_deployed=sum(c.capital for c in selected), capital_remaining=budget - sum(c.capital for c in selected),
+                              expected_loss=float(loss.mean()), probability_of_loss=float((distribution < 0).mean()),
+                              cvar90_loss=float(worst.mean()), binding_constraints=binding)
+        records[tuple(sorted(point.allocation.items()))] = (point, distribution)
+        if penalty == risk_aversion:
+            recommended, recommended_dist = point, distribution
+    assert recommended is not None and recommended_dist is not None
+    points = [r[0] for r in records.values()]
+    frontier = [p for p in points if not any(q.expected_npv >= p.expected_npv and q.expected_loss <= p.expected_loss and
+                (q.expected_npv > p.expected_npv + 1e-6 or q.expected_loss < p.expected_loss - 1e-6) for q in points)]
+    individual = sum(float(np.std(simulation_samples[(pid, decision)])) for pid, decision in recommended.allocation.items())
+    return PortfolioOptimizationResult(efficient_frontier=sorted(frontier, key=lambda p: p.expected_loss), recommended_portfolio=recommended,
+                                       prospect_robustness={}, total_portfolio_npv_distribution=_summary(recommended_dist),
+                                       diversification_benefit=max(0, individual - recommended.portfolio_risk), risk_aversion=risk_aversion)

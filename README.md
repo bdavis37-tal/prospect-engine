@@ -2,6 +2,8 @@
 
 A capital-allocation workbench for exploration and production portfolios. Compare drill, farm-out, divest and defer decisions under uncertain resources, costs and commodity prices, inspect the economic evidence, and return to saved runs.
 
+![Allocation workbench](docs/screenshots/allocation-desktop.png)
+
 ## What ships
 
 - Allocation-first React interface with labeled navigation, scenario selection, searchable/sortable prospects, accessible detail dialogs, editable assumptions, required decisions, location tables, and a secondary 3D sample illustration.

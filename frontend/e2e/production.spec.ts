@@ -27,7 +27,8 @@ test('compiled styles, accessible allocation and responsive detail',async({page}
  await page.setViewportSize({width:1440,height:1000});
  await page.getByLabel('Search prospects').fill('');
  expect((await new AxeBuilder({page}).analyze()).violations).toEqual([]);
- await page.screenshot({path:'test-results/allocation-desktop.png',fullPage:true});
+ await page.evaluate(()=>window.scrollTo(0,0));
+ await page.screenshot({path:'test-results/allocation-desktop.png',fullPage:false});
 });
 
 test('real analysis, immutable result, reload, stale state, export and invalid constraints',async({page})=>{
@@ -62,4 +63,23 @@ test('scenario results and chart allocations remain reachable at a narrow width'
  await expect(page.getByRole('heading',{name:'Scenario comparison'})).toBeVisible();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.screenshot({path:'test-results/scenarios-mobile.png',fullPage:true});
+});
+
+
+test('edited sample drafts recover across portfolio navigation and reload', async({page}) => {
+ await sample(page);
+ await page.getByLabel('Portfolio name',{exact:true}).fill('Adapted sample');
+ await expect(page.getByText(/Inputs have changed/)).toBeVisible();
+ const originalNPV=await page.locator('.metrics dd').first().innerText();
+ await page.getByRole('button',{name:'New portfolio',exact:true}).click();
+ await page.getByLabel('Portfolio name',{exact:true}).fill('Second draft');
+ await page.getByRole('link',{name:'Prospect Engine',exact:true}).click();
+ await page.getByText(/Recover browser drafts/).click();
+ await page.getByRole('button',{name:/Adapted sample/}).click();
+ await expect(page.getByLabel('Portfolio name',{exact:true})).toHaveValue('Adapted sample');
+ await expect(page.locator('.metrics dd').first()).toHaveText(originalNPV);
+ await page.reload();
+ await expect(page.getByLabel('Portfolio name',{exact:true})).toHaveValue('Adapted sample');
+ await expect(page.getByText(/Inputs have changed/)).toBeVisible();
+ await expect(page.locator('.metrics dd').first()).toHaveText(originalNPV);
 });

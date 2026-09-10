@@ -16,7 +16,7 @@ Scope: every recommendation in the 2026-09-10 production review. Branch: `codex/
 - [x] Production containers, lockfiles, same-origin API, persistent storage, tested backup/restore.
 - [x] CI, browser regression/accessibility tests, numerical benchmarks, dependency scan, deployment and rollback procedure.
 - [x] Fresh demo fixtures, lazy datasets/3D, measured production performance.
-- [ ] Final Linux container/CI check and release evidence (in progress).
+- [x] Final Linux container/CI check and release evidence.
 - [ ] External deployment: host, HTTPS domain, OIDC registration and operational destinations have not been supplied.
 
 ## Design plan
@@ -31,8 +31,10 @@ This is tailored to comparing economic decisions; the table, constraints and dow
 
 Local backend: 50 tests passing, including exhaustive optimizer comparison, infeasible/concentration/basin cases, random-stream checks, conventional IRR roots, authenticated ownership boundaries, worker timeouts, interrupted-run recovery and backup restoration. Three upstream deprecation warnings remain; they do not fail tests.
 
-Frontend: 23 unit/fixture/import tests passing. Three browser scenarios pass, including zero axe violations on the sampled allocation/detail views, 1440/1024/768/390-pixel layouts, a real queued analysis, exact result recovery after reload, exports and a failed infeasible run. The result table uses the immutable run input; prospect input editing uses the draft. Sample markers are separated with leaders and a synchronized accessible table.
+Frontend: 23 unit/fixture/import tests passing. Four browser scenarios pass, including zero axe violations on the sampled allocation/detail views, 1440/1024/768/390-pixel layouts, a real queued analysis, exact result recovery after reload, exports and a failed infeasible run. The result table uses the immutable run input; prospect input editing uses the draft. Sample markers are separated with leaders and a synchronized accessible table.
 
 Build: initial JavaScript approximately 78 KB gzip (previously approximately 320 KB); lazy sample data and 3D chunks are excluded. The enforced initial-JS budget is 110 KB gzip. Tailwind is compiled. Both dependency scanners reported no known vulnerabilities on this date. The production Compose configuration parses.
 
-The local Docker Linux engine did not start, so actual image builds and restart/backup checks are delegated to the repository's Linux CI gate. That gate must be green before release. This ledger does not claim a live OIDC deployment, independent asset-data validation, multi-host availability or configured off-host operations.
+The local Docker Linux engine did not start. Linux CI successfully built the production images, exercised the packaged browser workflow, created and restored a database backup, restarted the full stack, and verified saved-result fingerprints. [Verified CI run](https://github.com/bdavis37-tal/prospect-engine/actions/runs/34519975175). This ledger does not claim a live OIDC deployment, independent asset-data validation, multi-host availability or configured off-host operations.
+
+The final additional browser test verifies recovery of an edited sample across new-portfolio navigation and reload. It passes against the compiled production build. Screenshots from that build are saved in `docs/screenshots/`.

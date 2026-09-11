@@ -86,7 +86,7 @@ export function newScenario(
 }
 export function newPortfolio(): PortfolioInput {
   return {
-    name: "Untitled portfolio",
+    name: "Permian Delaware Portfolio",
     prospects: [newProspect()],
     decisions: null,
     capital_budget: 50000000,

@@ -18,6 +18,7 @@ import {
   percent,
 } from "./api";
 import { newPortfolio, newProspect } from "./defaults";
+import { namedPortfolioInput } from "./portfolioNames";
 import { ErrorBoundary } from "react-error-boundary";
 import { Drawer } from "./shared";
 import { PortfolioSettings, ProspectEditor } from "./Editors";
@@ -135,18 +136,22 @@ export default function Workbench() {
         const list = await api.portfolios();
         setPortfolios(list);
         if (workspaceEpoch.current > 0) return;
-        setDrafts(
-          JSON.parse(
-            localStorage.getItem(`prospect-drafts:${identity.workspace_id}`) ??
-              "[]",
-          ),
+        const nameDraft = (d: Draft): Draft => ({
+          ...d,
+          input: namedPortfolioInput(d.input, list.find((p) => p.id === d.savedId)?.name),
+        });
+        const recoveredDrafts: Draft[] = JSON.parse(
+          localStorage.getItem(`prospect-drafts:${identity.workspace_id}`) ?? "[]",
         );
+        const namedDrafts = recoveredDrafts.map(nameDraft);
+        setDrafts(namedDrafts);
+        localStorage.setItem(`prospect-drafts:${identity.workspace_id}`, JSON.stringify(namedDrafts));
         const raw = localStorage.getItem(
           `prospect-draft:${identity.workspace_id}`,
         );
         if (raw) {
           try {
-            const d = JSON.parse(raw);
+            const d = nameDraft(JSON.parse(raw));
             if (d.input?.prospects && d.input?.constraints) {
               draftId.current = d.id ?? crypto.randomUUID();
               setInput(d.input);

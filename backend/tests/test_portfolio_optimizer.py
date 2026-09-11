@@ -44,9 +44,15 @@ def test_portfolio_frontier_and_budget_constraint() -> None:
         sample_map[(c.prospect_id, DecisionType.DEFER)] = np.zeros(1000)
 
     result = optimize_portfolio(comps, sample_map, budget=80_000_000, constraints={}, n_frontier_points=12)
-    assert len(result.efficient_frontier) == 12
+    assert 1 <= len(result.efficient_frontier) <= 13
+    # Repeated optimizer allocations are deduplicated, never fabricated to fill a sweep.
+    allocations = [tuple(sorted(p.allocation.items())) for p in result.efficient_frontier]
+    assert len(allocations) == len(set(allocations))
+    for point in result.efficient_frontier:
+        draws = sum(sample_map[(pid, decision)] for pid, decision in point.allocation.items())
+        assert np.isclose(point.expected_npv, np.mean(draws))
     for point in result.efficient_frontier:
         assert point.capital_deployed <= 80_000_000 + 1
 
-    npvs = [p.expected_npv for p in sorted(result.efficient_frontier, key=lambda x: x.portfolio_risk)]
+    npvs = [p.expected_npv for p in sorted(result.efficient_frontier, key=lambda x: x.expected_loss)]
     assert npvs[-1] >= npvs[0]

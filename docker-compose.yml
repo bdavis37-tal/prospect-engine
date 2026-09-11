@@ -1,16 +1,40 @@
 services:
   backend:
-    build:
-      context: ./backend
-    ports:
-      - "8000:8000"
-
-  frontend:
-    build:
-      context: ./frontend
+    build: ./backend
     environment:
-      - VITE_API_URL=http://localhost:8000/api
-    ports:
-      - "5173:5173"
+      AUTH_MODE: local
+      DATABASE_PATH: /data/prospect-engine.sqlite3
+    volumes:
+      - prospect-data:/data
+    restart: unless-stopped
+    mem_limit: 512m
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+  worker:
+    build: ./backend
+    command: [python, -m, app.worker]
+    environment:
+      DATABASE_PATH: /data/prospect-engine.sqlite3
+      JOB_TIMEOUT_SECONDS: '300'
+    volumes:
+      - prospect-data:/data
+    restart: unless-stopped
+    mem_limit: 2g
+    cpus: 2
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+  frontend:
+    build: ./frontend
+    ports:
+      - '127.0.0.1:8080:8080'
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    mem_limit: 128m
+volumes:
+  prospect-data:

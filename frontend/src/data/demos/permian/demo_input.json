@@ -7,10 +7,11 @@
       "longitude": -103.7,
       "basin": "permian_delaware",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 1300,
-        "p50": 900,
-        "p90": 600,
+        "p10": 1300.0,
+        "p50": 900.0,
+        "p90": 600.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -21,35 +22,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 8200000,
-        "low": 7500000,
-        "high": 9500000,
+        "base": 8200000.0,
+        "low": 7500000.0,
+        "high": 9500000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 3000000,
-        "low": 2500000,
-        "high": 3500000,
+        "base": 3000000.0,
+        "low": 2500000.0,
+        "high": 3500000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 500000,
+      "facility_cost": 500000.0,
       "opex_per_boe": {
-        "base": 9,
-        "low": 7,
-        "high": 12,
+        "base": 9.0,
+        "low": 7.0,
+        "high": 12.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1400,
+        "initial_production_rate": 1400.0,
         "initial_decline_rate": 0.7,
         "b_factor": 1.1,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Tier 1 development well on proven acreage. Low geological risk, high confidence EUR."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Tier 1 development well on proven acreage. Low geological risk, high confidence EUR.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_2",
@@ -58,10 +64,11 @@
       "longitude": -103.71,
       "basin": "permian_delaware",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 1100,
-        "p50": 800,
-        "p90": 500,
+        "p10": 1100.0,
+        "p50": 800.0,
+        "p90": 500.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -72,35 +79,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 8000000,
-        "low": 7200000,
-        "high": 9200000,
+        "base": 8000000.0,
+        "low": 7200000.0,
+        "high": 9200000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2800000,
-        "low": 2300000,
-        "high": 3300000,
+        "base": 2800000.0,
+        "low": 2300000.0,
+        "high": 3300000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 400000,
+      "facility_cost": 400000.0,
       "opex_per_boe": {
-        "base": 9,
-        "low": 7,
-        "high": 12,
+        "base": 9.0,
+        "low": 7.0,
+        "high": 12.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1200,
+        "initial_production_rate": 1200.0,
         "initial_decline_rate": 0.7,
         "b_factor": 1.1,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Offset to A-1 on same pad. Similar geology but slightly thinner pay."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Offset to A-1 on same pad. Similar geology but slightly thinner pay.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_3",
@@ -109,10 +121,11 @@
       "longitude": -103.95,
       "basin": "permian_delaware",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 2000,
-        "p50": 700,
-        "p90": 200,
+        "p10": 2000.0,
+        "p50": 700.0,
+        "p90": 200.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -123,35 +136,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 9500000,
-        "low": 8000000,
-        "high": 12000000,
+        "base": 9500000.0,
+        "low": 8000000.0,
+        "high": 12000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 3500000,
-        "low": 2800000,
-        "high": 4500000,
+        "base": 3500000.0,
+        "low": 2800000.0,
+        "high": 4500000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 800000,
+      "facility_cost": 800000.0,
       "opex_per_boe": {
-        "base": 11,
-        "low": 8,
-        "high": 15,
+        "base": 11.0,
+        "low": 8.0,
+        "high": 15.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1100,
+        "initial_production_rate": 1100.0,
         "initial_decline_rate": 0.72,
         "b_factor": 1.2,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Exploration well on newly acquired acreage. Higher risk, higher potential. Wide distribution \u2014 high uncertainty."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Exploration well on newly acquired acreage. Higher risk, higher potential. Wide distribution — high uncertainty.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_4",
@@ -160,10 +178,11 @@
       "longitude": -103.45,
       "basin": "permian_delaware",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 900,
-        "p50": 650,
-        "p90": 450,
+        "p10": 900.0,
+        "p50": 650.0,
+        "p90": 450.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -174,35 +193,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 7800000,
-        "low": 7000000,
-        "high": 9000000,
+        "base": 7800000.0,
+        "low": 7000000.0,
+        "high": 9000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2800000,
-        "low": 2300000,
-        "high": 3300000,
+        "base": 2800000.0,
+        "low": 2300000.0,
+        "high": 3300000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 500000,
+      "facility_cost": 500000.0,
       "opex_per_boe": {
         "base": 9.5,
         "low": 7.5,
-        "high": 12,
+        "high": 12.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1000,
+        "initial_production_rate": 1000.0,
         "initial_decline_rate": 0.68,
         "b_factor": 1.1,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Development well, solid but not spectacular. Mid-tier."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Development well, solid but not spectacular. Mid-tier.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_5",
@@ -211,10 +235,11 @@
       "longitude": -103.47,
       "basin": "permian_delaware",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 850,
-        "p50": 550,
-        "p90": 200,
+        "p10": 850.0,
+        "p50": 550.0,
+        "p90": 200.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -225,35 +250,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 8000000,
-        "low": 7200000,
-        "high": 9200000,
+        "base": 8000000.0,
+        "low": 7200000.0,
+        "high": 9200000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2900000,
-        "low": 2400000,
-        "high": 3400000,
+        "base": 2900000.0,
+        "low": 2400000.0,
+        "high": 3400000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 500000,
+      "facility_cost": 500000.0,
       "opex_per_boe": {
-        "base": 10,
-        "low": 8,
-        "high": 13,
+        "base": 10.0,
+        "low": 8.0,
+        "high": 13.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 900,
+        "initial_production_rate": 900.0,
         "initial_decline_rate": 0.7,
         "b_factor": 1.1,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Adjacent to B-1 but with a fault risk that could reduce recovery. Farm-out candidate."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Adjacent to B-1 but with a fault risk that could reduce recovery. Farm-out candidate.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_6",
@@ -262,10 +292,11 @@
       "longitude": -102.1,
       "basin": "permian_midland",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 950,
-        "p50": 700,
-        "p90": 500,
+        "p10": 950.0,
+        "p50": 700.0,
+        "p90": 500.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -276,35 +307,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 6500000,
-        "low": 5800000,
-        "high": 7500000,
+        "base": 6500000.0,
+        "low": 5800000.0,
+        "high": 7500000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2500000,
-        "low": 2000000,
-        "high": 3000000,
+        "base": 2500000.0,
+        "low": 2000000.0,
+        "high": 3000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 400000,
+      "facility_cost": 400000.0,
       "opex_per_boe": {
         "base": 8.5,
-        "low": 7,
-        "high": 11,
+        "low": 7.0,
+        "high": 11.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1000,
+        "initial_production_rate": 1000.0,
         "initial_decline_rate": 0.65,
         "b_factor": 1.0,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Bread-and-butter Wolfcamp A well. Very predictable. High capital efficiency."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Bread-and-butter Wolfcamp A well. Very predictable. High capital efficiency.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_7",
@@ -313,10 +349,11 @@
       "longitude": -102.12,
       "basin": "permian_midland",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 1400,
-        "p50": 850,
-        "p90": 550,
+        "p10": 1400.0,
+        "p50": 850.0,
+        "p90": 550.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -327,35 +364,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 7500000,
-        "low": 6800000,
-        "high": 8500000,
+        "base": 7500000.0,
+        "low": 6800000.0,
+        "high": 8500000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2800000,
-        "low": 2300000,
-        "high": 3300000,
+        "base": 2800000.0,
+        "low": 2300000.0,
+        "high": 3300000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 500000,
+      "facility_cost": 500000.0,
       "opex_per_boe": {
-        "base": 9,
-        "low": 7,
-        "high": 12,
+        "base": 9.0,
+        "low": 7.0,
+        "high": 12.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1150,
+        "initial_production_rate": 1150.0,
         "initial_decline_rate": 0.68,
         "b_factor": 1.1,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Wolfcamp B bench \u2014 deeper, more expensive, higher resource potential."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Wolfcamp B bench — deeper, more expensive, higher resource potential.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_8",
@@ -364,10 +406,11 @@
       "longitude": -101.95,
       "basin": "permian_midland",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 700,
-        "p50": 500,
-        "p90": 300,
+        "p10": 700.0,
+        "p50": 500.0,
+        "p90": 300.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -378,35 +421,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 6800000,
-        "low": 6000000,
-        "high": 7800000,
+        "base": 6800000.0,
+        "low": 6000000.0,
+        "high": 7800000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2500000,
-        "low": 2000000,
-        "high": 3000000,
+        "base": 2500000.0,
+        "low": 2000000.0,
+        "high": 3000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 400000,
+      "facility_cost": 400000.0,
       "opex_per_boe": {
-        "base": 10,
-        "low": 8,
-        "high": 13,
+        "base": 10.0,
+        "low": 8.0,
+        "high": 13.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 800,
+        "initial_production_rate": 800.0,
         "initial_decline_rate": 0.65,
         "b_factor": 1.0,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Older acreage, offset wells show declining performance in this area. Divest candidate in bear case."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Older acreage, offset wells show declining performance in this area. Divest candidate in bear case.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_9",
@@ -415,10 +463,11 @@
       "longitude": -101.95,
       "basin": "permian_midland",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 850,
-        "p50": 600,
-        "p90": 350,
+        "p10": 850.0,
+        "p50": 600.0,
+        "p90": 350.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -429,36 +478,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 7000000,
-        "low": 6200000,
-        "high": 8000000,
+        "base": 7000000.0,
+        "low": 6200000.0,
+        "high": 8000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2600000,
-        "low": 2100000,
-        "high": 3100000,
+        "base": 2600000.0,
+        "low": 2100000.0,
+        "high": 3100000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 500000,
+      "facility_cost": 500000.0,
       "opex_per_boe": {
-        "base": 9,
-        "low": 7,
-        "high": 12,
+        "base": 9.0,
+        "low": 7.0,
+        "high": 12.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 950,
+        "initial_production_rate": 950.0,
         "initial_decline_rate": 0.67,
         "b_factor": 1.05,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
+      "infrastructure_distance_miles": null,
       "lease_expiry_years": 1.0,
-      "notes": "LEASE EXPIRING IN 12 MONTHS. Must drill or lose acreage. Mandatory drill due to lease obligation."
+      "notes": "LEASE EXPIRING IN 12 MONTHS. Must drill or lose acreage. Mandatory drill due to lease obligation.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_10",
@@ -467,10 +520,11 @@
       "longitude": -103.3,
       "basin": "permian_delaware",
       "hydrocarbon_type": "gas",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 14,
-        "p50": 8,
-        "p90": 4,
+        "p10": 14.0,
+        "p50": 8.0,
+        "p90": 4.0,
         "distribution_type": "lognormal",
         "unit": "BCF"
       },
@@ -481,18 +535,18 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 8500000,
-        "low": 7500000,
-        "high": 10000000,
+        "base": 8500000.0,
+        "low": 7500000.0,
+        "high": 10000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 3200000,
-        "low": 2700000,
-        "high": 3800000,
+        "base": 3200000.0,
+        "low": 2700000.0,
+        "high": 3800000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 600000,
+      "facility_cost": 600000.0,
       "opex_per_boe": {
         "base": 1.5,
         "low": 1.0,
@@ -502,14 +556,19 @@
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 12000,
+        "initial_production_rate": 12000.0,
         "initial_decline_rate": 0.75,
         "b_factor": 0.9,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Gas-weighted prospect. Highly sensitive to gas price. Drill in bull gas scenario, defer in base."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Gas-weighted prospect. Highly sensitive to gas price. Drill in bull gas scenario, defer in base.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_11",
@@ -518,10 +577,11 @@
       "longitude": -104.4,
       "basin": "permian_delaware",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 1200,
-        "p50": 800,
-        "p90": 500,
+        "p10": 1200.0,
+        "p50": 800.0,
+        "p90": 500.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -532,36 +592,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 8000000,
-        "low": 7200000,
-        "high": 9200000,
+        "base": 8000000.0,
+        "low": 7200000.0,
+        "high": 9200000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 3000000,
-        "low": 2500000,
-        "high": 3500000,
+        "base": 3000000.0,
+        "low": 2500000.0,
+        "high": 3500000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 5000000,
+      "facility_cost": 5000000.0,
       "opex_per_boe": {
-        "base": 12,
-        "low": 9,
-        "high": 16,
+        "base": 12.0,
+        "low": 9.0,
+        "high": 16.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1100,
+        "initial_production_rate": 1100.0,
         "initial_decline_rate": 0.7,
         "b_factor": 1.1,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
       "infrastructure_distance_miles": 15.0,
-      "notes": "Remote location, 15 miles from nearest pipeline. High infrastructure cost ($5M facility/gathering). Farm-out or defer despite decent resource."
+      "lease_expiry_years": null,
+      "notes": "Remote location, 15 miles from nearest pipeline. High infrastructure cost ($5M facility/gathering). Farm-out or defer despite decent resource.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_12",
@@ -570,10 +634,11 @@
       "longitude": -103.4,
       "basin": "permian_delaware",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 1150,
-        "p50": 850,
-        "p90": 550,
+        "p10": 1150.0,
+        "p50": 850.0,
+        "p90": 550.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -584,18 +649,18 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 8500000,
-        "low": 7700000,
-        "high": 9800000,
+        "base": 8500000.0,
+        "low": 7700000.0,
+        "high": 9800000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 3200000,
-        "low": 2700000,
-        "high": 3800000,
+        "base": 3200000.0,
+        "low": 2700000.0,
+        "high": 3800000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 600000,
+      "facility_cost": 600000.0,
       "opex_per_boe": {
         "base": 9.5,
         "low": 7.5,
@@ -605,14 +670,19 @@
       "royalty_rate": 0.25,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.75,
       "decline_params": {
-        "initial_production_rate": 1200,
+        "initial_production_rate": 1200.0,
         "initial_decline_rate": 0.7,
         "b_factor": 1.1,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Solid prospect but New Mexico side with higher 25% state royalties. Less attractive than equivalent Texas prospects."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Solid prospect but New Mexico side with higher 25% state royalties. Less attractive than equivalent Texas prospects.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_13",
@@ -621,10 +691,11 @@
       "longitude": -102.55,
       "basin": "permian_midland",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 900,
-        "p50": 650,
-        "p90": 400,
+        "p10": 900.0,
+        "p50": 650.0,
+        "p90": 400.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -635,36 +706,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 6500000,
-        "low": 5800000,
-        "high": 7500000,
+        "base": 6500000.0,
+        "low": 5800000.0,
+        "high": 7500000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2500000,
-        "low": 2000000,
-        "high": 3000000,
+        "base": 2500000.0,
+        "low": 2000000.0,
+        "high": 3000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 400000,
+      "facility_cost": 400000.0,
       "opex_per_boe": {
-        "base": 9,
-        "low": 7,
-        "high": 12,
+        "base": 9.0,
+        "low": 7.0,
+        "high": 12.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1000,
+        "initial_production_rate": 1000.0,
         "initial_decline_rate": 0.66,
         "b_factor": 1.05,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
+      "infrastructure_distance_miles": null,
       "lease_expiry_years": 1.17,
-      "notes": "LEASE EXPIRING IN 14 MONTHS. Mandatory drill. Similar to Upton County E-1."
+      "notes": "LEASE EXPIRING IN 14 MONTHS. Mandatory drill. Similar to Upton County E-1.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_14",
@@ -673,10 +748,11 @@
       "longitude": -103.15,
       "basin": "permian_delaware",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 1500,
-        "p50": 900,
-        "p90": 500,
+        "p10": 1500.0,
+        "p50": 900.0,
+        "p90": 500.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -687,35 +763,40 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 8800000,
-        "low": 8000000,
-        "high": 10000000,
+        "base": 8800000.0,
+        "low": 8000000.0,
+        "high": 10000000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 3200000,
-        "low": 2700000,
-        "high": 3800000,
+        "base": 3200000.0,
+        "low": 2700000.0,
+        "high": 3800000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 600000,
+      "facility_cost": 600000.0,
       "opex_per_boe": {
         "base": 9.5,
         "low": 7.5,
-        "high": 12,
+        "high": 12.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 1250,
+        "initial_production_rate": 1250.0,
         "initial_decline_rate": 0.7,
         "b_factor": 1.1,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "High-quality prospect with a $12M acquisition offer on the table. Drill-vs-divest tension."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "High-quality prospect with a $12M acquisition offer on the table. Drill-vs-divest tension.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     },
     {
       "prospect_id": "permian_15",
@@ -724,10 +805,11 @@
       "longitude": -102.35,
       "basin": "permian_midland",
       "hydrocarbon_type": "oil",
+      "water_depth_ft": null,
       "resource_estimate": {
-        "p10": 800,
-        "p50": 600,
-        "p90": 400,
+        "p10": 800.0,
+        "p50": 600.0,
+        "p90": 400.0,
         "distribution_type": "lognormal",
         "unit": "MBOE"
       },
@@ -738,45 +820,46 @@
         "distribution_type": "triangular"
       },
       "well_cost": {
-        "base": 6800000,
-        "low": 6000000,
-        "high": 7800000,
+        "base": 6800000.0,
+        "low": 6000000.0,
+        "high": 7800000.0,
         "distribution_type": "triangular"
       },
       "completion_cost": {
-        "base": 2500000,
-        "low": 2000000,
-        "high": 3000000,
+        "base": 2500000.0,
+        "low": 2000000.0,
+        "high": 3000000.0,
         "distribution_type": "triangular"
       },
-      "facility_cost": 400000,
+      "facility_cost": 400000.0,
       "opex_per_boe": {
-        "base": 9,
-        "low": 7,
-        "high": 12,
+        "base": 9.0,
+        "low": 7.0,
+        "high": 12.0,
         "distribution_type": "triangular"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
       "working_interest": 1.0,
+      "net_revenue_interest": 0.78,
       "decline_params": {
-        "initial_production_rate": 950,
+        "initial_production_rate": 950.0,
         "initial_decline_rate": 0.66,
         "b_factor": 1.05,
         "terminal_decline_rate": 0.08,
         "well_life_years": 30
       },
-      "notes": "Average prospect. Budget filler \u2014 drilled if budget allows, deferred if not."
+      "infrastructure_distance_miles": null,
+      "lease_expiry_years": null,
+      "notes": "Average prospect. Budget filler — drilled if budget allows, deferred if not.",
+      "assumption_source": "User supplied; not independently verified",
+      "oil_fraction": 1.0
     }
   ],
-  "capital_budget": 150000000,
+  "decisions": null,
+  "capital_budget": 150000000.0,
   "discount_rate": 0.1,
-  "constraints": {
-    "mandatory_drill": [
-      "permian_9",
-      "permian_13"
-    ]
-  },
+  "simulation_iterations": 1000,
   "price_scenarios": [
     {
       "scenario_name": "Base Case",
@@ -2029,5 +2112,19 @@
       "price_correlation_oil_gas": 0.6
     }
   ],
-  "simulation_iterations": 5000
+  "random_seed": 42,
+  "risk_aversion": 1.0,
+  "name": "Permian Basin Growth Portfolio",
+  "constraints": {
+    "min_prospects_drilled": null,
+    "max_prospects_drilled": null,
+    "mandatory_drill": [
+      "permian_9",
+      "permian_13"
+    ],
+    "mandatory_defer": null,
+    "max_single_prospect_pct_of_budget": null,
+    "min_basin_allocation": null,
+    "fixed_decisions": {}
+  }
 }

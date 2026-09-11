@@ -1,0 +1,12 @@
+# Use behind a trusted HTTPS terminator; never publish the backend port.
+services:
+  backend:
+    environment:
+      APP_ENV: production
+      AUTH_MODE: oidc
+      SESSION_SECRET: ${SESSION_SECRET:?Set a random 32+ character signing secret}
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:?Set the HTTPS application origin}
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID:?Set the OIDC client ID}
+      OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:?Set the OIDC client secret}
+      OIDC_METADATA_URL: ${OIDC_METADATA_URL:?Set the HTTPS discovery URL}
+      OIDC_ALLOWED_SUBJECTS: ${OIDC_ALLOWED_SUBJECTS:?Set comma-separated authorized subject IDs}

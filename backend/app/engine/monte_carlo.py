@@ -27,6 +27,8 @@ def _sample_distribution(params: DistributionParams, n: int, rng: np.random.Gene
 
 
 def _sample_resource(resource, n: int, rng: np.random.Generator) -> np.ndarray:
+    if resource.p10 == resource.p90:
+        return np.full(n, resource.p50, dtype=float)
     mu = np.log(max(resource.p50, 1e-6))
     sigma = (np.log(max(resource.p10, 1e-6)) - np.log(max(resource.p90, 1e-6))) / (norm.ppf(0.9) - norm.ppf(0.1))
     return rng.lognormal(mean=mu, sigma=max(sigma, 1e-6), size=n)
@@ -58,16 +60,29 @@ def _hist(values: np.ndarray, bins: int = 30) -> list[BinData]:
     return [BinData(bin_start=float(edges[i]), bin_end=float(edges[i + 1]), frequency=int(counts[i])) for i in range(len(counts))]
 
 
-def _vectorized_irr(capital: np.ndarray, cashflows: np.ndarray, max_iter: int = 25) -> np.ndarray:
-    rates = np.full(capital.shape, 0.1, dtype=float)
-    years = np.arange(1, cashflows.shape[1] + 1, dtype=float)
+def _vectorized_irr(capital: np.ndarray, cashflows: np.ndarray, max_iter: int = 60) -> np.ndarray:
+    """Unique conventional IRRs only; undefined/non-conventional draws remain NaN.
+
+    Bisection in log(1+r) avoids clipping an unconverged Newton iterate into
+    a plausible-looking IRR. Negative operating cash flows can introduce
+    multiple roots, so those paths are deliberately excluded from this metric.
+    """
+    valid = (capital > 0) & np.all(cashflows >= 0, axis=1) & np.any(cashflows > 0, axis=1)
+    result = np.full(capital.shape, np.nan)
+    if not valid.any(): return result
+    values = cashflows[valid]
+    costs = capital[valid]
+    years = np.arange(1, values.shape[1]+1)
+    low = np.full(costs.shape, -14.0); high = np.full(costs.shape, 14.0)
     for _ in range(max_iter):
-        denom = (1.0 + rates[:, None]) ** years[None, :]
-        f = -capital + np.sum(cashflows / denom, axis=1)
-        fp = -np.sum((years[None, :] * cashflows) / ((1 + rates[:, None]) ** (years[None, :] + 1)), axis=1)
-        step = np.divide(f, fp, out=np.zeros_like(f), where=np.abs(fp) > 1e-10)
-        rates = np.clip(rates - step, -0.95, 5.0)
-    return rates
+        mid = (low+high)/2
+        residual = np.sum(values * np.exp(-mid[:,None]*years), axis=1) - costs
+        low = np.where(residual > 0, mid, low)
+        high = np.where(residual > 0, high, mid)
+    rates = np.expm1((low+high)/2)
+    residual = np.sum(values / (1+rates[:,None])**years, axis=1) - costs
+    result[valid] = np.where(np.abs(residual) <= np.maximum(costs, 1)*1e-7, rates, np.nan)
+    return result
 
 
 def run_simulation(
@@ -76,6 +91,7 @@ def run_simulation(
     n_iterations: int = 10_000,
     discount_rate: float = 0.10,
     random_seed: int | None = 42,
+    price_seed: int | None = None,
 ) -> SimulationResult:
     """Run vectorized Monte Carlo simulation for a single prospect."""
     rng = np.random.default_rng(random_seed)
@@ -100,17 +116,18 @@ def run_simulation(
         scenario.price_volatility,
         n_iterations,
         scenario.price_correlation_oil_gas,
-        random_state=random_seed,
+        random_state=price_seed if price_seed is not None else random_seed,
     )
 
     if prospect.hydrocarbon_type == HydrocarbonType.GAS:
-        prices = gas_paths[:, : production.shape[1]]
+        prices = gas_paths[:, : production.shape[1]] * (1 if prospect.resource_estimate.unit in {"MCF", "BCF"} else 6)
     else:
-        prices = oil_paths[:, : production.shape[1]]
+        fraction = prospect.oil_fraction if prospect.hydrocarbon_type == HydrocarbonType.MIXED else 1
+        prices = fraction * oil_paths[:, : production.shape[1]] + (1 - fraction) * 6 * gas_paths[:, : production.shape[1]]
 
     gross_revenue = production * prices
     net_revenue = gross_revenue * float(prospect.net_revenue_interest)
-    operating_cost = production * opex[:, None]
+    operating_cost = production * opex[:, None] * prospect.working_interest
     noi = net_revenue - operating_cost
     taxes = np.maximum(noi, 0.0) * prospect.tax_rate
     cashflows = noi - taxes
@@ -123,7 +140,8 @@ def run_simulation(
     irr = _vectorized_irr(capital, cashflows)
     cumulative = np.cumsum(cashflows, axis=1) - capital[:, None]
     positive = cumulative >= 0
-    payout = np.where(positive.any(axis=1), positive.argmax(axis=1) + 1, cashflows.shape[1] + 1)
+    payout = (positive.argmax(axis=1) + 1)[positive.any(axis=1)].astype(float)
+    defined_irr = irr[np.isfinite(irr)]
 
     order = np.argsort(npvs)
     cf_sorted = cashflows[order]
@@ -135,13 +153,15 @@ def run_simulation(
         prospect_id=prospect.prospect_id,
         n_iterations=n_iterations,
         npv_distribution=_summary(npvs),
-        irr_distribution=_summary(irr),
-        payout_distribution=_summary(payout.astype(float)),
+        irr_distribution=_summary(defined_irr) if len(defined_irr) else None,
+        payout_distribution=_summary(payout) if len(payout) else None,
         probability_positive_npv=float(np.mean(npvs > 0)),
         expected_npv=float(np.mean(npvs)),
-        expected_irr=float(np.mean(irr)),
+        expected_irr=float(np.mean(defined_irr)) if len(defined_irr) else None,
+        irr_defined_fraction=len(defined_irr)/n_iterations,
+        probability_payout_within_life=len(payout)/n_iterations,
         npv_histogram_data=_hist(npvs),
-        irr_histogram_data=_hist(irr),
+        irr_histogram_data=_hist(defined_irr) if len(defined_irr) else [],
         capital_at_risk=float(np.mean(capital)),
         risk_reward_ratio=float(np.mean(npvs) / max(np.std(npvs), 1e-9)),
         annual_cash_flows_p10=cf_sorted[idx10].tolist(),

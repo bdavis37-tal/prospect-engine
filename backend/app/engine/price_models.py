@@ -41,17 +41,16 @@ def generate_correlated_oil_gas_paths(
     correlation: float,
     random_state: int | None = None,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Generate correlated oil and gas GBM paths via Cholesky factorization."""
+    """Correlated log-return innovations; expected prices follow the supplied decks."""
     rng = np.random.default_rng(random_state)
-    years = len(oil_deck)
-    corr = np.array([[1.0, correlation], [correlation, 1.0]], dtype=float)
-    chol = np.linalg.cholesky(corr)
-    z = rng.standard_normal((n_paths, years, 2))
-    correlated = z @ chol.T
+    z = rng.standard_normal((n_paths, len(oil_deck), 2))
+    oil_z = z[:, :, 0]
+    gas_z = correlation * oil_z + np.sqrt(max(0, 1 - correlation**2)) * z[:, :, 1]
 
-    oil = generate_price_paths(oil_deck, volatility, n_paths, random_state=random_state)
-    gas = generate_price_paths(gas_deck, volatility, n_paths, random_state=(None if random_state is None else random_state + 7))
+    def paths(deck, shocks):
+        years = np.arange(1, len(deck) + 1)
+        return _deck_to_array(deck)[None, :] * np.exp(
+            volatility * np.cumsum(shocks, axis=1) - 0.5 * volatility**2 * years
+        )
 
-    oil = np.maximum(oil * (1 + volatility * 0.1 * correlated[:, :, 0]), 0.01)
-    gas = np.maximum(gas * (1 + volatility * 0.1 * correlated[:, :, 1]), 0.01)
-    return oil, gas
+    return paths(oil_deck, oil_z), paths(gas_deck, gas_z)

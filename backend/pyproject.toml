@@ -1,14 +1,17 @@
 [project]
 name = "prospect-engine-backend"
-version = "0.1.0"
+version = "2.0.0"
 description = "Monte Carlo E&P portfolio optimization API"
-requires-python = ">=3.11"
+requires-python = ">=3.13"
 dependencies = [
   "fastapi>=0.115.0",
   "uvicorn[standard]>=0.30.0",
   "pydantic>=2.8.0",
   "numpy>=2.0.0",
-  "scipy>=1.14.0"
+  "scipy>=1.14.0",
+  "authlib>=1.6.9",
+  "httpx>=0.28.1",
+  "itsdangerous>=2.2.0"
 ]
 
 [project.optional-dependencies]
@@ -22,5 +25,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
-pythonpath = ["app"]
+pythonpath = ["."]
 testpaths = ["tests"]
+[tool.setuptools.packages.find]
+include = ["app*"]

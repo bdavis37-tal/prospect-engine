@@ -75,9 +75,14 @@ def calculate_prospect_economics(
     else:
         prices = np.array([p.price_per_unit for p in scenario.oil_price_deck[: len(annual_prod)]], dtype=float)
 
+    if prospect.hydrocarbon_type == HydrocarbonType.GAS and prospect.resource_estimate.unit not in {"MCF", "BCF"}:
+        prices *= 6
+    elif prospect.hydrocarbon_type == HydrocarbonType.MIXED:
+        gas = np.array([p.price_per_unit for p in scenario.gas_price_deck[:len(annual_prod)]])
+        prices = prospect.oil_fraction * prices + (1 - prospect.oil_fraction) * 6 * gas
     gross_revenue = annual_prod * prices
     net_revenue = gross_revenue * float(prospect.net_revenue_interest)
-    opex = annual_prod * opex_per_unit
+    opex = annual_prod * opex_per_unit * prospect.working_interest
     noi = net_revenue - opex
     taxes = np.maximum(noi, 0.0) * prospect.tax_rate
     after_tax_cf = noi - taxes

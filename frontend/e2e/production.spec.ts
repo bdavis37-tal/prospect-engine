@@ -34,7 +34,7 @@ test('compiled styles, accessible allocation and responsive detail',async({page}
 test('real analysis, immutable result, reload, stale state, export and invalid constraints',async({page})=>{
  await page.goto('/');
  await page.getByRole('button',{name:'New portfolio',exact:true}).click();
- await page.getByLabel('Portfolio name',{exact:true}).fill(`Browser verification ${Date.now()}`);
+ await page.getByLabel('Portfolio name',{exact:true}).fill('Permian Delaware Capital Plan');
  await page.getByRole('button',{name:'Run analysis',exact:true}).click();
  await expect(page.getByRole('heading',{name:'Recommended allocation'})).toBeVisible({timeout:90000});
  const npv=await page.locator('.metrics dd').first().innerText();

@@ -1172,3 +1172,12 @@
   flex: 1;
   min-width: 0;
 }
+
+.allocation-comparison table th:not(:first-child),
+.allocation-comparison table td {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.allocation-comparison tbody th {
+  text-align: left;
+}

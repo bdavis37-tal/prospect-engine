@@ -9,10 +9,12 @@ from app.engine.monte_carlo import run_simulation
 from app.engine.portfolio_optimizer import optimize_portfolio
 from app.engine.sensitivity import generate_tornado
 
-MODEL_VERSION = '2.0.0'
+MODEL_VERSION = '2.1.0'
 METHODOLOGY = [
     'IRR summaries cover only draws with a unique conventional IRR; irr_defined_fraction reports coverage. Payout summaries condition on payout within modeled life; probability_payout_within_life reports coverage.',
     'All monetary values are USD. Gas is priced per MCF; BOE gas volumes use 6 MCF/BOE. No FX conversion is assumed.',
+    'Resource volumes use a piecewise lognormal quantile fit anchored at the supplied P90, P50 and P10. Each side uses its own log-scale spread.',
+    'Operating costs carry explicit USD/BOE or USD/MCF units; the engine converts them to the production basis at 6 MCF/BOE.',
     'P10/P50/P90 use exceedance convention: P10 is the high outcome (90th percentile).',
     'Objective: expected portfolio NPV minus risk aversion times expected loss. Expected loss averages max(-NPV, 0) across all simulated outcomes.',
     'Capital constraints apply to expected upfront capital, including transaction and holding costs, not a worst-case capital guarantee.',
@@ -47,7 +49,7 @@ def sensitivities(prospect, scenario, iterations, discount_rate, seed, price_see
             elif variable == 'Recoverable resource':
                 p.resource_estimate.p10 *= factor; p.resource_estimate.p50 *= factor; p.resource_estimate.p90 *= factor
             else:
-                dist = p.well_cost if variable == 'Well cost' else p.opex_per_boe
+                dist = p.well_cost if variable == 'Well cost' else p.operating_cost
                 dist.low *= factor; dist.base *= factor; dist.high *= factor
             cases.append(run_simulation(p, [s], iterations, discount_rate, seed, price_seed).expected_npv)
         values[variable] = tuple(cases)

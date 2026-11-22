@@ -46,7 +46,7 @@ export interface DemoProspect {
   well_cost: DistributionParams;
   completion_cost: DistributionParams;
   facility_cost: number;
-  opex_per_boe: DistributionParams;
+  operating_cost: DistributionParams & { unit: "USD/BOE" | "USD/MCF" };
   royalty_rate: number;
   tax_rate: number;
   working_interest: number;

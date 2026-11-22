@@ -171,31 +171,53 @@ export function ProspectEditor({
           </select>
         </label>
       </fieldset>
-      {(
-        [
-          "recovery_factor",
-          "well_cost",
-          "completion_cost",
-          "opex_per_boe",
-        ] as const
-      ).map((k, i) => (
-        <Distribution
-          key={k}
-          label={
-            [
-              "Recovery factor (0–1)",
-              "Drilling cost ($ gross)",
-              "Completion cost ($ gross)",
-              p.resource_estimate.unit === "BCF" ||
-              p.resource_estimate.unit === "MCF"
-                ? "Operating cost ($/MCF)"
-                : "Operating cost ($/BOE)",
-            ][i]
-          }
-          value={p[k]}
-          onChange={(v) => set(k, v)}
-        />
-      ))}
+      {(["recovery_factor", "well_cost", "completion_cost"] as const).map(
+        (k, i) => (
+          <Distribution
+            key={k}
+            label={
+              [
+                "Recovery factor (0–1)",
+                "Drilling cost ($ gross)",
+                "Completion cost ($ gross)",
+              ][i]
+            }
+            value={p[k]}
+            onChange={(v) => set(k, v)}
+          />
+        ),
+      )}
+      <Distribution
+        label={`Operating cost (${p.operating_cost.unit})`}
+        value={p.operating_cost}
+        onChange={(v) =>
+          set("operating_cost", { ...v, unit: p.operating_cost.unit })
+        }
+      />
+      {(p.hydrocarbon_type === "gas" ||
+        p.operating_cost.unit === "USD/MCF") && (
+        <label className="field">
+          <span>Operating cost quote unit</span>
+          <select
+            value={p.operating_cost.unit}
+            onChange={(e) => {
+              const unit = e.target.value as Prospect["operating_cost"]["unit"];
+              const factor = unit === "USD/BOE" ? 6 : 1 / 6;
+              const { low, base, high } = p.operating_cost;
+              set("operating_cost", {
+                ...p.operating_cost,
+                unit,
+                low: low * factor,
+                base: base * factor,
+                high: high * factor,
+              });
+            }}
+          >
+            <option>USD/BOE</option>
+            <option>USD/MCF</option>
+          </select>
+        </label>
+      )}
       <div className="form-grid">
         <NumberField
           label="Facility cost ($ gross)"

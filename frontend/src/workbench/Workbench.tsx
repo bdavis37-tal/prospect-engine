@@ -18,6 +18,7 @@ import {
   percent,
 } from "./api";
 import { newPortfolio, newProspect } from "./defaults";
+import { editableInput, type Draft } from "./drafts";
 import { namedPortfolioInput } from "./portfolioNames";
 import { ErrorBoundary } from "react-error-boundary";
 import { Drawer } from "./shared";
@@ -32,6 +33,7 @@ import {
 } from "./Results";
 import { csvTemplate, exportAllocation, importProspects } from "./importExport";
 import { DECISION_LABELS } from "../lib/constants";
+import { AllocationComparison } from "./AllocationComparison";
 import { PriceEditor } from "./PriceEditor";
 import "./workbench.css";
 
@@ -55,17 +57,11 @@ const active = (job: JobRecord | null) =>
   !!job && ["queued", "running", "cancelling"].includes(job.status);
 const fingerprint = (input: PortfolioInput) => JSON.stringify(input);
 
-type Draft = {
-  id: string;
-  input: PortfolioInput;
-  savedId?: string;
-  jobId?: string;
-  sample?: "permian" | "gom" | null;
-};
 export default function Workbench() {
   const draftId = useRef<string>(crypto.randomUUID());
   const workspaceEpoch = useRef(0);
   const pendingRun = useRef<{ fingerprint: string; key: string } | null>(null);
+  const [conflict, setConflict] = useState<Draft | null>(null);
   const [drafts, setDrafts] = useState<Draft[]>([]);
   const [input, setInput] = useState<PortfolioInput | null>(null),
     [saved, setSaved] = useState<PortfolioRecord | null>(null),
@@ -128,6 +124,77 @@ export default function Workbench() {
     setRunId(id);
     setView("allocation");
   };
+  function switchPortfolio(
+    next: PortfolioInput | null,
+    record: PortfolioRecord | null = null,
+    id = record?.id ?? crypto.randomUUID(),
+  ) {
+    workspaceEpoch.current++;
+    draftId.current = id;
+    pendingRun.current = null;
+    setInput(next);
+    setSaved(record);
+    setAnalysis(null);
+    setSample(null);
+    setJob(null);
+    setJobs([]);
+    setRunId(null);
+    setScenarioName("");
+    setSelectedPoint(null);
+    setBaseline(null);
+    setBaselineId("");
+    setConflict(null);
+    setSelectedId(null);
+    setSettings(false);
+    setEditing(false);
+    setQuery("");
+    setDecisionFilter("all");
+    setFields([]);
+    setError("");
+    setNotice("");
+    setImportErrors([]);
+    setBusy(false);
+    setView("prospects");
+    history.replaceState(
+      null,
+      "",
+      next ? "#view=prospects" : location.pathname,
+    );
+    return workspaceEpoch.current;
+  }
+
+  function draftConflict(d: Draft, record: PortfolioRecord) {
+    return (
+      d.baseRevision !== record.revision &&
+      fingerprint(editableInput(d.input)) !== fingerprint(record.input)
+    );
+  }
+
+  async function restoreDraft(d: Draft, record: PortfolioRecord | null) {
+    const input = editableInput(d.input);
+    if (record && draftConflict(d, record)) {
+      switchPortfolio(record.input, record);
+      setConflict(d);
+      return;
+    }
+    const epoch = switchPortfolio(input, record, d.id);
+    if (d.jobId && record) {
+      const j = await api.job(d.jobId);
+      if (workspaceEpoch.current !== epoch || j.portfolio_id !== record.id)
+        return;
+      setJob(j);
+      if (j.status === "completed") {
+        const result = await api.result(j.id);
+        if (workspaceEpoch.current === epoch) openResult(result, j.id);
+      }
+    } else if (d.sample) {
+      const result = await loadSample(d.sample);
+      if (workspaceEpoch.current === epoch) {
+        setSample(d.sample);
+        openResult(result, null);
+      }
+    }
+  }
   useEffect(() => {
     api
       .me()
@@ -138,14 +205,21 @@ export default function Workbench() {
         if (workspaceEpoch.current > 0) return;
         const nameDraft = (d: Draft): Draft => ({
           ...d,
-          input: namedPortfolioInput(d.input, list.find((p) => p.id === d.savedId)?.name),
+          input: namedPortfolioInput(
+            d.input,
+            list.find((p) => p.id === d.savedId)?.name,
+          ),
         });
         const recoveredDrafts: Draft[] = JSON.parse(
-          localStorage.getItem(`prospect-drafts:${identity.workspace_id}`) ?? "[]",
+          localStorage.getItem(`prospect-drafts:${identity.workspace_id}`) ??
+            "[]",
         );
         const namedDrafts = recoveredDrafts.map(nameDraft);
         setDrafts(namedDrafts);
-        localStorage.setItem(`prospect-drafts:${identity.workspace_id}`, JSON.stringify(namedDrafts));
+        localStorage.setItem(
+          `prospect-drafts:${identity.workspace_id}`,
+          JSON.stringify(namedDrafts),
+        );
         const raw = localStorage.getItem(
           `prospect-draft:${identity.workspace_id}`,
         );
@@ -153,19 +227,10 @@ export default function Workbench() {
           try {
             const d = nameDraft(JSON.parse(raw));
             if (d.input?.prospects && d.input?.constraints) {
-              draftId.current = d.id ?? crypto.randomUUID();
-              setInput(d.input);
-              setSample(d.sample ?? null);
-              if (d.sample && !d.jobId)
-                openResult(await loadSample(d.sample), null);
-              setSaved(list.find((p) => p.id === d.savedId) ?? null);
-              if (d.jobId) {
-                const current = await api.job(d.jobId);
-                setJob(current);
-                if (current.status === "completed") {
-                  openResult(await api.result(d.jobId), d.jobId);
-                }
-              }
+              await restoreDraft(
+                d,
+                list.find((p) => p.id === d.savedId) ?? null,
+              );
             }
           } catch {
             setNotice(
@@ -176,11 +241,14 @@ export default function Workbench() {
         const run = new URLSearchParams(location.hash.slice(1)).get("run");
         if (run && !raw) {
           const r = await api.result(run);
-          setInput(r.input);
-          openResult(r, run);
           const j = await api.job(run);
-          setJob(j);
-          setSaved(list.find((p) => p.id === j.portfolio_id) ?? null);
+          if (workspaceEpoch.current !== 0) return;
+          const record = list.find((p) => p.id === j.portfolio_id);
+          if (record) {
+            switchPortfolio(record.input, record);
+            openResult(r, run);
+            setJob(j);
+          }
         }
       })
       .catch((e) => {
@@ -201,6 +269,7 @@ export default function Workbench() {
   }, []);
   useEffect(() => {
     if (
+      !conflict &&
       authReady &&
       user &&
       input &&
@@ -213,7 +282,8 @@ export default function Workbench() {
           id: draftId.current,
           input,
           savedId: saved?.id,
-          jobId: job?.id,
+          baseRevision: saved?.revision,
+          jobId: saved && job?.portfolio_id === saved.id ? job.id : undefined,
           sample,
         };
         localStorage.setItem(
@@ -240,22 +310,39 @@ export default function Workbench() {
         );
       }
     }
-  }, [authReady, user, input, saved, job, sample, analysis]);
+  }, [authReady, user, input, saved, job, sample, analysis, conflict]);
   useEffect(() => {
     if (!saved || !user) return;
-    api.jobs(saved.id).then(setJobs).catch(reportError);
+    let current = true;
+    api
+      .jobs(saved.id)
+      .then((list) => {
+        if (current) setJobs(list);
+      })
+      .catch((e) => {
+        if (current) reportError(e);
+      });
+    return () => {
+      current = false;
+    };
   }, [saved, user, job?.status]);
   useEffect(() => {
-    if (!active(job)) return;
+    if (!active(job) || job?.portfolio_id !== saved?.id) return;
+    const epoch = workspaceEpoch.current;
     let stopped = false;
     let timer: ReturnType<typeof setTimeout>;
     const poll = async () => {
       try {
         const j = await api.job(job!.id);
-        if (stopped) return;
+        if (
+          stopped ||
+          epoch !== workspaceEpoch.current ||
+          j.portfolio_id !== saved?.id
+        )
+          return;
         if (j.status === "completed") {
           const result = await api.result(j.id);
-          if (stopped) return;
+          if (stopped || epoch !== workspaceEpoch.current) return;
           setSample(null);
           openResult(result, j.id);
           setNotice("Analysis complete. Results are saved.");
@@ -268,7 +355,7 @@ export default function Workbench() {
         setJob(j);
       } catch (e) {
         if (!stopped) {
-          reportError(e);
+          if (workspaceEpoch.current === epoch) reportError(e);
           timer = setTimeout(poll, 4000);
         }
       }
@@ -278,7 +365,7 @@ export default function Workbench() {
       stopped = true;
       clearTimeout(timer);
     };
-  }, [job?.id, job?.status]);
+  }, [job?.id, job?.status, saved?.id]);
   const scenario =
     analysis?.scenario_comparison.scenario_results.find(
       (s) => s.scenario_name === scenarioName,
@@ -287,6 +374,13 @@ export default function Workbench() {
     selectedPoint ??
     scenario?.optimization_result.recommended_portfolio ??
     null;
+  const comparison = selectedPoint && analysis && scenario && (
+    <AllocationComparison
+      recommended={scenario.optimization_result.recommended_portfolio}
+      selected={selectedPoint}
+      prospects={analysis.input.prospects}
+    />
+  );
   const stale =
     !!analysis && !!input && fingerprint(analysis.input) !== fingerprint(input);
   const dirty =
@@ -362,15 +456,45 @@ export default function Workbench() {
   };
   const save = async () => {
     if (!input) throw Error("No portfolio selected");
-    const p = await api.save(input, saved);
+    if (conflict) throw Error("Choose which version to work on before saving.");
+    const epoch = workspaceEpoch.current;
+    let p: PortfolioRecord;
+    try {
+      p = await api.save(input, saved);
+    } catch (error) {
+      if (
+        saved &&
+        error instanceof ApiError &&
+        error.status === 409 &&
+        workspaceEpoch.current === epoch
+      ) {
+        const records = await api.portfolios();
+        const latest = records.find((item) => item.id === saved.id);
+        if (latest && workspaceEpoch.current === epoch) {
+          setPortfolios(records);
+          await restoreDraft(
+            {
+              id: draftId.current,
+              savedId: saved.id,
+              baseRevision: saved.revision,
+              input,
+            },
+            latest,
+          );
+        }
+      }
+      throw error;
+    }
+    if (workspaceEpoch.current !== epoch) throw Error("Portfolio switched.");
     setSaved(p);
     setInput(p.input);
-    setPortfolios(await api.portfolios());
+    setPortfolios((items) => [p, ...items.filter((item) => item.id !== p.id)]);
     setNotice("Portfolio saved.");
     return p;
   };
   const run = async () => {
     if (!input) return;
+    const epoch = workspaceEpoch.current;
     setBusy(true);
     setError("");
     setFields([]);
@@ -383,62 +507,52 @@ export default function Workbench() {
           key: crypto.randomUUID(),
         };
       const j = await api.run(p.id, p.input, pendingRun.current.key);
+      if (workspaceEpoch.current !== epoch) return;
       pendingRun.current = null;
       setJob(j);
       setNotice(
         "Analysis queued. You can continue reviewing the current results.",
       );
     } catch (e) {
-      reportError(e);
+      if (workspaceEpoch.current === epoch) reportError(e);
     } finally {
-      setBusy(false);
+      if (workspaceEpoch.current === epoch) setBusy(false);
     }
   };
   const loadDemo = async (id: "permian" | "gom") => {
-    workspaceEpoch.current++;
+    const epoch = ++workspaceEpoch.current;
     setBusy(true);
-    setError("");
     try {
       const r = await loadSample(id);
-      draftId.current = crypto.randomUUID();
-      setQuery("");
-      setDecisionFilter("all");
-      setBaselineId("");
-      setInput(structuredClone(r.input));
+      if (workspaceEpoch.current !== epoch) return;
+      switchPortfolio(structuredClone(r.input));
       openResult(r, null);
       setSample(id);
-      setSaved(null);
-      setJob(null);
-      setBaseline(null);
-      setJobs([]);
-      setNotice("");
     } catch (e) {
-      reportError(e);
+      if (workspaceEpoch.current === epoch) reportError(e);
     } finally {
-      setBusy(false);
+      if (workspaceEpoch.current === epoch) setBusy(false);
     }
   };
   const openSaved = async (p: PortfolioRecord) => {
-    workspaceEpoch.current++;
-    draftId.current = p.id;
-    setQuery("");
-    setDecisionFilter("all");
-    setBaselineId("");
     const draft = drafts.find((d) => d.savedId === p.id);
-    setInput(draft?.input ?? p.input);
-    setSaved(p);
-    setSample(null);
-    setAnalysis(null);
-    setJob(null);
-    setRunId(null);
-    setBaseline(null);
-    setView("prospects");
+    if (draft && draftConflict(draft, p)) {
+      await restoreDraft(draft, p);
+      return;
+    }
+    const epoch = switchPortfolio(
+      draft ? editableInput(draft.input) : p.input,
+      p,
+    );
     try {
       const list = await api.jobs(p.id);
+      if (workspaceEpoch.current !== epoch) return;
       setJobs(list);
       const j = list.find((j) => j.status === "completed");
       if (j) {
-        openResult(await api.result(j.id), j.id);
+        const result = await api.result(j.id);
+        if (workspaceEpoch.current !== epoch) return;
+        openResult(result, j.id);
         setJob(j);
       }
       const pending = list.find(active);
@@ -448,17 +562,19 @@ export default function Workbench() {
     }
   };
   const perform = async (action: () => Promise<unknown>) => {
+    const epoch = workspaceEpoch.current;
     setBusy(true);
     setError("");
     try {
       await action();
     } catch (e) {
-      reportError(e);
+      if (workspaceEpoch.current === epoch) reportError(e);
     } finally {
-      setBusy(false);
+      if (workspaceEpoch.current === epoch) setBusy(false);
     }
   };
   async function importFile(file: File) {
+    const epoch = workspaceEpoch.current;
     setImportErrors([]);
     if (file.size > 2_000_000) {
       setImportErrors(["File exceeds 2 MB."]);
@@ -466,7 +582,8 @@ export default function Workbench() {
     }
     try {
       const text = await file.text();
-      if (file.name.endsWith(".csv")) {
+      if (workspaceEpoch.current !== epoch) return;
+      if (file.name.toLowerCase().endsWith(".csv")) {
         const r = importProspects(text);
         setImportErrors(r.errors);
         if (!r.errors.length) {
@@ -489,59 +606,24 @@ export default function Workbench() {
         )
           throw Error("Use an exported portfolio JSON file.");
         const validated = await api.save(candidate, null);
-        setInput(validated.input);
-        setSaved(validated);
-        setSample(null);
-        setAnalysis(null);
-        setPortfolios(await api.portfolios());
+        setPortfolios((items) => [validated, ...items]);
+        if (workspaceEpoch.current !== epoch) return;
+        switchPortfolio(validated.input, validated);
         setNotice("Imported and saved portfolio.");
       }
     } catch (e) {
       reportError(e);
     }
   }
-  const startNew = () => {
-    workspaceEpoch.current++;
-    draftId.current = crypto.randomUUID();
-    pendingRun.current = null;
-    setInput(newPortfolio());
-    setAnalysis(null);
-    setSaved(null);
-    setSample(null);
-    setJob(null);
-    setRunId(null);
-    setView("prospects");
-    setQuery("");
-    setDecisionFilter("all");
-    setBaseline(null);
-    setBaselineId("");
-    setJobs([]);
-    setError("");
-    setNotice("");
-    setSelectedId(null);
-    history.replaceState(null, "", "#view=prospects");
-  };
-  const recoverDraft = async (d: Draft) => {
-    workspaceEpoch.current++;
-    draftId.current = d.id;
-    setInput(d.input);
-    setSaved(portfolios.find((p) => p.id === d.savedId) ?? null);
-    setSample(null);
-    setAnalysis(null);
-    setJob(null);
-    setRunId(null);
-    setView("prospects");
-    setQuery("");
-    setDecisionFilter("all");
-    if (d.jobId) {
-      const j = await api.job(d.jobId);
-      setJob(j);
-      if (j.status === "completed") openResult(await api.result(j.id), j.id);
-    } else if (d.sample) {
-      openResult(await loadSample(d.sample), null);
-      setSample(d.sample);
-    }
-  };
+  const startNew = () => switchPortfolio(newPortfolio());
+  const recoverDraft = (d: Draft) =>
+    restoreDraft(d, portfolios.find((p) => p.id === d.savedId) ?? null);
+  async function showHistoricalRun(j: JobRecord) {
+    if (j.portfolio_id !== saved?.id) return;
+    const epoch = workspaceEpoch.current;
+    const result = await api.result(j.id);
+    if (workspaceEpoch.current === epoch) openResult(result, j.id);
+  }
   const exportCsv = () => {
     if (!input || !point || !scenario || !analysis) return;
     const options = Object.fromEntries(
@@ -578,7 +660,7 @@ export default function Workbench() {
           href="#"
           onClick={(e) => {
             e.preventDefault();
-            setInput(null);
+            switchPortfolio(null);
           }}
         >
           <svg
@@ -687,6 +769,30 @@ export default function Workbench() {
                 onClick={() => setNotice("")}
               >
                 ×
+              </button>
+            </div>
+          )}
+          {conflict && saved && (
+            <div className="notice" role="status">
+              Showing saved revision {saved.revision}. The browser draft has a
+              different or unknown base revision.
+              <button onClick={() => switchPortfolio(saved.input, saved)}>
+                Use saved version
+              </button>
+              <button
+                onClick={() =>
+                  switchPortfolio(
+                    {
+                      ...editableInput(conflict.input),
+                      name:
+                        conflict.input.name.slice(0, 103) + " (recovered copy)",
+                    },
+                    null,
+                    conflict.id,
+                  )
+                }
+              >
+                Recover draft as a copy
               </button>
             </div>
           )}
@@ -863,14 +969,14 @@ export default function Workbench() {
                     Assumptions & constraints
                   </button>
                   <button
-                    disabled={busy || !user}
+                    disabled={busy || !!conflict || !user}
                     onClick={() => perform(save)}
                   >
                     Save
                   </button>
                   <button
                     className="primary"
-                    disabled={busy || active(job) || !user}
+                    disabled={busy || !!conflict || active(job) || !user}
                     onClick={run}
                   >
                     {active(job) ? "Analysis running…" : "Run analysis"}
@@ -989,14 +1095,22 @@ export default function Workbench() {
                         </span>
                       </section>
                       <Metrics point={point} />
+                      {view === "overview" && comparison}
                       {view === "overview" && (
                         <section className="panel">
                           <h2>What drives this allocation</h2>
-                          <p>
-                            Selected to maximize expected NPV minus{" "}
-                            {analysis!.input.risk_aversion} × expected loss
-                            under the supplied capital constraints.
-                          </p>
+                          {selectedPoint ? (
+                            <p>
+                              Showing the selected frontier alternative for{" "}
+                              {scenario?.scenario_name}.
+                            </p>
+                          ) : (
+                            <p>
+                              Selected to maximize expected NPV minus{" "}
+                              {analysis!.input.risk_aversion} × expected loss
+                              under the supplied capital constraints.
+                            </p>
+                          )}
                           <dl className="facts">
                             <div>
                               <dt>Expected loss</dt>
@@ -1011,6 +1125,23 @@ export default function Workbench() {
                               <dd>{money(point.portfolio_risk)}</dd>
                             </div>
                           </dl>
+                          {analysis!.input.constraints.max_prospects_drilled !=
+                            null && (
+                            <p>
+                              Drill count:{" "}
+                              {
+                                Object.values(point.allocation).filter(
+                                  (d) => d === "drill",
+                                ).length
+                              }{" "}
+                              of{" "}
+                              {
+                                analysis!.input.constraints
+                                  .max_prospects_drilled
+                              }{" "}
+                              maximum.
+                            </p>
+                          )}
                           <h3>Binding constraints</h3>
                           {point.binding_constraints.length ? (
                             <ul>
@@ -1240,6 +1371,7 @@ export default function Workbench() {
                   onSelect={setSelectedPoint}
                 />
               )}
+              {view === "allocation" && comparison}
               {view === "scenarios" && (
                 <>
                   <PriceEditor input={input} onChange={mutate} />
@@ -1416,11 +1548,15 @@ export default function Workbench() {
                         value={baselineId}
                         onChange={(e) => {
                           setBaselineId(e.target.value);
-                          if (e.target.value)
-                            perform(async () =>
-                              setBaseline(await api.result(e.target.value)),
-                            );
-                          else setBaseline(null);
+                          const id = e.target.value;
+                          const epoch = workspaceEpoch.current;
+                          setBaseline(null);
+                          if (id)
+                            perform(async () => {
+                              const result = await api.result(id);
+                              if (workspaceEpoch.current === epoch)
+                                setBaseline(result);
+                            });
                         }}
                       >
                         <option value="">No comparison</option>
@@ -1470,9 +1606,7 @@ export default function Workbench() {
                               {j.status === "completed" ? (
                                 <button
                                   onClick={() =>
-                                    perform(async () =>
-                                      openResult(await api.result(j.id), j.id),
-                                    )
+                                    perform(() => showHistoricalRun(j))
                                   }
                                 >
                                   Open run
@@ -1522,7 +1656,10 @@ export default function Workbench() {
             </ul>
           )}
           <PortfolioSettings input={input} onChange={mutate} />
-          <button disabled={busy || !user} onClick={() => perform(save)}>
+          <button
+            disabled={busy || !!conflict || !user}
+            onClick={() => perform(save)}
+          >
             Validate & save
           </button>
         </Drawer>

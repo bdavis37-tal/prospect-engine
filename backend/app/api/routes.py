@@ -3,6 +3,7 @@ import json
 import time
 import uuid
 from fastapi import APIRouter, Depends, Header, HTTPException
+from fastapi.responses import Response
 from pydantic import Field
 from app.auth import current_user
 from app.engine.models import BaseModel, PortfolioInput, AnalysisResult
@@ -145,7 +146,9 @@ def result(id: str, owner: str = Depends(current_user)):
         row=owned(db,'jobs',id,owner)
         if row['status'] != 'completed': raise HTTPException(409,'Results are not available until the run completes')
         try:
-            return AnalysisResult.model_validate_json(row['result'])
+            AnalysisResult.model_validate_json(row['result'])
+            # Preserve the original schema and fingerprint when exporting historical runs.
+            return Response(row['result'], media_type='application/json')
         except ValueError:
             raise HTTPException(409,'This saved run uses an earlier result format. Re-run its saved inputs with the current model.') from None
 

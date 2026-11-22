@@ -12,7 +12,7 @@
         "p10": 1300.0,
         "p50": 900.0,
         "p90": 600.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -34,11 +34,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 500000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.0,
         "low": 7.0,
         "high": 12.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -69,7 +70,7 @@
         "p10": 1100.0,
         "p50": 800.0,
         "p90": 500.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -91,11 +92,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 400000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.0,
         "low": 7.0,
         "high": 12.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -126,7 +128,7 @@
         "p10": 2000.0,
         "p50": 700.0,
         "p90": 200.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -148,11 +150,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 800000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 11.0,
         "low": 8.0,
         "high": 15.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -183,7 +186,7 @@
         "p10": 900.0,
         "p50": 650.0,
         "p90": 450.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -205,11 +208,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 500000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.5,
         "low": 7.5,
         "high": 12.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -240,7 +244,7 @@
         "p10": 850.0,
         "p50": 550.0,
         "p90": 200.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -262,11 +266,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 500000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 10.0,
         "low": 8.0,
         "high": 13.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -297,7 +302,7 @@
         "p10": 950.0,
         "p50": 700.0,
         "p90": 500.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -319,11 +324,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 400000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 8.5,
         "low": 7.0,
         "high": 11.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -354,7 +360,7 @@
         "p10": 1400.0,
         "p50": 850.0,
         "p90": 550.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -376,11 +382,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 500000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.0,
         "low": 7.0,
         "high": 12.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -411,7 +418,7 @@
         "p10": 700.0,
         "p50": 500.0,
         "p90": 300.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -433,11 +440,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 400000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 10.0,
         "low": 8.0,
         "high": 13.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -468,7 +476,7 @@
         "p10": 850.0,
         "p50": 600.0,
         "p90": 350.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -490,11 +498,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 500000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.0,
         "low": 7.0,
         "high": 12.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -525,7 +534,7 @@
         "p10": 14.0,
         "p50": 8.0,
         "p90": 4.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "BCF"
       },
       "recovery_factor": {
@@ -547,11 +556,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 600000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 1.5,
         "low": 1.0,
         "high": 2.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/MCF"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -582,7 +592,7 @@
         "p10": 1200.0,
         "p50": 800.0,
         "p90": 500.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -604,11 +614,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 5000000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 12.0,
         "low": 9.0,
         "high": 16.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -639,7 +650,7 @@
         "p10": 1150.0,
         "p50": 850.0,
         "p90": 550.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -661,11 +672,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 600000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.5,
         "low": 7.5,
         "high": 12.5,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.25,
       "tax_rate": 0.22,
@@ -696,7 +708,7 @@
         "p10": 900.0,
         "p50": 650.0,
         "p90": 400.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -718,11 +730,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 400000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.0,
         "low": 7.0,
         "high": 12.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -753,7 +766,7 @@
         "p10": 1500.0,
         "p50": 900.0,
         "p90": 500.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -775,11 +788,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 600000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.5,
         "low": 7.5,
         "high": 12.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,
@@ -810,7 +824,7 @@
         "p10": 800.0,
         "p50": 600.0,
         "p90": 400.0,
-        "distribution_type": "lognormal",
+        "distribution_type": "quantile_lognormal",
         "unit": "MBOE"
       },
       "recovery_factor": {
@@ -832,11 +846,12 @@
         "distribution_type": "triangular"
       },
       "facility_cost": 400000.0,
-      "opex_per_boe": {
+      "operating_cost": {
         "base": 9.0,
         "low": 7.0,
         "high": 12.0,
-        "distribution_type": "triangular"
+        "distribution_type": "triangular",
+        "unit": "USD/BOE"
       },
       "royalty_rate": 0.22,
       "tax_rate": 0.22,

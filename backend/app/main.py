@@ -11,6 +11,7 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.sessions import SessionMiddleware
 from app.auth import configure_auth, router as auth_router
 from app.api.routes import router
+from app.engine.scenario_engine import MODEL_VERSION
 from app.storage import initialize
 
 logging.basicConfig(level=logging.INFO)
@@ -24,7 +25,7 @@ async def lifespan(app):
     yield
 
 
-app=FastAPI(title='Prospect Engine API',version='2.0.0',lifespan=lifespan,docs_url=None if os.environ.get('APP_ENV')=='production' else '/docs')
+app=FastAPI(title='Prospect Engine API',version=MODEL_VERSION,lifespan=lifespan,docs_url=None if os.environ.get('APP_ENV')=='production' else '/docs')
 app.add_middleware(SessionMiddleware,secret_key=os.environ.get('SESSION_SECRET') or secrets.token_urlsafe(48),
                    session_cookie='prospect_session',max_age=8*3600,same_site='lax',https_only=os.environ.get('AUTH_MODE')=='oidc')
 app.include_router(auth_router)

@@ -29,9 +29,11 @@ def _sample_distribution(params: DistributionParams, n: int, rng: np.random.Gene
 def _sample_resource(resource, n: int, rng: np.random.Generator) -> np.ndarray:
     if resource.p10 == resource.p90:
         return np.full(n, resource.p50, dtype=float)
-    mu = np.log(max(resource.p50, 1e-6))
-    sigma = (np.log(max(resource.p10, 1e-6)) - np.log(max(resource.p90, 1e-6))) / (norm.ppf(0.9) - norm.ppf(0.1))
-    return rng.lognormal(mean=mu, sigma=max(sigma, 1e-6), size=n)
+    # Interpolate log volume on each side of the median in normal-quantile space.
+    z = rng.standard_normal(n)
+    median = np.log(resource.p50)
+    spread = np.where(z >= 0, np.log(resource.p10) - median, median - np.log(resource.p90))
+    return np.exp(median + z * spread / norm.ppf(0.9))
 
 
 def _summary(values: np.ndarray) -> DistributionSummary:
@@ -108,7 +110,7 @@ def run_simulation(
 
     well_cost = _sample_distribution(prospect.well_cost, n_iterations, rng)
     completion_cost = _sample_distribution(prospect.completion_cost, n_iterations, rng)
-    opex = _sample_distribution(prospect.opex_per_boe, n_iterations, rng)
+    opex = _sample_distribution(prospect.operating_cost, n_iterations, rng) * prospect.operating_cost_factor()
 
     oil_paths, gas_paths = generate_correlated_oil_gas_paths(
         scenario.oil_price_deck,

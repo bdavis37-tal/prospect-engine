@@ -174,19 +174,17 @@ export function Frontier({
       </div>
 
       <div className="allocation-options">
-        {points.map((p, i) => (
-          <button
-            key={i}
-
-            aria-pressed={selected === p}
-
-            onClick={() => onSelect(p)}
-          >
-            Allocation {i + 1}
-            <strong>{money(p.expected_npv)}</strong>
-            <span>{money(p.expected_loss)} expected loss</span>
-          </button>
-        ))}
+        {points.map((p, i) => {
+          const recommended = Object.entries(rec.allocation).every(([id, decision]) => p.allocation[id] === decision);
+          return (
+            <button key={i} aria-pressed={selected === p || (!selected && recommended)}
+              onClick={() => onSelect(recommended ? null : p)}>
+              Allocation {i + 1}{recommended ? " · Recommended" : ""}
+              <strong>{money(p.expected_npv)}</strong>
+              <span>{money(p.expected_loss)} expected loss</span>
+            </button>
+          );
+        })}
       </div>
 
       <p className="muted">

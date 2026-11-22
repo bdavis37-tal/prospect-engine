@@ -9,7 +9,7 @@ import time
 import uuid
 from app.storage import connection, initialize
 from app.engine.models import PortfolioInput
-from app.engine.scenario_engine import analyze
+from app.engine.scenario_engine import MODEL_VERSION, analyze
 from app.engine.portfolio_optimizer import OptimizationError
 
 logger=logging.getLogger('prospect-engine.worker')
@@ -40,6 +40,9 @@ def run_one(worker_id='test-worker', timeout_seconds=None):
         db.execute('BEGIN IMMEDIATE')
         row=db.execute("SELECT * FROM jobs WHERE status='queued' ORDER BY created LIMIT 1").fetchone()
         if row is None: return False
+        if row['model_version'] != MODEL_VERSION:
+            db.execute("UPDATE jobs SET status='failed',error_code='model_changed',message='Model version changed. Submit a fresh analysis.',updated=? WHERE id=?", (time.time(), row['id']))
+            return True
         db.execute("UPDATE jobs SET status='running',updated=?,message='Starting simulation' WHERE id=?",(time.time(),row['id']))
     context=mp.get_context('spawn')
     messages=context.Queue()

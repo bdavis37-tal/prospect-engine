@@ -1,6 +1,6 @@
 [project]
 name = "prospect-engine-backend"
-version = "2.0.0"
+version = "2.1.0"
 description = "Monte Carlo E&P portfolio optimization API"
 requires-python = ">=3.13"
 dependencies = [

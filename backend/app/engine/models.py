@@ -60,7 +60,14 @@ class ResourceDistribution(BaseModel):
     p10: float = Field(gt=0, le=1e9)
     p50: float = Field(gt=0, le=1e9)
     p90: float = Field(gt=0, le=1e9)
-    distribution_type: Literal["lognormal"] = "lognormal"
+    distribution_type: Literal["quantile_lognormal"] = "quantile_lognormal"
+
+    @model_validator(mode="before")
+    @classmethod
+    def legacy_resource_fit(cls, data):
+        if isinstance(data, dict) and data.get("distribution_type") == "lognormal":
+            return {**data, "distribution_type": "quantile_lognormal"}
+        return data
     unit: Literal["MBOE", "MMBOE", "MBO", "MMBO", "BOE", "BO", "MCF", "BCF"] = "MBOE"
 
     @model_validator(mode="after")
@@ -78,6 +85,10 @@ class DeclineParameters(BaseModel):
     well_life_years: int = Field(default=30, ge=1, le=50)
 
 
+class OperatingCost(DistributionParams):
+    unit: Literal["USD/BOE", "USD/MCF"]
+
+
 class Prospect(BaseModel):
     prospect_id: str = Field(min_length=1, max_length=80, pattern=r"^[A-Za-z0-9_-]+$")
     name: str = Field(min_length=1, max_length=120)
@@ -91,7 +102,7 @@ class Prospect(BaseModel):
     well_cost: DistributionParams
     completion_cost: DistributionParams
     facility_cost: float = Field(default=0.0, ge=0, le=1e12)
-    opex_per_boe: DistributionParams
+    operating_cost: OperatingCost
     royalty_rate: float = Field(default=0.22, ge=0, le=1)
     tax_rate: float = Field(default=0.25, ge=0, le=1)
     working_interest: float = Field(default=1.0, ge=0, le=1)
@@ -103,8 +114,31 @@ class Prospect(BaseModel):
     assumption_source: str = Field(default="User supplied; not independently verified", max_length=500)
     oil_fraction: float = Field(default=1, ge=0, le=1)
 
+    @model_validator(mode="before")
+    @classmethod
+    def upgrade_legacy_cost(cls, data):
+        if isinstance(data, dict) and "opex_per_boe" in data and "operating_cost" not in data:
+            data = dict(data)
+            cost = data.pop("opex_per_boe")
+            resource = data.get("resource_estimate")
+            unit = resource.get("unit") if isinstance(resource, dict) else getattr(resource, "unit", None)
+            if isinstance(cost, DistributionParams):
+                cost = cost.model_dump()
+            if isinstance(cost, dict):
+                data["operating_cost"] = {**cost, "unit": "USD/MCF" if unit in {"MCF", "BCF"} else "USD/BOE"}
+        return data
+
+    def operating_cost_factor(self) -> float:
+        """Convert a quoted operating cost to dollars per modeled production unit."""
+        gas_volume = self.resource_estimate.unit in {"MCF", "BCF"}
+        if self.operating_cost.unit == "USD/BOE":
+            return 1 / 6 if gas_volume else 1
+        return 1 if gas_volume else 6
+
     @model_validator(mode="after")
     def compute_nri(self) -> "Prospect":
+        if self.operating_cost.unit == "USD/MCF" and self.hydrocarbon_type != HydrocarbonType.GAS:
+            raise ValueError("USD/MCF operating costs require a gas prospect")
         if self.net_revenue_interest is None:
             self.net_revenue_interest = self.working_interest * (1.0 - self.royalty_rate)
         if self.net_revenue_interest > self.working_interest:
@@ -345,7 +379,7 @@ class ProspectResult(BaseModel):
 
 
 class AnalysisResult(BaseModel):
-    model_version: str = "2.0.0"
+    model_version: str
     input_hash: str
     generated_at: str
     input: PortfolioInput

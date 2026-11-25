@@ -78,3 +78,36 @@ def test_validation_is_bounded_and_does_not_echo_inputs(client):
     assert '100000000' not in r.text
     assert r.json()['fields'][0]['field']=='input.simulation_iterations'
     assert client.post('/api/portfolios',content='x'*2000001,headers=HEADERS).status_code==413
+
+
+def test_historical_run_export_keeps_its_original_input_and_hash(client):
+    from app.storage import connection
+
+    p = create(client)
+    job = client.post("/api/jobs", json={"portfolio_id": p["id"], "input": payload()},
+                      headers={**HEADERS, "Idempotency-Key": "historical-result"}).json()
+    source = Path(__file__).resolve().parents[2] / "frontend/src/data/demos/permian/analysis.json"
+    historical = json.loads(source.read_text())
+    historical["model_version"] = "2.0.0"
+    for prospect in historical["input"]["prospects"]:
+        prospect["opex_per_boe"] = prospect.pop("operating_cost")
+        prospect["opex_per_boe"].pop("unit")
+        prospect["resource_estimate"]["distribution_type"] = "lognormal"
+    import hashlib
+    historical["input_hash"] = hashlib.sha256(json.dumps(historical["input"], sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    original = json.dumps(historical)
+    with connection() as db:
+        db.execute("UPDATE jobs SET result=?,status='completed',model_version=? WHERE id=?", (original, "2.0.0", job["id"]))
+    assert client.get(f"/api/jobs/{job['id']}/result").text == original
+
+
+def test_jobs_submitted_under_an_older_model_must_be_resubmitted(client):
+    from app.storage import connection
+
+    p = create(client)
+    job = client.post("/api/jobs", json={"portfolio_id": p["id"], "input": payload()},
+                      headers={**HEADERS, "Idempotency-Key": "queued-old-model"}).json()
+    with connection() as db:
+        db.execute("UPDATE jobs SET model_version='2.0.0' WHERE id=?", (job["id"],))
+    assert run_one()
+    assert client.get(f"/api/jobs/{job['id']}").json()["error_code"] == "model_changed"

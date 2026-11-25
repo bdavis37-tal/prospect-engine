@@ -109,6 +109,14 @@ export type JobRecord = {
   "updated": number;
 };
 
+export type OperatingCost = {
+  "base": number;
+  "low": number;
+  "high": number;
+  "distribution_type": "triangular" | "lognormal";
+  "unit": "USD/BOE" | "USD/MCF";
+};
+
 export type PortfolioConstraints = {
   "min_prospects_drilled": number | null;
   "max_prospects_drilled": number | null;
@@ -165,7 +173,7 @@ export type Prospect = {
   "well_cost": DistributionParams;
   "completion_cost": DistributionParams;
   "facility_cost": number;
-  "opex_per_boe": DistributionParams;
+  "operating_cost": OperatingCost;
   "royalty_rate": number;
   "tax_rate": number;
   "working_interest": number;
@@ -189,7 +197,7 @@ export type ResourceDistribution = {
   "p10": number;
   "p50": number;
   "p90": number;
-  "distribution_type": "lognormal";
+  "distribution_type": "quantile_lognormal";
   "unit": "MBOE" | "MMBOE" | "MBO" | "MMBO" | "BOE" | "BO" | "MCF" | "BCF";
 };
 

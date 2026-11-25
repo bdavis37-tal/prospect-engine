@@ -3,7 +3,7 @@ import permian from "./data/demos/permian/analysis.json";
 import gom from "./data/demos/gom/analysis.json";
 for (const sample of [permian, gom]) describe(sample.input.name, () => {
   it("provides every scenario with a complete immutable input and feasible recommendation", () => {
-    expect(sample.model_version).toBe("2.0.0");
+    expect(sample.model_version).toBe("2.1.0");
     expect(sample.input_hash).toMatch(/^[a-f0-9]{64}$/);
     expect(sample.scenario_comparison.scenario_results.length).toBe(sample.input.price_scenarios.length);
     for (const scenario of sample.scenario_comparison.scenario_results) {

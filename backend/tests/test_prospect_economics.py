@@ -29,7 +29,7 @@ def test_single_permian_deterministic_economics_within_tolerance() -> None:
         discount_rate=0.10,
         well_cost=prospect.well_cost.base,
         completion_cost=prospect.completion_cost.base,
-        opex_per_unit=prospect.opex_per_boe.base,
+        opex_per_unit=prospect.operating_cost.base,
     )
 
     assert abs(econ.npv - expected["npv"]) / max(abs(expected["npv"]), 1) < 0.01

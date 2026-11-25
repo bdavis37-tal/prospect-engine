@@ -52,7 +52,7 @@ def calculate_prospect_economics(
     completion_cost:
         Well completion cost.
     opex_per_unit:
-        Operating expense per produced unit.
+        Operating expense quoted in prospect.operating_cost.unit.
     production_scale:
         Optional scalar applied to production profile. If omitted, scale is derived
         from P50 resource and base recovery factor.
@@ -82,7 +82,7 @@ def calculate_prospect_economics(
         prices = prospect.oil_fraction * prices + (1 - prospect.oil_fraction) * 6 * gas
     gross_revenue = annual_prod * prices
     net_revenue = gross_revenue * float(prospect.net_revenue_interest)
-    opex = annual_prod * opex_per_unit * prospect.working_interest
+    opex = annual_prod * (opex_per_unit * prospect.operating_cost_factor()) * prospect.working_interest
     noi = net_revenue - opex
     taxes = np.maximum(noi, 0.0) * prospect.tax_rate
     after_tax_cf = noi - taxes

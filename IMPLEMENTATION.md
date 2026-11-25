@@ -38,3 +38,9 @@ Build: initial JavaScript approximately 78 KB gzip (previously approximately 320
 The local Docker Linux engine did not start. Linux CI successfully built the production images, exercised the packaged browser workflow, created and restored a database backup, restarted the full stack, and verified saved-result fingerprints. [Verified CI run](https://github.com/bdavis37-tal/prospect-engine/actions/runs/34519975175). This ledger does not claim a live OIDC deployment, independent asset-data validation, multi-host availability or configured off-host operations.
 
 The final additional browser test verifies recovery of an edited sample across new-portfolio navigation and reload. It passes against the compiled production build. Screenshots from that build are saved in `docs/screenshots/`.
+
+## Allocation and recovery verification — 2026-11-22
+
+Model 2.1 regenerates both sample portfolios using an asymmetric log-volume fit through all three input quantiles. Operating costs carry a quote unit, and legacy gas inputs preserve their historical dollar-per-MCF basis. Historical completed run exports keep their original bytes. Jobs queued under the previous model require resubmission.
+
+Local verification: 56 backend tests, 23 frontend tests and nine Playwright scenarios passed. Browser tests used compiled assets, the nginx content security policy, a real API/worker and an isolated SQLite database. Coverage includes stale and legacy draft conflicts, JSON import with a prior run, template CSV import, and the exact deltas and prospect decisions shown in the [frontier comparison](docs/screenshots/frontier-comparison.png). The production build, initial bundle budget, generated API types and both dependency audits passed. The Docker engine was unavailable locally.

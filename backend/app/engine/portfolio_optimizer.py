@@ -33,10 +33,10 @@ def constraint_matrix(candidates, budget, constraints, basins):
         raise OptimizationError('Constraints reference unknown prospects', 'invalid_constraints')
     for pid in sorted(ids):
         add([float(c.prospect_id == pid) for c in candidates], 1, 1, f'One decision: {pid}')
-    add([c.capital for c in candidates], 0, budget, 'Capital budget')
+    add([c.capital for c in candidates], -np.inf, budget, 'Capital budget')
     if constraints.min_prospects_drilled is not None or constraints.max_prospects_drilled is not None:
-        add([float(c.decision == DecisionType.DRILL) for c in candidates], constraints.min_prospects_drilled or 0,
-            constraints.max_prospects_drilled if constraints.max_prospects_drilled is not None else len(ids), 'Drilled prospect count')
+        add([float(c.decision == DecisionType.DRILL) for c in candidates], constraints.min_prospects_drilled if constraints.min_prospects_drilled is not None else -np.inf,
+            constraints.max_prospects_drilled if constraints.max_prospects_drilled is not None else np.inf, 'Drilled prospect count')
     fixed = dict(constraints.fixed_decisions)
     fixed.update({p: DecisionType.DRILL for p in constraints.mandatory_drill or []})
     fixed.update({p: DecisionType.DEFER for p in constraints.mandatory_defer or []})
@@ -44,7 +44,7 @@ def constraint_matrix(candidates, budget, constraints, basins):
         add([float(c.prospect_id == pid and c.decision == decision) for c in candidates], 1, 1, f'Required {decision.value}: {pid}')
     if constraints.max_single_prospect_pct_of_budget is not None:
         for pid in sorted(ids):
-            add([c.capital if c.prospect_id == pid else 0 for c in candidates], 0,
+            add([c.capital if c.prospect_id == pid else 0 for c in candidates], -np.inf,
                 budget * constraints.max_single_prospect_pct_of_budget, f'Concentration: {pid}')
     for basin, fraction in (constraints.min_basin_allocation or {}).items():
         add([c.capital if basins.get(c.prospect_id) == basin else 0 for c in candidates], budget * fraction, np.inf,
@@ -71,13 +71,21 @@ def solve(candidates, sample_matrix, budget, penalty, constraints, basins):
         code = 'timeout' if res.status == 1 else 'infeasible' if res.status == 2 else 'solver_failed'
         raise OptimizationError('No verified allocation. Check the budget, mandatory decisions, concentration and basin minimums.' if code == 'infeasible' else 'Optimization did not finish within the solver limit; reduce the workload or retry.', code)
     chosen = np.rint(res.x[:n])
-    tolerance = 1e-7 * np.maximum(np.maximum(np.abs(a).sum(axis=1), np.abs(lo)), 1)
+    tolerance = 1e-7 * np.maximum(np.maximum(np.abs(a).sum(axis=1), np.where(np.isfinite(lo), np.abs(lo), 0)), 1)
     actual = a @ chosen
     if np.any(actual < lo - tolerance) or np.any(actual > hi + tolerance):
         raise OptimizationError('Solver allocation failed independent feasibility verification', 'solver_failed')
     selected = [c for c, x in zip(candidates, chosen) if x > .5]
-    binding = [name for value, low, high, tol, name in zip(actual, lo, hi, tolerance, names)
-               if not name.startswith('One decision') and (abs(value - low) <= tol or abs(value - high) <= tol)]
+    binding = []
+    for value, low, high, tol, name in zip(actual, lo, hi, tolerance, names):
+        if name.startswith("One decision"):
+            continue
+        if low == high and abs(value - low) <= tol:
+            binding.append(f"{name}: {value:,.6g} required")
+        elif abs(value - high) <= tol:
+            binding.append(f"{name}: {value:,.6g} of {high:,.6g} maximum")
+        elif abs(value - low) <= tol:
+            binding.append(f"{name}: {value:,.6g} of {low:,.6g} minimum")
     return selected, sample_matrix @ chosen, binding
 
 

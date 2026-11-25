@@ -72,6 +72,8 @@ When model logic changes, run `python scripts/generate_demo_data.py` from `backe
 
 ## Model boundaries
 
+Model 2.1 samples log volumes using separate spreads above and below the median so the population quantiles match all three supplied resource estimates. Simulated sample percentiles vary with the draw count. For operating expenses, supply an `operating_cost` distribution with an explicit `unit` of `USD/BOE` or, for gas, `USD/MCF`. Earlier `opex_per_boe` inputs retain their historical per-MCF interpretation for MCF/BCF resources. Saved results retain their original input, model version, and fingerprint.
+
 All currency is USD. Gas uses $/MCF and 6 MCF/BOE when converting BOE gas volumes. P10/P50/P90 use the petroleum exceedance convention: P10 is the high outcome. The model normalizes decline profiles to sampled recoverable volumes, applies year-end discounting, working-interest operating costs and tax on positive operating income.
 
 Commodity innovations are shared across prospects; resource/cost draws are independent between prospects. Alternative decisions and price scenarios use matched draws. No basin-level geological correlation, financing, depreciation, abandonment liability or future defer option value is implied. Review the full methodology embedded in every exported result. IRR summaries include only draws with a unique conventional IRR; payout summaries include only draws that pay out within modeled life. Coverage probabilities are exported alongside them.

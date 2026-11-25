@@ -1,4 +1,4 @@
-import { csvParse, csvParseRows, csvFormat } from "d3";
+import { csvParseRows, csvFormat } from "d3";
 import type { PortfolioInput, Prospect } from "../types/api.generated";
 import { basins, newProspect } from "./defaults";
 import { download } from "./api";
@@ -7,15 +7,14 @@ export function importProspects(text: string): {
   prospects: Prospect[];
   errors: string[];
 } {
-  const rows = csvParse(text),
+  const [columns = [], ...rows] = csvParseRows(text.replace(/^\uFEFF/, "")),
     errors: string[] = [],
     prospects: Prospect[] = [];
   if (rows.length === 0)
     return { prospects: [], errors: ["CSV contains no prospect rows."] };
-  if (new Set(rows.columns).size !== rows.columns.length)
+  if (new Set(columns).size !== columns.length)
     return { prospects: [], errors: ["CSV contains duplicate column names."] };
-  const rawRows = csvParseRows(text);
-  if (rawRows.some((r) => r.length !== rows.columns.length))
+  if (rows.some((r) => r.length !== columns.length))
     return {
       prospects: [],
       errors: [
@@ -24,12 +23,13 @@ export function importProspects(text: string): {
     };
   if (rows.length > 40)
     return { prospects: [], errors: ["Maximum 40 prospects per portfolio."] };
-  if (!rows.columns.includes("name") || !rows.columns.includes("basin"))
+  if (!columns.includes("name") || !columns.includes("basin"))
     return {
       prospects: [],
       errors: ["Required columns: name, basin. Download the CSV template."],
     };
-  rows.forEach((r, index) => {
+  rows.forEach((cells, index) => {
+    const r = Object.fromEntries(columns.map((key, i) => [key, cells[i]]));
     const row = index + 2;
     if (!r.name?.trim()) {
       errors.push(`Row ${row}: name is required.`);

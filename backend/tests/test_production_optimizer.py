@@ -62,3 +62,15 @@ def test_timeout_never_returns_a_recommendation(monkeypatch):
     c,s=fixture()
     with pytest.raises(OptimizationError) as e: optimize_portfolio(c,s,10,None,3)
     assert e.value.code == 'timeout'
+
+
+def test_only_explicit_tight_drill_limits_are_reported():
+    comparisons, samples = fixture()
+    # A small budget forces two deferrals, leaving the max of one slack.
+    point = optimize_portfolio(comparisons, samples, 3, {"max_prospects_drilled": 1}).recommended_portfolio
+    assert all(d == D.DEFER for d in point.allocation.values())
+    assert not any("Drilled prospect count" in label for label in point.binding_constraints)
+    point = optimize_portfolio(comparisons, samples, 10, {"max_prospects_drilled": 1}).recommended_portfolio
+    assert "Drilled prospect count: 1 of 1 maximum" in point.binding_constraints
+    point = optimize_portfolio(comparisons, samples, 20, {"min_prospects_drilled": 1}).recommended_portfolio
+    assert not any("Drilled prospect count" in label for label in point.binding_constraints)
